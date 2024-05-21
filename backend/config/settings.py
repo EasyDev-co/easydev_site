@@ -28,8 +28,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #Приложения
-    'apps.news.apps.NewsConfig',
-    'apps.utils',
+    'apps.vacancies.apps.VacanciesConfig',
 ]
 
 MIDDLEWARE = [
