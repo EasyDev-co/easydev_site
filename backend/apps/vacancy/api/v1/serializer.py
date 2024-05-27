@@ -9,7 +9,7 @@ class VacancySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class VacancyFormSerializer(serializers.Serializer):
+class VacancyFormSerializer(serializers.ModelSerializer):
     """Сериалайзер для формы вакансий"""
     class Meta:
         model = VacancyForm

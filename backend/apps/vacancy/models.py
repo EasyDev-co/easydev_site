@@ -1,15 +1,17 @@
 from django.db import models
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
+from apps.utils.models_mixins.models_mixins import VacancyAbstract
 
 
 class Vacancy(models.Model):
     """Модель для вакансий"""
     title = models.CharField(verbose_name='Заголовок', max_length=256)
     post = models.CharField(verbose_name='Должность', max_length=256)
-    description = models.TextField(verbose_name='Описание вакансии', max_length=512)
-    salary_fork = models.PositiveIntegerField(
-        verbose_name='Зарплатная вилка', blank=True, null=True
+    description = models.TextField(verbose_name='Описание вакансии', max_length=1024)
+    salary_fork_lt = models.PositiveIntegerField(
+        verbose_name='Нижняя граница зарлатной вилки', blank=True, null=True
+    )
+    salary_fork_gt = models.PositiveIntegerField(
+        verbose_name='Верхняя граница зарлатной вилки', blank=True, null=True
     )
     image = models.ImageField(verbose_name='Фотография вакансии', upload_to='vacancies/image')
 
@@ -19,17 +21,6 @@ class Vacancy(models.Model):
 
     def __str__(self):
         return 'Вакансия'
-
-
-class VacancyAbstract(models.Model):
-    """Абстрактная модель, содержащая общие поля для работы с вакансиями"""
-    name = models.CharField(verbose_name='Имя', max_length=256)
-    number = models.IntegerField(verbose_name='Номер')
-    link = models.URLField(verbose_name='Ссылка на социальную сеть', blank=True, null=True)
-    file = models.FileField(verbose_name='Файл', upload_to='vacancies/files', blank=True, null=True)
-
-    class Meta:
-        abstract = True
 
 
 class VacancyForm(VacancyAbstract):

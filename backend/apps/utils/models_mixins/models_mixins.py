@@ -43,3 +43,14 @@ class SingletonModelMixin(models.Model):
     def load(cls):
         obj, created = cls.objects.get_or_create(pk=1)
         return obj
+
+
+class VacancyAbstract(models.Model):
+    """Абстрактная модель, содержащая общие поля для работы с вакансиями"""
+    name = models.CharField(verbose_name='Имя', max_length=256)
+    number = models.IntegerField(verbose_name='Номер')
+    link = models.URLField(verbose_name='Ссылка на социальную сеть', blank=True, null=True)
+    file = models.FileField(verbose_name='Файл', upload_to='vacancies/files', blank=True, null=True)
+
+    class Meta:
+        abstract = True
