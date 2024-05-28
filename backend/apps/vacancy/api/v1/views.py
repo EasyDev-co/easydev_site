@@ -10,5 +10,5 @@ class VacancyViewSet(ModelViewSet):
 
 
 class VacancyFormCreateView(CreateAPIView):
-    queryset = VacancyForm
+    queryset = VacancyForm.objects.all()
     serializer_class = VacancyFormSerializer
