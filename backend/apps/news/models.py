@@ -23,7 +23,7 @@ class News(TimeStampedMixin, UUIDMixin):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
-        ordering = ('id',)
+        ordering = ('name',)
 
     def __str__(self):
         return self.name
@@ -39,7 +39,7 @@ class BlockOfNews(TimeStampedMixin, UUIDMixin):
     class Meta:
         verbose_name = 'Блок новости'
         verbose_name_plural = 'Блоки новостей'
-        ordering = ('id',)
+        ordering = ('name',)
 
     def __str__(self):
         return self.name
@@ -55,7 +55,7 @@ class Image(TimeStampedMixin, UUIDMixin):
     class Meta:
         verbose_name = 'Фотография'
         verbose_name_plural = 'Фотографии'
-        ordering = ('id',)
+        ordering = ('content_type',)
 
     def __str__(self):
         return 'Фотография'
