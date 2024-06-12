@@ -45,7 +45,7 @@ class SingletonModelMixin(models.Model):
         return obj
 
 
-class VacancyAbstract(models.Model):
+class FeedbackAbstract(models.Model):
     """Абстрактная модель, содержащая общие поля для работы с вакансиями"""
     name = models.CharField(verbose_name='Имя', max_length=256)
     number = models.IntegerField(verbose_name='Номер')

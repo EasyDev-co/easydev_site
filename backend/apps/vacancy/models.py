@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from apps.utils.models_mixins.models_mixins import VacancyAbstract
+from apps.utils.models_mixins.models_mixins import FeedbackAbstract
 from apps.utils.models_mixins.models_mixins import UUIDMixin, TimeStampedMixin
 
 
@@ -16,6 +16,7 @@ class Vacancy(TimeStampedMixin, UUIDMixin):
         verbose_name='Верхняя граница зарлатной вилки', blank=True, null=True
     )
     image = models.ImageField(verbose_name='Фотография вакансии', upload_to='vacancies/image')
+    is_active = models.BooleanField(verbose_name='Активность вакансии', default=False)
 
     class Meta:
         verbose_name = 'Вакансия'
@@ -34,7 +35,7 @@ class Vacancy(TimeStampedMixin, UUIDMixin):
                 })
 
 
-class VacancyForm(VacancyAbstract, TimeStampedMixin, UUIDMixin):
+class VacancyForm(FeedbackAbstract, TimeStampedMixin, UUIDMixin):
     """Модель для формы записи на вакансию"""
     class Meta:
         verbose_name = 'Форма вакансии'

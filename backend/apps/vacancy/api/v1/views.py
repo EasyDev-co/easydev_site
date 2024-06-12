@@ -5,7 +5,7 @@ from rest_framework.viewsets import ModelViewSet
 
 
 class VacancyViewSet(ModelViewSet):
-    queryset = Vacancy.objects.all()
+    queryset = Vacancy.objects.filter(is_active=True).all()
     serializer_class = VacancySerializer
 
 
