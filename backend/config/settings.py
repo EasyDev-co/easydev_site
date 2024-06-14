@@ -26,6 +26,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'corsheaders',
+
+    #Приложения
+    'apps.news.apps.NewsConfig',
+    'apps.utils',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +123,9 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
