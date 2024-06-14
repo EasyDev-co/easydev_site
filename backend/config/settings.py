@@ -27,9 +27,10 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
 
-    #Приложения
+    #Приложнния
     'apps.news.apps.NewsConfig',
     'apps.utils',
+    'apps.vacancy.apps.VacancyConfig',
 ]
 
 MIDDLEWARE = [
