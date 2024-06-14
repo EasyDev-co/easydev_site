@@ -7,6 +7,6 @@ from apps.site_settings.api.v1.serializers import MainPageSettingsSerializer
 
 class MainPageSettingsAPIView(APIView):
     def get(self, request):
-        settings = MainPageSettings.objects.first()
+        settings = MainPageSettings.load()
         serializer = MainPageSettingsSerializer(settings)
         return Response(serializer.data)

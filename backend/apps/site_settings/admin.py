@@ -7,12 +7,12 @@ from apps.utils.admin_mixins.admins_mixins import SingletonModelAdmin
 class MainPageSettingsAdmin(SingletonModelAdmin):
     """AdminView для настроек главной страницы"""
     fieldsets = [
-        ('Contact information', {
+        ('Контактная информация', {
             'fields': (
                 'number', 'email', 'telegram',
             ),
         }),
-        ('Information about the company', {
+        ('Информация о компании', {
             'fields': (
                 'user_agreement_link', 'privacy_policy_link', 'about_us', 'why_us',
             ),
