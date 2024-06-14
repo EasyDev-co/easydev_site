@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'apps.news.apps.NewsConfig',
     'apps.utils',
     'apps.vacancy.apps.VacancyConfig',
+    'apps.site_settings.apps.SiteSettingsConfig',
 ]
 
 MIDDLEWARE = [
