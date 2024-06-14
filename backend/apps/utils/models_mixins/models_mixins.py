@@ -1,8 +1,10 @@
 import uuid
 import logging
+import os
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils.deconstruct import deconstructible
 
 logger = logging.getLogger(__name__)
 
@@ -45,10 +47,18 @@ class SingletonModelMixin(models.Model):
         return obj
 
 
+@deconstructible
+class UploadToAppPath:
+    """Класс для генерации пути для класса FeedbackAbstract"""
+    def __call__(self, instance, filename):
+        app_label = instance._meta.app_label
+        return os.path.join(app_label, 'files', filename)
+
+
 class FeedbackAbstract(models.Model):
-    """Абстрактная модель, содержащая общие поля для работы с вакансиями"""
+    """Абстрактная модель, содержащая общие поля для обратной связи"""
     name = models.CharField(verbose_name='Имя', max_length=256)
-    number = models.IntegerField(verbose_name='Номер')
+    email = models.EmailField(verbose_name='Электронная почта')
     link = models.URLField(verbose_name='Ссылка на социальную сеть', blank=True, null=True)
     file = models.FileField(verbose_name='Файл', upload_to='vacancies/files', blank=True, null=True)
 

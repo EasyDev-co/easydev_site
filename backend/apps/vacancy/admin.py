@@ -33,5 +33,5 @@ class VacancyAdmin(admin.ModelAdmin):
 
 @admin.register(VacancyForm)
 class VacancyFormAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'number')
+    list_display = ('pk', 'name',)
 
