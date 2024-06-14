@@ -5,7 +5,7 @@ from apps.news.models import News
 
 class NewsDetailAPIView(RetrieveAPIView):
     """Представление для детального просмотра новостей"""
-    queryset = News.objects.all()
+    queryset = News.objects.prefetch_related('blocks_of_news').all()
     serializer_class = NewsDetailSerializer
 
 

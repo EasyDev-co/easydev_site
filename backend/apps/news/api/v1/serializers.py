@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from apps.news.models import News, BlockOfNews, Image
+from apps.news.models import News, BlockOfNews
+from apps.utils.universal_models.universal_models import Image
 
 
 class ImageSerializer(serializers.ModelSerializer):

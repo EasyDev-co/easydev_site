@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from django.utils.html import format_html
 
-from apps.news.models import News, Image, BlockOfNews
+from apps.news.models import News, BlockOfNews
+from apps.utils.universal_models.universal_models import Image
 
 
 class ImageInline(GenericTabularInline):
