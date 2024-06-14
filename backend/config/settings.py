@@ -28,7 +28,9 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #Приложнния
-    'apps.vacancy.apps.VacancyConfig'
+    'apps.news.apps.NewsConfig',
+    'apps.utils',
+    'apps.vacancy.apps.VacancyConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +124,9 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
