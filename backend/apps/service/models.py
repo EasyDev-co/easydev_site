@@ -30,7 +30,7 @@ class ServiceBlock(TimeStampedMixin, UUIDMixin):
 
     class Meta:
         verbose_name = 'Блок услуги'
-        verbose_name_plural = 'Блоги услуг'
+        verbose_name_plural = 'Блоки услуг'
         ordering = ('created',)
 
     def __str__(self):
