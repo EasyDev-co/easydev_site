@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'apps.utils',
     'apps.vacancy.apps.VacancyConfig',
     'apps.site_settings.apps.SiteSettingsConfig',
+    'apps.service.apps.ServiceConfig',
+    'apps.feedback.apps.FeedbackConfig',
 ]
 
 MIDDLEWARE = [
