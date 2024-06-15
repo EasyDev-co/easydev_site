@@ -26,7 +26,7 @@ class ServiceBlock(TimeStampedMixin, UUIDMixin):
     service = models.ForeignKey(
         Service, verbose_name='Услуга', on_delete=models.CASCADE, related_name='blocks_of_services'
     )
-    image = GenericRelation(Image)
+    image = GenericRelation(Image, verbose_name='Фото блока услуги', related_query_name='service_blocks')
 
     class Meta:
         verbose_name = 'Блок услуги'

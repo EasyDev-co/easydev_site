@@ -34,7 +34,7 @@ class BlockOfNews(TimeStampedMixin, UUIDMixin):
     name = models.CharField(verbose_name='Название блока новости', max_length=256, blank=True, null=True)
     text = models.TextField(verbose_name='Текст блока новости')
     news = models.ForeignKey(News, verbose_name='Новость', on_delete=models.CASCADE, related_name='blocks_of_news')
-    image = GenericRelation(Image)
+    image = GenericRelation(Image, verbose_name='Фото блока новости', related_query_name='news_blocks')
 
     class Meta:
         verbose_name = 'Блок новости'
