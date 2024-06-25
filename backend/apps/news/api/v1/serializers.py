@@ -12,7 +12,7 @@ class ImageSerializer(serializers.ModelSerializer):
 
 
 class BlockOfNewsSerializer(serializers.ModelSerializer):
-    """Сериалайзер для добольнительной модели блока новостей"""
+    """Сериалайзер для допольнительной модели блока новостей"""
     image = ImageSerializer(many=True, read_only=True)
 
     class Meta:

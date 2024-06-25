@@ -19,10 +19,8 @@ RUN mkdir -p /opt/src/static/ && \
 
 COPY . .
 
-EXPOSE 8000
+COPY celery_start.sh /celery_start.sh
 
-COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /celery_start.sh
 
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/celery_start.sh"]

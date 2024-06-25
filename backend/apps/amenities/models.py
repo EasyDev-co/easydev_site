@@ -5,7 +5,7 @@ from apps.utils.models_mixins.models_mixins import UUIDMixin, TimeStampedMixin
 from apps.utils.universal_models.universal_models import Image
 
 
-class Service(TimeStampedMixin, UUIDMixin):
+class Amenities(TimeStampedMixin, UUIDMixin):
     """Модель для услуг"""
     name = models.CharField(verbose_name='Наименование услуги', max_length=256)
     description = models.TextField(verbose_name='Описание услуги', max_length=2048)
@@ -20,13 +20,13 @@ class Service(TimeStampedMixin, UUIDMixin):
         return self.name
 
 
-class ServiceBlock(TimeStampedMixin, UUIDMixin):
+class AmenitiesBlock(TimeStampedMixin, UUIDMixin):
     """Модель блока услуги"""
     text = models.TextField(verbose_name='Текст блока услуги')
-    service = models.ForeignKey(
-        Service, verbose_name='Услуга', on_delete=models.CASCADE, related_name='blocks_of_services'
+    amenities = models.ForeignKey(
+        Amenities, verbose_name='Услуга', on_delete=models.CASCADE, related_name='blocks_of_amenities'
     )
-    image = GenericRelation(Image, verbose_name='Фото блока услуги', related_query_name='service_blocks')
+    image = GenericRelation(Image, verbose_name='Фото блока услуги', related_query_name='amenities_blocks')
 
     class Meta:
         verbose_name = 'Блок услуги'

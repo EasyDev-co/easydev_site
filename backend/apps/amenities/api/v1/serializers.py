@@ -1,31 +1,31 @@
 from rest_framework import serializers
-from apps.service.models import Service, ServiceBlock
+from apps.amenities.models import Amenities, AmenitiesBlock
 from apps.utils.universal_models.universal_models import Image
 from apps.news.api.v1.serializers import ImageSerializer
 
 
-class ServiceBlockSerializer(serializers.ModelSerializer):
+class AmenitiesBlockSerializer(serializers.ModelSerializer):
     """Сериалайзер для дополнительной модели блока услуг"""
     image = ImageSerializer(many=True, read_only=True)
 
     class Meta:
-        model = ServiceBlock
+        model = AmenitiesBlock
         fields = ('text', 'news', 'image')
 
 
-class ServiceDetailSerializer(serializers.ModelSerializer):
+class AmenitiesDetailSerializer(serializers.ModelSerializer):
     """Сериалайзер для детального просмотра основной модели услуг"""
-    block_of_services = ServiceBlockSerializer(many=True, read_only=True)
+    block_of_amenities = AmenitiesBlockSerializer(many=True, read_only=True)
 
     class Meta:
-        model = Service
-        fields = ('name', 'description', 'photo', 'block_of_services')
+        model = Amenities
+        fields = ('name', 'description', 'photo', 'block_of_amenities')
 
 
-class ServiceSerializer(serializers.ModelSerializer):
+class AmenitiesSerializer(serializers.ModelSerializer):
     """Сериалайзер для основной модели услуг"""
 
     class Meta:
-        model = Service
+        model = Amenities
         fields = '__all__'
 

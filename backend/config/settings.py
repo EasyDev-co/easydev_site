@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,13 +25,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'corsheaders',
+    'django_celery_beat',
 
     #Приложнния
     'apps.news.apps.NewsConfig',
-    'apps.utils',
+    'apps.utils.apps.UtilsConfig',
     'apps.vacancy.apps.VacancyConfig',
     'apps.site_settings.apps.SiteSettingsConfig',
-    'apps.service.apps.ServiceConfig',
+    'apps.amenities.apps.ServiceConfig',
     'apps.feedback.apps.FeedbackConfig',
 ]
 
@@ -133,3 +133,29 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
+
+AUTH_USER_MODEL = 'utils.CustomUser'
+
+
+REDIS_HOST = os.environ.get('REDIS_HOST')
+REDIS_PORT = os.environ.get('REDIS_PORT')
+REDIS_DB_CELERY = os.environ.get('REDIS_DB_CELERY')
+
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB_CELERY}'
+CELERY_TIMEZONE = "Europe/Moscow"
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+
+TELEGRAM_API_URL = 'https://api.telegram.org/bot{}/sendMessage'
+NOTIFY_BOT_TOKEN = os.getenv('NOTIFY_BOT_TOKEN')
+
+
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER

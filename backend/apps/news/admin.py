@@ -10,31 +10,6 @@ class ImageInline(GenericTabularInline):
     model = Image
 
 
-@admin.register(Image)
-class ImageAdmin(admin.ModelAdmin):
-    """AdminView для фотографий новостей"""
-    list_display = ('pk', 'image', 'content_type', 'object_id', 'related_object')
-    search_fields = ('pk', 'object_id')
-    fieldsets = [
-        (None, {
-            'fields': (
-                'image', 'preview', 'content_type', 'object_id'
-            )
-        })
-    ]
-
-    readonly_fields = ('preview', )
-
-    def preview(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" style="max-width:200px; max-height:200"/>'.format(obj.image.url))
-        return 'No image'
-
-    def related_object(self, obj):
-        return obj.content_object
-    related_object.short_description = 'Related Object'
-
-
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     """AdminView для новостей"""
@@ -67,7 +42,7 @@ class NewsAdmin(admin.ModelAdmin):
 class BlockOfNewsAdmin(admin.ModelAdmin):
     """AdminView для блоков новостей"""
     inlines = (ImageInline, )
-    list_display = ('pk', 'name', 'text', 'news')
+    list_display = ('pk', 'name', 'text_short', 'news')
     search_fields = ('pk', 'name', 'text')
     fieldsets = [
         (None, {

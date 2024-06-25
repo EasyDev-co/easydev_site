@@ -15,7 +15,9 @@ python-dotenv = "^1.0.1"
 django-filter = "^23.5"
 django-cors-headers = "^4.3.1"
 pillow = "^10.3.0"
-
+celery = {extras = ["redis"], version = "^5.4.0"}
+django-celery-beat = "^2.6.0"
+redis = "^5.0.5"
 
 [build-system]
 requires = ["poetry-core"]
