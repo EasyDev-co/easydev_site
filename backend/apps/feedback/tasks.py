@@ -1,4 +1,5 @@
 import requests
+from time import sleep
 
 from django.core.mail import send_mail, BadHeaderError
 from rest_framework.response import Response
@@ -13,27 +14,26 @@ class NotifyTelegramTask(BaseTask):
     """Задача для телеграм нотификации"""
 
     def process(self, *args, **kwargs):
-        users = CustomUser.objects.filter(tg_notification_agreement=True)
-        for user in users:
+        for user in CustomUser.objects.filter(tg_notification_agreement=True).iterator():
             self.send_telegram_message(user.tg_user_id, "ПРИВЕТ")
 
     def send_telegram_message(self, chat_id, text):
-        token = NOTIFY_BOT_TOKEN
-        url = f"https://api.telegram.org/bot{token}/sendMessage"
+        messages_per_minute = 3200
+        delay = 60 / messages_per_minute
+        url = f"https://api.telegram.org/bot{NOTIFY_BOT_TOKEN}/sendMessage"
         payload = {
             'chat_id': chat_id,
             'text': text
         }
         response = requests.post(url, data=payload)
-        if not response.ok:
-            raise Exception(f"Failed to send message: {response.text}")
+        response.raise_for_status()
+        sleep(delay)
 
 
 class NotifyEmailTask(BaseTask):
     """Задача для email нотификации"""
     def process(self, *args, **kwargs):
-        users = CustomUser.objects.filter(email_notification_agreement=True)
-        for user in users:
+        for user in CustomUser.objects.filter(tg_notification_agreement=True).iterator():
             self.send_email_message(user.email, "ПРИВЕТ")
 
     def send_email_message(self, email, text):
