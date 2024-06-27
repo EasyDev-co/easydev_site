@@ -5,7 +5,11 @@ from apps.feedback.tasks import notify_telegram_task, notify_email_task
 
 
 @receiver(post_save, sender=Feedback)
-def send_feedback_notification(sender, created, **kwargs):
+def send_feedback_notification(sender, instance, created, **kwargs):
     if created:
-        notify_email_task.delay()
-        notify_telegram_task.delay()
+        message = (f'Создана новая запись обратной связи\n'
+                   f'Имя: {instance.name}\nemail: {instance.email}\n'
+                   f'Ссылка: {instance.link}\nФайл: {instance.file}\n'
+                   f'Номер телефона: {instance.phone_number}')
+        notify_email_task.apply_async(args=[message])
+        notify_telegram_task.apply_async(args=[message])

@@ -146,7 +146,7 @@ CELERY_TIMEZONE = "Europe/Moscow"
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 
-TELEGRAM_API_URL = 'https://api.telegram.org/bot{}/sendMessage'
+TELEGRAM_API_URL = os.getenv('TELEGRAM_API_URL')
 NOTIFY_BOT_TOKEN = os.getenv('NOTIFY_BOT_TOKEN')
 
 
