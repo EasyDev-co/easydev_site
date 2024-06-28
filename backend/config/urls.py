@@ -6,4 +6,6 @@ urlpatterns = [
     path('api/', include('apps.news.api.urls')),
     path('api/', include('apps.vacancy.api.urls')),
     path('api/', include('apps.site_settings.api.urls')),
+    path('api/', include('apps.amenities.api.urls')),
+    path('api/', include('apps.feedback.api.urls')),
 ]

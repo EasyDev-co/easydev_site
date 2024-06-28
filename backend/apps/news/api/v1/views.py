@@ -10,5 +10,6 @@ class NewsDetailAPIView(RetrieveAPIView):
 
 
 class NewsListView(ListAPIView):
+    """Представление для просмотра списка новостей"""
     queryset = News.objects.all()
     serializer_class = NewsSerializer

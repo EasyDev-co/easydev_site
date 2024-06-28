@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from apps.utils.models_mixins.models_mixins import UUIDMixin, TimeStampedMixin
@@ -29,3 +30,19 @@ class Image(TimeStampedMixin, UUIDMixin):
 
     def __str__(self):
         return 'Фотография'
+
+
+class CustomUser(AbstractUser, TimeStampedMixin, UUIDMixin):
+    tg_notification_agreement = models.BooleanField(verbose_name="Соглашение на тг уведомления", default=False)
+    email_notification_agreement = models.BooleanField(verbose_name="Соглашение на уведомления на почте", default=False)
+    tg_user_id = models.CharField(verbose_name="ID телеграм пользователя", max_length=100, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Кастомный пользователь'
+        verbose_name_plural = 'Кастомные пользователи'
+        app_label = 'utils'
+        ordering = ('created',)
+
+    def __str__(self):
+        return self.username
+
