@@ -17,3 +17,11 @@ class Portfolio(TimeStampedMixin, UUIDMixin):
     solved_problems = models.TextField(verbose_name='Решенные проблемы', max_length=4096)
     technology_stack = models.CharField(verbose_name='Стэк технологий', max_length=1024)
     is_active = models.BooleanField(verbose_name='Активность', default=False)
+
+    class Meta:
+        verbose_name = 'Портфолио'
+        verbose_name_plural = 'Портфолио'
+        ordering = ('created',)
+
+    def __str__(self):
+        return self.name
