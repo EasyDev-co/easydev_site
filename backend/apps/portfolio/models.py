@@ -7,7 +7,7 @@ from apps.utils.universal_models.universal_models import Image
 
 class Portfolio(TimeStampedMixin, UUIDMixin):
     """Модель портфолио"""
-    name = models.CharField(verbose_name='Ноименование кейса', max_length=256)
+    name = models.CharField(verbose_name='Наименование кейса', max_length=256)
     description = models.TextField(verbose_name='Описание кейса', max_length=4096)
     team = models.CharField(verbose_name='Команда, выполнявшая кейс', max_length=1024)
     images = GenericRelation(Image, verbose_name='Фотографии кейса', related_query_name='images')
