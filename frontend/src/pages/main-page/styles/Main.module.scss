@@ -1,0 +1,103 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+
+.titleContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 62px;
+  line-height: 100%;
+  letter-spacing: -0.06em;
+  color: $background-secondary;
+  text-align: end;
+
+  & span {
+    color: $textColor-secondary;
+  }
+}
+
+.textContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 278px 0;
+
+  & span {
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 109%;
+    color: $textColor-secondary;
+  }
+}
+
+.projects {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.project {
+  width: 548px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $background-secondary;
+
+  &__container {
+    display: flex;
+  }
+
+  &__heading {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 118%;
+    letter-spacing: -0.04em;
+    color: $background-primary;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    & span {
+      font-family: 'Roboto Mono', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 109%;
+      color: $background-primary;
+
+      &:last-child {
+        color: $textColor-tertiary;
+      }
+    }
+  }
+
+  &__img {
+    width: 378px;
+    height: 240px;
+    background-image: url(../../../assets/img/ava.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+}
+
+.navigationInfo {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 123%;
+  letter-spacing: -0.01em;
+  color: $textColor-secondary;
+}

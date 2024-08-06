@@ -9,39 +9,45 @@ import { VacancyPage } from '../pages/vacancy-page/Vacancy'
 import { NotFoundPage } from '../pages/404-page/NotFound'
 import { CasePage } from '../pages/case-page/Case'
 import { ServicePage } from '../pages/service-page/Service'
+import { Layout } from '../components/layout/Layout'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <MainPage />,
-    errorElement: <NotFoundPage />,
-  },
-  {
-    path: '/about',
-    element: <AboutPage />,
-  },
-  {
-    path: '/cases',
-    element: <CasesPage />,
-  },
-  {
-    path: '/cases/:caseId',
-    element: <CasePage />,
-  },
-  {
-    path: '/contacts',
-    element: <ContactsPage />,
-  },
-  {
-    path: '/services',
-    element: <ServicesPage />,
-  },
-  {
-    path: '/services/:serviceId',
-    element: <ServicePage />,
-  },
-  {
-    path: '/vacancy',
-    element: <VacancyPage />,
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <MainPage />,
+        errorElement: <NotFoundPage />,
+      },
+      {
+        path: '/about',
+        element: <AboutPage />,
+      },
+      {
+        path: '/cases',
+        element: <CasesPage />,
+      },
+      {
+        path: '/cases/:caseId',
+        element: <CasePage />,
+      },
+      {
+        path: '/contacts',
+        element: <ContactsPage />,
+      },
+      {
+        path: '/services',
+        element: <ServicesPage />,
+      },
+      {
+        path: '/services/:serviceId',
+        element: <ServicePage />,
+      },
+      {
+        path: '/vacancy',
+        element: <VacancyPage />,
+      },
+    ],
   },
 ])
