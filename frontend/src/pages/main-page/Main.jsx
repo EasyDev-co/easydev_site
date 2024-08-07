@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import styles from './styles/Main.module.scss'
+import { useWindowWidth } from '@react-hook/window-size'
 
 export const MainPage = () => {
   const [localTime, setLocalTime] = useState('')
+
+  const width = useWindowWidth()
 
   useEffect(() => {
     const updateTime = () => {
@@ -23,7 +26,7 @@ export const MainPage = () => {
     <main>
       <section className={styles.titleContainer}>
         <h1 className={styles.title}>
-          Разработка & Автоматизация
+          Разработка{width < 541 && <br />} & Автоматизация
           <br />
           <span>Digital-продуктов</span>
         </h1>
