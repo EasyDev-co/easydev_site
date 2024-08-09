@@ -10,9 +10,9 @@ export const MainPage = () => {
   useEffect(() => {
     const updateTime = () => {
       const options = {
-        timeZone: 'Asia/Almaty',
+        timeZone: 'Europe/Moscow',
       }
-      const now = new Date().toLocaleTimeString('en-GB', options)
+      const now = new Date().toLocaleTimeString('ru-RU', options)
       setLocalTime(now)
     }
 
