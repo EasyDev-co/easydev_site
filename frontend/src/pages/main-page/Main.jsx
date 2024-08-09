@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import styles from './styles/Main.module.scss'
 import { useWindowWidth } from '@react-hook/window-size'
+import styles from './styles/Main.module.scss'
 
 export const MainPage = () => {
   const [localTime, setLocalTime] = useState('')
