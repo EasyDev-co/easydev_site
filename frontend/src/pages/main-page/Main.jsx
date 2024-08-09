@@ -26,7 +26,7 @@ export const MainPage = () => {
     <main>
       <section className={styles.titleContainer}>
         <h1 className={styles.title}>
-          Разработка{width < 541 && <br />} & Автоматизация
+          Разработка{width < 767 && <br />} & Автоматизация
           <br />
           <span>Digital-продуктов</span>
         </h1>
