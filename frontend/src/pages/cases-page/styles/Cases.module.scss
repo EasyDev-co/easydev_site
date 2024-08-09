@@ -23,6 +23,11 @@
     letter-spacing: -0.06em;
     color: $background-secondary;
     margin: 20px 0 60px;
+
+    @media (max-width: 959px) {
+      font-size: 28px;
+      letter-spacing: -0.04em;
+    }
   }
 
   &__buttons {
@@ -55,6 +60,24 @@
 
   @media (max-width: 1919px) {
     grid-template-columns: repeat(3, minmax(429px, 1fr));
+  }
+
+  @media (max-width: 1365px) {
+    grid-template-columns: repeat(2, minmax(455px, 1fr));
+    gap: 40px 10px;
+  }
+
+  @media (max-width: 959px) {
+    grid-template-columns: repeat(2, minmax(359px, 1fr));
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(1, minmax(440px, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 479px) {
+    grid-template-columns: repeat(1, minmax(335px, 1fr));
   }
 }
 
@@ -116,17 +139,33 @@
   }
 
   &__heading {
+    max-width: 75%;
     font-weight: 400;
     font-size: 22px;
     line-height: 118%;
     letter-spacing: -0.04em;
     color: $background-primary;
-    width: 440px;
 
     @media (max-width: 1919px) {
       font-size: 18px;
       line-height: 122%;
       letter-spacing: -0.02em;
+    }
+
+    @media (max-width: 959px) {
+      font-size: 13px;
+      line-height: 123%;
+      letter-spacing: -0.01em;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 18px;
+      line-height: 122%;
+      letter-spacing: -0.02em;
+    }
+
+    @media (max-width: 479px) {
+      max-width: 80%;
     }
   }
 
@@ -176,6 +215,22 @@
 
     @media (max-width: 1919px) {
       height: 269px;
+    }
+
+    @media (max-width: 1365px) {
+      height: 287px;
+    }
+
+    @media (max-width: 959px) {
+      height: 227px;
+    }
+
+    @media (max-width: 767px) {
+      height: 231px;
+    }
+
+    @media (max-width: 479px) {
+      height: 230px;
     }
   }
 }
