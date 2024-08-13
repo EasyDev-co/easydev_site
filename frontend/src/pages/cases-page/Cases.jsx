@@ -11,7 +11,7 @@ export const CasesPage = () => {
         <div className={styles.breadcrumbs}>
           {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / <span>КЕЙСЫ</span>
         </div>
-        <h1 className={styles.cases__title}>Кейсы (19/24)</h1>
+        <h2 className={styles.cases__title}>Кейсы (19/24)</h2>
         <div className={styles.cases__buttons}>
           <button className={styles.cases__button}>Все кейсы</button>
           <button className={styles.cases__button}>Экспертность</button>
