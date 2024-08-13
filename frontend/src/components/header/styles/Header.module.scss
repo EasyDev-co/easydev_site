@@ -29,6 +29,14 @@
     display: flex;
     align-items: center;
     gap: 211px;
+
+    @media (max-width: 1919px) {
+      gap: 73px;
+    }
+
+    @media (max-width: 1365px) {
+      display: none;
+    }
   }
 
   &__phone {
@@ -43,9 +51,15 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+
+    @media (max-width: 1365px) {
+      position: static;
+      left: 0;
+      transform: translateX(0);
+    }
   }
 
-  &__link {
+  &__nav {
     display: flex;
     gap: 20px;
 
@@ -56,6 +70,38 @@
       letter-spacing: -0.01em;
       color: $background-secondary;
     }
+
+    @media (max-width: 1365px) {
+      display: none;
+    }
+  }
+
+  &__menuButton {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    background: $background-secondary;
+
+    & svg > path {
+      fill: $background-primary;
+    }
+
+    @media (max-width: 1365px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 1365px) {
+    height: 66px;
+    display: flex;
+  }
+
+  @media (max-width: 959px) {
+    height: 60px;
   }
 }
 
