@@ -6,7 +6,7 @@ export const CasesPage = () => {
   const width = useWindowWidth()
 
   return (
-    <main>
+    <main className={styles.main}>
       <section className={styles.cases}>
         <div className={styles.breadcrumbs}>
           {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / <span>КЕЙСЫ</span>

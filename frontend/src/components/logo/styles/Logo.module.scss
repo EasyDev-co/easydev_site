@@ -1,0 +1,11 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+
+.logo {
+  width: 104px;
+  height: 16px;
+
+  & path {
+    fill: $background-secondary;
+  }
+}
