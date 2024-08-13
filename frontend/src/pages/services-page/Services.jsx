@@ -8,7 +8,7 @@ export const ServicesPage = () => {
       <ul>
         {services.map((elem) => (
           <li key={elem.id}>
-            <Link to={{pathname:`/services/${elem.id}`}}>{elem.service}</Link>
+            <Link to={{pathname:`/services/${elem.id}`}} state={{services: elem.service}}>{elem.service}</Link>
           </li>
         ))}
       </ul>
