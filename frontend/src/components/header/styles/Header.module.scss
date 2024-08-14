@@ -39,6 +39,19 @@
     }
   }
 
+  &__buttons {
+    display: flex;
+    gap: 10px;
+
+    & button {
+      @include button_grey;
+
+      &:first-child {
+        @include button_blue;
+      }
+    }
+  }
+
   &__phone {
     font-weight: 400;
     font-size: 13px;
@@ -84,23 +97,4 @@
   @media (max-width: 959px) {
     height: 60px;
   }
-}
-
-.button {
-  &__container {
-    display: flex;
-    gap: 10px;
-  }
-}
-
-.button_blue {
-  @include button;
-  color: $background-primary;
-  background-color: $buttonColor-secondary;
-}
-
-.button_grey {
-  @include button;
-  background-color: $background-tertiary;
-  color: $background-secondary;
 }

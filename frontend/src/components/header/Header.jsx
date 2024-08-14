@@ -13,11 +13,9 @@ export const Header = () => {
       <header className={styles.header}>
         <div className={styles.header__container}>
           <div className={styles.header__left}>
-            <div className={styles.button__container}>
-              <button className={styles.button_blue}>
-                Начать проект с easy
-              </button>
-              <button className={styles.button_grey}>Контакты</button>
+            <div className={styles.header__buttons}>
+              <button>Начать проект с easy</button>
+              <button>Контакты</button>
             </div>
             <div className={styles.header__phone}>+7 (913) 715 — 6372</div>
           </div>

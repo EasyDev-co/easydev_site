@@ -7,3 +7,17 @@
   border-radius: 50px;
   padding: 7px 14px;
 }
+
+@mixin button_blue {
+  @include button;
+
+  color: $background-primary;
+  background-color: $buttonColor-secondary;
+}
+
+@mixin button_grey {
+  @include button;
+
+  background-color: $background-tertiary;
+  color: $background-secondary;
+}
