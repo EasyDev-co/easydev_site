@@ -1,6 +1,10 @@
 @import '../../../styles/variables.scss';
 @import '../../../styles/fonts.scss';
 
+.main {
+  padding: 20px 0;
+}
+
 .titleContainer {
   display: flex;
   justify-content: flex-end;

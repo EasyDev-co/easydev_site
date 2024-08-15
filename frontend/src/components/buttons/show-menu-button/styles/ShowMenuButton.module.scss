@@ -1,0 +1,22 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/fonts.scss';
+@import '../../../../styles/mixins.scss';
+
+.menuButton {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  background: $background-secondary;
+
+  & svg > path {
+    fill: $background-primary;
+  }
+
+  @media (max-width: 1365px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

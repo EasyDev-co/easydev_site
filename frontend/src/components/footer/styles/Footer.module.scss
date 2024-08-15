@@ -1,0 +1,130 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+@import '../../../styles/mixins.scss';
+
+.footer {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 18px 20px;
+  border-top: 1px solid $borderColor-primary;
+  display: flex;
+  flex-direction: column;
+  gap: 191px;
+  background: $background-primary;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      position: relative;
+      flex-direction: column;
+      gap: 79px;
+    }
+
+    @media (max-width: 600px) {
+      gap: 40px;
+    }
+  }
+
+  &__logo {
+    flex: 3;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 4;
+    gap: 10px;
+
+    & div {
+      min-width: 146px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    & div > a {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 142%;
+      letter-spacing: -0.01em;
+      color: $background-secondary;
+    }
+
+    @media (max-width: 1919px) {
+      gap: 74px;
+    }
+
+    @media (max-width: 1365px) {
+      gap: 10px;
+    }
+
+    @media (max-width: 876px) {
+      gap: 40px;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    @media (max-width: 600px) {
+      order: 3;
+      margin-top: 20px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+
+    & button {
+      @include button_grey;
+
+      &:nth-child(2) {
+        @include button_blue;
+      }
+    }
+
+    @media (max-width: 768px) {
+      position: absolute;
+      right: 0;
+    }
+
+    @media (max-width: 600px) {
+      position: static;
+      order: 2;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+
+    & span {
+      font-family: 'Roboto Mono', sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 110%;
+      color: $textColor-secondary;
+    }
+
+    @media (max-width: 700px) {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 1919px) {
+    gap: 177px;
+  }
+
+  @media (max-width: 1365px) {
+    gap: 191px;
+  }
+
+  @media (max-width: 768px) {
+    gap: 60px;
+  }
+}

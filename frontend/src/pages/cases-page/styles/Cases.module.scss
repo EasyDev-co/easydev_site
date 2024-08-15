@@ -1,6 +1,10 @@
 @import '../../../styles/variables.scss';
 @import '../../../styles/fonts.scss';
 
+.main {
+  padding: 60px 0 120px;
+}
+
 .breadcrumbs {
   font-family: 'Roboto Mono';
   font-weight: 400;
@@ -14,8 +18,6 @@
 }
 
 .cases {
-  margin: 40px 0 120px;
-
   &__title {
     font-weight: 400;
     font-size: 40px;

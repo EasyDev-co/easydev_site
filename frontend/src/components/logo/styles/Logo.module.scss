@@ -1,0 +1,21 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+
+.logo {
+  width: 104px;
+  height: 16px;
+
+  & path {
+    fill: $background-secondary;
+  }
+
+  @media (max-width: 1919px) {
+    width: 84px;
+    height: 12px;
+  }
+
+  @media (max-width: 767px) {
+    width: 70px;
+    height: 10px;
+  }
+}
