@@ -17,7 +17,7 @@ export const ServicesPage = () => {
             <div key={elem.id} className={styles.service__container}>
               <div className={styles.service__shield}></div>
               <li>
-                <Link to={`/services/${elem.id}`} state={{service:elem.service}}>{elem.service}</Link>
+                <Link to={`/services/${elem.id}`} state={elem.service}>{elem.service}</Link>
               </li>
               <div className={styles.picture_container}>
               </div>

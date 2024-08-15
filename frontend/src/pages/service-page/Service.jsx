@@ -4,6 +4,7 @@ import styles from './styles/Service.module.scss'
 import BlueButton from '../../components/buttons/BlueButton/BlueButton'
 import Accordion from '../../components/Accordion/Accordion'
 import TecnologiesSelect from '../../components/TechnologiesSelect/TecnologiesSelect'
+import { accordion } from '../../mockData/accordion';
 
 export const ServicePage = () => {
   const { serviceId } = useParams()
@@ -43,12 +44,15 @@ export const ServicePage = () => {
         </div>
         <div className={styles.service__skills}>
           <h2>Скиллы</h2>
-          <Accordion />
+          <Accordion
+            data={accordion}
+          />
         </div>
         <TecnologiesSelect />
         <div className={styles.service__skills}>
           <h2>Часто задаваемые вопросы</h2>
-          <Accordion />
+          <Accordion
+            data={accordion} />
         </div>
       </section>
 
