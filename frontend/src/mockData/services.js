@@ -1,22 +1,22 @@
 export const services = [
   {
     id: 1,
-    service: '1service',
+    service: 'Digital-продукты & сервисы',
   },
   {
     id: 2,
-    service: '2service',
+    service: 'eCommerce',
   },
   {
     id: 3,
-    service: '3service',
+    service: 'Корпоративные сайты',
   },
-  {
-    id: 4,
-    service: '4service',
-  },
-  {
-    id: 5,
-    service: '5service',
-  },
+  // {
+  //   id: 4,
+  //   service: '4service',
+  // },
+  // {
+  //   id: 5,
+  //   service: '5service',
+  // },
 ]
