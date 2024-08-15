@@ -14,11 +14,11 @@ import { Layout } from '../components/layout/Layout'
 export const router = createBrowserRouter([
   {
     element: <Layout />,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: '/',
         element: <MainPage />,
-        errorElement: <NotFoundPage />,
       },
       {
         path: '/about',

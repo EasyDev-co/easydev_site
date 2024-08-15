@@ -1,0 +1,262 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+
+.main {
+  padding: 60px 0 120px;
+}
+
+.about {
+  margin: 20px 0 0;
+
+  &__title {
+    font-weight: 400;
+    font-size: 62px;
+    line-height: 100%;
+    letter-spacing: -0.06em;
+    color: $background-secondary;
+  }
+
+  &__text {
+    width: 603px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 118%;
+    letter-spacing: -0.04em;
+    margin: 60px 0 0;
+    color: $background-secondary;
+  }
+}
+
+.team {
+  margin: 120px 0;
+  border-top: 1px solid $borderColor-primary;
+
+  &__heading {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -0.04em;
+    margin: 20px 0 0;
+    color: $background-secondary;
+  }
+
+  &__employees {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(302px, 1fr));
+    gap: 10px;
+  }
+
+  &__employee {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & img {
+      width: 302px;
+      height: 302px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.8; /* Выбрыть эффекты, если нужно */
+      // filter: grayscale(100%);
+
+      transition: all 0.1s ease-in-out;
+
+      &:hover {
+        opacity: 1;
+        // filter: none;
+      }
+    }
+
+    & div {
+      font-family: 'Roboto Mono', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 109%;
+      color: $textColor-secondary;
+
+      &:first-of-type {
+        font-family: 'Graphik LCG', sans-serif;
+        font-size: 14px;
+        line-height: 121%;
+        letter-spacing: -0.01em;
+        margin: 20px 0 10px;
+        color: $background-secondary;
+      }
+
+      &:last-of-type {
+        margin-top: 6px;
+        color: $buttonColor-secondary;
+      }
+
+      &:not(:first-of-type) {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 120px;
+
+  &__heading {
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 109%;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: $textColor-secondary;
+  }
+
+  &__container {
+    width: 614px;
+    border: 1px solid $borderColor-primary;
+    background: $background-tertiary;
+  }
+
+  &__box {
+    padding: 20px;
+
+    & div:last-of-type {
+      font-family: 'Roboto Mono', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 109%;
+      text-transform: uppercase;
+      text-align: right;
+      color: $textColor-secondary;
+    }
+  }
+
+  &__innerBox {
+    min-height: 230px;
+  }
+
+  &__text {
+    max-width: 540px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 122%;
+    letter-spacing: -0.02em;
+    color: $background-secondary;
+  }
+
+  &__authorBox {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid $borderColor-primary;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+
+  &__authorImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__authorInfo {
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 109%;
+    text-transform: uppercase;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: $textColor-secondary;
+
+    & div:first-of-type {
+      color: $background-secondary;
+    }
+  }
+
+  &__authorLabel {
+    width: 160px;
+    height: 40px;
+  }
+}
+
+.clients {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__heading {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 100%;
+    letter-spacing: -0.04em;
+    margin-bottom: 10px;
+    color: $background-secondary;
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 121%;
+    letter-spacing: -0.01em;
+    color: $textColor-secondary;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(146px, 1fr));
+    gap: 5px 10px;
+    margin-top: 60px;
+  }
+
+  &__box {
+    height: 146px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid $borderColor-primary;
+
+    & img {
+      width: 34px;
+      height: 12px;
+      object-fit: contain;
+    }
+
+    & div {
+      display: none;
+      font-family: 'Roboto Mono', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 109%;
+      text-transform: uppercase;
+      color: $background-secondary;
+    }
+
+    &:hover {
+      img {
+        display: none;
+      }
+
+      div {
+        display: block;
+      }
+
+      display: block;
+    }
+  }
+}
