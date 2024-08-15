@@ -37,7 +37,7 @@ export const employees = [
   {
     id: 6,
     name: 'Аделина',
-    position: 'Менеджер EASY DEVELOPMENT',
+    position: 'Менеджер по работе с клиентами EASY DEVELOPMENT',
     nickname: '@eqllwsh',
     img: '/img/Adelina.jpeg',
   },

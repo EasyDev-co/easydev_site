@@ -2,9 +2,13 @@ import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
 import { clients } from '../../mockData/clients'
 import { employees } from '../../mockData/employees'
 import { reviews } from '../../mockData/reviews'
+import { insertSpace } from '../../utils/insertSpace'
+import { useWindowWidth } from '@react-hook/window-size'
 import styles from './styles/About.module.scss'
 
 export const AboutPage = () => {
+  const width = useWindowWidth()
+
   return (
     <main className={styles.main}>
       <Breadcrumbs />
@@ -21,7 +25,11 @@ export const AboutPage = () => {
               <div key={employee.id} className={styles.team__employee}>
                 <img src={employee.img} alt={employee.name} />
                 <div>{employee.name}</div>
-                <div>{employee.position}</div>
+                <div>
+                  {(width < 1366 && width > 767) || width < 480
+                    ? insertSpace(employee.position)
+                    : employee.position}
+                </div>
                 <div>{employee.nickname}</div>
               </div>
             ))}
