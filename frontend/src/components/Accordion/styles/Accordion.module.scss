@@ -1,0 +1,123 @@
+.accordion {
+  width: 100%;
+
+  &__tab {
+    position: relative;
+    margin-bottom: 1px;
+    width: 100%;
+    color: #000000;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+
+    &>input {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    &>input:checked~.accordion__tab_content {
+      max-height: 100vh;
+    }
+
+    &>input:checked~.accordion__tab_case {
+      max-height: 100vh;
+    }
+
+    &>input[type=checkbox]+label::after {
+      content: "+";
+      position: absolute;
+      right: 15px;
+    }
+
+    &>input[type=checkbox]+label {
+      color: #0000007A;
+    }
+
+    &>input[type=checkbox]:checked+label {
+
+      color: #000000;
+    }
+
+    &>input[type=checkbox]:checked+label::after {
+      content: "-";
+      position: absolute;
+      right: 15px;
+    }
+
+    &>label {
+      display: flex;
+      position: relative;
+      padding: 0 0 0 1em;
+      background: #ffffff;
+      font-size: 18px;
+      line-height: 3;
+      cursor: pointer;
+      color: #0000007A;
+    }
+
+
+
+    &_content {
+      max-height: 0;
+      overflow: hidden;
+      background: #ffffff;
+      -webkit-transition: max-height .5s;
+      -o-transition: max-height .5s;
+      transition: max-height .5s;
+
+      &>p {
+        margin: 10px 200px 10px 166px;
+        font-size: 13px;
+
+        @media (max-width: 767px) {
+          margin: 10px 25px 10px 15px;
+        }
+      }
+    }
+
+
+    &_case {
+      max-height: 0;
+      overflow: hidden;
+      background: #ffffff;
+      -webkit-transition: max-height .5s;
+      -o-transition: max-height .5s;
+      transition: max-height .5s;
+      &>span{
+        display: block;
+        color: #2036FD;
+        margin:0 15px 25px;
+      }
+      &>p {
+        margin: 15px;
+        font-size: 13px;
+
+        @media (max-width: 767px) {
+          margin: 10px 25px 10px 15px;
+        }
+      }
+    }
+  }
+}
+
+.number {
+  width: 146px;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.accordion__tab input .accordion__tab label::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 3em;
+  height: 3em;
+  line-height: 3;
+  text-align: center;
+  -webkit-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+}
