@@ -2,39 +2,38 @@ import { useLocation } from 'react-router-dom'
 import styles from './styles/Case.module.scss'
 import { useWindowWidth } from '@react-hook/window-size'
 import BlueButton from '../../components/buttons/BlueButton/BlueButton'
-import Accordion from '../../components/Accordion/Accordion'
-import image1 from '../../assets/img/case/caseImage1.png'
-import image2 from '../../assets/img/case/caseImage2.png'
+import AccordionCases from '../../components/Accordions/AccordionCases'
 import { caseData } from '../../mockData/caseData'
 
 export const CasePage = () => {
   // const { caseId } = useParams()
   const location = useLocation()
   const width = useWindowWidth()
-  const { state } = location || {}
+  const { name, images} = location.state || {}
 
   return (
     <main className={styles.main}>
       <section className={styles.case}>
         <div className={styles.breadcrumbs}>
           {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / КЕЙСЫ /{' '}
-          <span>{state.case_name}</span>
+          <span>{name}</span>
         </div>
         <div>
-          <h1 className={styles.case__tittle}>{state.case_name}</h1>
+          <h1 className={styles.case__tittle}>{name}</h1>
           {width > 768 && <BlueButton text={'Посетить наш сайт'} />}
         </div>
         <div className={styles.case__item}>
           <div className={styles.case__item__accordion}>
-            <Accordion isCase data={caseData} />
+            <AccordionCases isCase data={location.state} />
           </div>
           <div className={styles.case__item__image}>
-            <div>
-              <img src={image1} alt="" />
-            </div>
-            <div>
-              <img src={image2} alt="" />
-            </div>
+            {images.slice(1).map((image, i) => {
+              return (
+                <div key={i}>
+                  <img src={image.image} alt="" />
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>

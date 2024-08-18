@@ -12,7 +12,10 @@
         color: $textColor-secondary;
     }
 }
-
+.main {
+    padding: 60px 0 120px;
+  }
+  
 .case {
     &>:nth-child(2) {
         display: flex;

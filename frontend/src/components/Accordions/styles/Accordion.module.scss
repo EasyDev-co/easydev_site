@@ -27,6 +27,7 @@
       content: "+";
       position: absolute;
       right: 15px;
+      transform: scale(1.75);
     }
 
     &>input[type=checkbox]+label {
@@ -39,9 +40,10 @@
     }
 
     &>input[type=checkbox]:checked+label::after {
-      content: "-";
+      content: "—";
       position: absolute;
-      right: 15px;
+      right: 11px;
+      transform: scale(1);
     }
 
     &>label {
@@ -80,9 +82,9 @@
       max-height: 0;
       overflow: hidden;
       background: #ffffff;
-      -webkit-transition: max-height .5s;
-      -o-transition: max-height .5s;
-      transition: max-height .5s;
+      -webkit-transition: max-height .2s;
+      -o-transition: max-height .2s;
+      transition: max-height .2s;
       &>span{
         display: block;
         color: #2036FD;
@@ -117,7 +119,7 @@
   height: 3em;
   line-height: 3;
   text-align: center;
-  -webkit-transition: .5s;
-  -o-transition: .5s;
-  transition: .5s;
+  // -webkit-transition: .5s;
+  // -o-transition: .5s;
+  // transition: .5s;
 }
