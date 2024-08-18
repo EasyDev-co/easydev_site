@@ -7,23 +7,22 @@ import TecnologiesSelect from '../../components/TechnologiesSelect/TecnologiesSe
 import { accordion } from '../../mockData/accordion'
 
 export const ServicePage = () => {
-  // const { serviceId } = useParams()
-  const location = useLocation()
-  const { service } = location.state || {}
 
+  const location = useLocation()
+  const { created, description, id, modified, name, photo } = location.state || {}
+  
   const width = useWindowWidth()
   return (
     <main className={styles.main}>
       <section className={styles.service}>
         <div className={styles.breadcrumbs}>
-          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / ЭКСПЕРТНОСТЬ /{' '}
-          <span>{service}</span>
+          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / ЭКСПЕРТНОСТЬ /
+          <span>{name}</span>
         </div>
-        <h1 className={styles.service__title}>{service}</h1>
+        <h1 className={styles.service__title}>{name}</h1>
         <div className={styles.service__title__wrap}>
           <span className={styles.service__title__desc}>
-            Принимайте правильные управленческие решения на основе данных
-            аудита. Описание и дополнительная информация.
+           {description}
           </span>
           <BlueButton text={'Заказать услугу'} />
         </div>
