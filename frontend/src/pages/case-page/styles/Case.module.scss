@@ -7,15 +7,15 @@
     font-size: 11px;
     line-height: 109%;
     color: $background-secondary;
-
+    padding: 0 0 0 20px;
     & span {
         color: $textColor-secondary;
     }
 }
-.main {
+.main{
     padding: 60px 0 120px;
-  }
-  
+    margin: 0 0 0 -20px;
+}
 .case {
     &>:nth-child(2) {
         display: flex;
@@ -41,6 +41,7 @@
     &__item {
         display: flex;
         gap: 160px;
+        padding: 0 0 0 20px;
 
         @media (max-width: 1365px) {
             gap: 120px;
