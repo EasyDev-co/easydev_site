@@ -8,4 +8,5 @@ urlpatterns = [
     path('api/', include('apps.site_settings.api.urls')),
     path('api/', include('apps.amenities.api.urls')),
     path('api/', include('apps.feedback.api.urls')),
+    path('api/', include('apps.portfolio.api.urls')),
 ]
