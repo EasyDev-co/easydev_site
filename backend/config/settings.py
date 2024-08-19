@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'apps.site_settings.apps.SiteSettingsConfig',
     'apps.amenities.apps.ServiceConfig',
     'apps.feedback.apps.FeedbackConfig',
+    'apps.portfolio.apps.PortfolioConfig'
 ]
 
 MIDDLEWARE = [

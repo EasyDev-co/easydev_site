@@ -9,6 +9,14 @@ from django.utils.deconstruct import deconstructible
 logger = logging.getLogger(__name__)
 
 
+def file_directory_path(instance, filename: str):
+    """Функция для построения пути для абстрактной модели обратной связи"""
+    return '{instance}/{filename}'.format(
+        instance=instance._meta.model_name.lower(),
+        filename=filename,
+    )
+
+
 class UUIDMixin(models.Model):
     """UUID mixin"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -60,7 +68,7 @@ class FeedbackAbstract(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=256)
     email = models.EmailField(verbose_name='Электронная почта')
     link = models.URLField(verbose_name='Ссылка на социальную сеть', blank=True, null=True)
-    file = models.FileField(verbose_name='Файл', upload_to='vacancies/files', blank=True, null=True)
+    file = models.FileField(verbose_name='Файл', upload_to=file_directory_path, blank=True, null=True)
 
     class Meta:
         abstract = True

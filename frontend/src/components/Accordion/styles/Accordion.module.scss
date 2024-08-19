@@ -8,7 +8,7 @@
     color: #000000;
     overflow: hidden;
     border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-
+    padding: 8px 0;
     &>input {
       position: absolute;
       opacity: 0;
@@ -27,6 +27,7 @@
       content: "+";
       position: absolute;
       right: 15px;
+      transform: scale(1.5);
     }
 
     &>input[type=checkbox]+label {
@@ -39,9 +40,10 @@
     }
 
     &>input[type=checkbox]:checked+label::after {
-      content: "-";
+      content: "—";
       position: absolute;
-      right: 15px;
+      right: 12px;
+      transform: scale(0.9);
     }
 
     &>label {
