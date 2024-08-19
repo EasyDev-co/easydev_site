@@ -8,16 +8,15 @@ const TecnologiesSelect = () => {
     const [headerData, setHeaderData] = useState({
         name: 'Vue',
         desc: 'Прогрессивный JavaScript-фреймворк'
-    })
-
+    });
+    const [isActiveId, setIsActiveId] = useState(false);
     const handleClick = (data) =>{
-        console.log(data)
         setHeaderData({
             name: data.name,
             desc: data.description
         })
+        setIsActiveId(data.id)
     }
-    // console.log(headerData)
     return (
         <div className={styles.technologies}>
             <div className={styles.technologies__header}>
@@ -31,9 +30,8 @@ const TecnologiesSelect = () => {
             </div>
             <div className={styles.technologies__container}>
                 {technologies.map(elem => {
-                    // console.log(elem)
                     return (
-                        <button onClick={()=>handleClick(elem)} className={styles.technologies__item} key={elem.id}>
+                        <button onClick={()=>handleClick(elem)} className={elem.id === isActiveId ? styles.technologies__item_active : styles.technologies__item } key={elem.id}>
                             <img className={styles.technologies__item__img} src={elem.image} alt="" />
                         </button>
                     )

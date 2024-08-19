@@ -25,7 +25,6 @@ export const ServicesPage = () => {
           ))}
         </ul>
       </section>
-
     </main>
   )
 }

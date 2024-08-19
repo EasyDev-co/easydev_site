@@ -37,5 +37,17 @@ export const technologies = [
         image: vue,
         description: 'Прогрессивная JavaScript-библиотека'
     },
+    // {
+    //     id: 7,
+    //     name: 'React',
+    //     image: vue,
+    //     description: 'Прогрессивная JavaScript-библиотека'
+    // },
+    // {
+    //     id: 8,
+    //     name: 'React',
+    //     image: vue,
+    //     description: 'Прогрессивная JavaScript-библиотека'
+    // },
     
 ]
