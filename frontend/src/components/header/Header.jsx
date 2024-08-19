@@ -4,9 +4,12 @@ import styles from './styles/Header.module.scss'
 import { ShowMenuButton } from '../buttons/show-menu-button/ShowMenuButton'
 import { useState } from 'react'
 import { Menu } from '../modals/menu/Menu'
+import { useWindowWidth } from '@react-hook/window-size'
 
-export const Header = () => {
+export const Header = ({ setIsOpen }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const width = useWindowWidth()
 
   return (
     <>
@@ -15,7 +18,7 @@ export const Header = () => {
           <div className={styles.header__left}>
             <div className={styles.header__buttons}>
               <button>Начать проект с easy</button>
-              <button>Контакты</button>
+              <button onClick={() => setIsOpen(true)}>Контакты</button>
             </div>
             <div className={styles.header__phone}>+7 (913) 715 — 6372</div>
           </div>
@@ -30,10 +33,12 @@ export const Header = () => {
             <Link to="/services">Экспертность</Link>
             <Link to="/vacancy">Вакансии</Link>
           </div>
-          <ShowMenuButton isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
+          {width < 1366 && (
+            <ShowMenuButton isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
+          )}
         </div>
       </header>
-      {isMenuOpen && <Menu setIsOpen={setIsMenuOpen} />}
+      {isMenuOpen && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
     </>
   )
 }
