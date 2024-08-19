@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { url } from '../index.js'
+import { url } from '../http.js'
 
 export async function getServices() {
 

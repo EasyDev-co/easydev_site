@@ -4,7 +4,7 @@ import { useWindowWidth } from '@react-hook/window-size'
 import styles from './styles/Services.module.scss'
 import { useEffect, useState } from 'react'
 import { getServices } from '../../api/service/getServices'
-import { url } from '../../api'
+import { url } from '../../api/http'
 
 export const ServicesPage = () => {
   const width = useWindowWidth();
