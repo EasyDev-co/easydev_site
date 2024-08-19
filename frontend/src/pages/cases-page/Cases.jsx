@@ -1,18 +1,14 @@
 import { cases } from '../../mockData/cases'
-import { useWindowWidth } from '@react-hook/window-size'
 import styles from './styles/Cases.module.scss'
+import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
 import { Link } from 'react-router-dom'
 
 export const CasesPage = () => {
-  const width = useWindowWidth()
-
   return (
-    <main>
+    <main className={styles.main}>
       <section className={styles.cases}>
-        <div className={styles.breadcrumbs}>
-          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / <span>КЕЙСЫ</span>
-        </div>
-        <h1 className={styles.cases__title}>Кейсы (19/24)</h1>
+        <Breadcrumbs />
+        <h2 className={styles.cases__title}>Кейсы (19/24)</h2>
         <div className={styles.cases__buttons}>
           <button className={styles.cases__button}>Все кейсы</button>
           <button className={styles.cases__button}>Экспертность</button>

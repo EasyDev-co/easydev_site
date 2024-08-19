@@ -1,21 +1,11 @@
 @import '../../../styles/variables.scss';
 @import '../../../styles/fonts.scss';
 
-.breadcrumbs {
-  font-family: 'Roboto Mono';
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 109%;
-  color: $background-secondary;
-
-  & span {
-    color: $textColor-secondary;
-  }
+.main {
+  padding: 60px 0 120px;
 }
 
 .cases {
-  margin: 40px 0 120px;
-
   &__title {
     font-weight: 400;
     font-size: 40px;

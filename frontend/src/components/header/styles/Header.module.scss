@@ -1,0 +1,100 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+@import '../../../styles/mixins.scss';
+
+.header {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 18px 20px;
+  border-bottom: 1px solid $borderColor-primary;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: $background-primary;
+  //   backdrop-filter: blur(1000px); /* эффект размытия, используется вместе с background: transparent */
+  //   -webkit-backdrop-filter: blur(1000px); /* эффект размытия для Safari*/
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 211px;
+
+    @media (max-width: 1919px) {
+      gap: 73px;
+    }
+
+    @media (max-width: 1365px) {
+      display: none;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+
+    & button {
+      @include button_grey;
+
+      &:first-child {
+        @include button_blue;
+      }
+    }
+  }
+
+  &__phone {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 123%;
+    letter-spacing: -0.01em;
+    color: $background-secondary;
+  }
+
+  &__logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media (max-width: 1365px) {
+      position: static;
+      left: 0;
+      transform: translateX(0);
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 20px;
+
+    & a {
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 123%;
+      letter-spacing: -0.01em;
+      color: $background-secondary;
+    }
+
+    @media (max-width: 1365px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1365px) {
+    height: 66px;
+    display: flex;
+  }
+
+  @media (max-width: 959px) {
+    height: 60px;
+  }
+}

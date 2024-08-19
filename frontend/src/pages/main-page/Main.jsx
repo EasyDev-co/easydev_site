@@ -23,7 +23,7 @@ export const MainPage = () => {
   }, [])
 
   return (
-    <main>
+    <main className={styles.main}>
       <section className={styles.titleContainer}>
         <h1 className={styles.title}>
           Разработка{width < 767 && <br />} & Автоматизация
