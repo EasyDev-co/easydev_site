@@ -22,6 +22,6 @@ export const menu = [
   {
     id: '05',
     title: 'Позвонить',
-    path: '/contacts',
+    path: '/',
   },
 ]

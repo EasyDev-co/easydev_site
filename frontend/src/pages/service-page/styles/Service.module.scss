@@ -12,7 +12,9 @@
         color: $textColor-secondary;
     }
 }
-
+.main{
+    padding: 60px 0 0px;
+}
 .service {
     &__title {
         font-size: 40px;
@@ -29,6 +31,10 @@
             font-size: 14px;
             line-height: 17px;
             margin-bottom: 20px;
+            @media (max-width: 959px) {
+                width: auto;
+            }
+    
         }
     }
 
@@ -40,10 +46,6 @@
         @media (max-width: 959px) {
             justify-content: start;
         }
-
-        @media (max-width: 767px) {}
-
-        @media (max-width: 479px) {}
     }
 
     &__about {
@@ -60,12 +62,8 @@
             grid-template-rows: repeat(3, 1fr);
             grid-column-gap: 0px;
             grid-row-gap: 20px;
+            width: 100%;
         }
-
-        @media (max-width: 767px) {}
-
-        @media (max-width: 479px) {}
-
         &>div {
             display: flex;
             flex-direction: column;
@@ -89,9 +87,10 @@
     &__skills{
         padding: 20px 0 120px;
         &>h2{
-            margin: 20px 0 60px;
+            padding: 20px 0 60px;
             font-size: 25px;
             font-weight: 400;
+            border-top: 1px solid rgba(0, 0, 0, 0.09);
         }
     }
 }
