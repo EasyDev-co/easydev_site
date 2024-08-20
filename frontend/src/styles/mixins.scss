@@ -14,41 +14,41 @@
   &::before {
     content: attr(data-hover);
     position: absolute;
-    top: -100%;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $background-secondary;
-    color: $background-primary;
+    background-color: $background-tertiary;
+    color: $background-secondary;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
     z-index: 20;
   }
 
   &::after {
     content: attr(data-hover);
     position: absolute;
-    top: -100%;
+    top: 100%;
     left: 0;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $background-tertiary;
-    color: $background-secondary;
-    transition: transform 0.2s ease 0.1s;
+    background-color: $background-secondary;
+    color: $background-primary;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
+    z-index: 20;
   }
 
   &:hover::before {
-    top: 0;
-    transition: transform 0.2s ease 0.1s;
-    transform: translateY(100%);
+    transform: translateY(-100%);
   }
 
   &:hover::after {
-    transform: translateY(100%);
+    transform: translateY(-100%);
   }
 }
 
@@ -58,7 +58,7 @@
   color: $background-primary;
   background-color: $buttonColor-secondary;
 
-  &::after {
+  &::before {
     color: $background-primary;
     background-color: $buttonColor-secondary;
   }
