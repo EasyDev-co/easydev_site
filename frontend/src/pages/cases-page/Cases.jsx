@@ -2,6 +2,7 @@ import { cases } from '../../mockData/cases'
 import styles from './styles/Cases.module.scss'
 import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
 import { Link } from 'react-router-dom'
+import { OriginButton } from '../../components/buttons/origin-button/OriginButton'
 
 export const CasesPage = () => {
   return (
@@ -10,9 +11,9 @@ export const CasesPage = () => {
         <Breadcrumbs />
         <h2 className={styles.cases__title}>Кейсы (19/24)</h2>
         <div className={styles.cases__buttons}>
-          <button className={styles.cases__button}>Все кейсы</button>
-          <button className={styles.cases__button}>Экспертность</button>
-          <button className={styles.cases__button}>Отрасли</button>
+          <OriginButton text={'Все кейсы'} />
+          <OriginButton text={'Экспертность'} />
+          <OriginButton text={'Отрасли'} />
         </div>
         <div className={styles.case}>
           {cases.map((elem) => (

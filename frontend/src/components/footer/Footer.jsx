@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { Logo } from '../logo/Logo'
 import { menu } from '../../mockData/menuItems'
 import styles from './styles/Footer.module.scss'
+import { OriginButton } from '../buttons/origin-button/OriginButton'
+import BlueButton from '../buttons/BlueButton/BlueButton'
 
 export const Footer = () => {
   return (
@@ -36,8 +38,14 @@ export const Footer = () => {
           </div>
         </div>
         <div className={styles.footer__buttons}>
-          <button>Скачать презентацию</button>
-          <button>Связаться с нами</button>
+          <OriginButton
+            text={'Скачать презентацию'}
+            onClick={() => console.log('Скачать презентацию')}
+          />
+          <BlueButton
+            text={'Связаться с нами'}
+            onClick={() => console.log('Добавить возможность связаться!')}
+          />
         </div>
       </div>
       <div className={styles.footer__info}>
