@@ -2,7 +2,7 @@ import { useWindowWidth } from '@react-hook/window-size'
 import { useLocation } from 'react-router-dom'
 import styles from './styles/Service.module.scss'
 import BlueButton from '../../components/buttons/BlueButton/BlueButton'
-import Accordion from '../../components/Accordion/Accordion'
+import Accordion from '../../components/Accordions/Accordion'
 import TecnologiesSelect from '../../components/TechnologiesSelect/TecnologiesSelect'
 import { accordion } from '../../mockData/accordion'
 
