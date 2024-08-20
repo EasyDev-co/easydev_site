@@ -2,9 +2,25 @@ import { Link } from 'react-router-dom'
 import { services } from '../../mockData/services'
 import { useWindowWidth } from '@react-hook/window-size'
 import styles from './styles/Services.module.scss'
+import { useEffect, useState } from 'react'
+import { getServices } from '../../api/service/getServices'
+import { url } from '../../api/http'
 
 export const ServicesPage = () => {
-  const width = useWindowWidth()
+  const width = useWindowWidth();
+  const [services, setServices] = useState({
+    "count": 0,
+    "next": null,
+    "previous": null,
+    "results": []
+  })
+  useEffect(() => {
+    getServices()
+      .then(res => {
+        setServices(res)
+      })
+  }, [])
+
   return (
     <main className={styles.main}>
       <section className={styles.service}>
@@ -13,15 +29,16 @@ export const ServicesPage = () => {
         </div>
         <h1 className={styles.service__title}>Экспертность</h1>
         <ul className={styles.service__wrapp}>
-          {services.map((elem) => (
-            <div key={elem.id} className={styles.service__container}>
+          {services.results?.map((elem) => (
+            <div key={elem.id} style={{backgroundImage: `url("${elem.photo}"`}} className={styles.service__container}>
               <div className={styles.service__shield}></div>
               <li>
-                <Link to={`/services/${elem.id}`} state={elem.service}>
-                  {elem.service}
+                <Link to={`/services/${elem.id}`} state={elem}>
+                  {elem.name}
                 </Link>
               </li>
-              <div className={styles.picture_container}></div>
+              {/* <div style={{backgroundImage: `url("${elem.photo}"`}} className={styles.picture_container}>
+              </div> */}
             </div>
           ))}
         </ul>

@@ -15,8 +15,8 @@ export const CasePage = () => {
     <main className={styles.main}>
       <section className={styles.case}>
         <div className={styles.breadcrumbs}>
-          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / КЕЙСЫ /{' '}
-          <span>{name}</span>
+          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / КЕЙСЫ /{''}
+          <span>{state.case_name}</span>
         </div>
         <div>
           <h1 className={styles.case__tittle}>{name}</h1>
