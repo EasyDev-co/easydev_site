@@ -41,3 +41,9 @@ button {
   cursor: pointer;
   font-family: 'Graphik LCG', sans-serif;
 }
+
+button::before,
+button::after {
+  border: none;
+  outline: none;
+}

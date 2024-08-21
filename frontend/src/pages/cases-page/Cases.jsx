@@ -1,9 +1,10 @@
 import { cases } from '../../mockData/cases'
-import styles from './styles/Cases.module.scss'
+import { useEffect, useState } from 'react'
 import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { OriginButton } from '../../components/buttons/origin-button/OriginButton'
 import { getCases } from '../../api/cases/getCases'
+import styles from './styles/Cases.module.scss'
 
 export const CasesPage = () => {
   const [cases, setCases] = useState({count: 0, next: null, previous: null, results: []});
@@ -19,9 +20,9 @@ export const CasesPage = () => {
         <Breadcrumbs />
         <h2 className={styles.cases__title}>Кейсы (19/24)</h2>
         <div className={styles.cases__buttons}>
-          <button className={styles.cases__button}>Все кейсы</button>
-          <button className={styles.cases__button}>Экспертность</button>
-          <button className={styles.cases__button}>Отрасли</button>
+          <OriginButton text={'Все кейсы'} />
+          <OriginButton text={'Экспертность'} />
+          <OriginButton text={'Отрасли'} />
         </div>
         <div className={styles.case}>
           {cases.results?.map((elem) => (

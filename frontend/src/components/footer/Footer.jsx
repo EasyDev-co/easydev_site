@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { Link } from 'react-router-dom'
 import { Logo } from '../logo/Logo'
-import { menu } from '../../mockData/menuItems'
+import { OriginButton } from '../buttons/origin-button/OriginButton'
+import BlueButton from '../buttons/BlueButton/BlueButton'
+import { NavLinks } from '../nav-links/NavLinks'
+import { Link } from 'react-router-dom'
 import styles from './styles/Footer.module.scss'
 
 export const Footer = () => {
@@ -9,15 +11,13 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
         <div className={styles.footer__logo}>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
         <div className={styles.footer__links}>
           <div>
-            {menu.slice(0, 3).map((item) => (
-              <Link to={item.path} key={item.id}>
-                {item.title}
-              </Link>
-            ))}
+            <NavLinks />
           </div>
           <div>
             {/* Добавить ссылки на соцсети */}
@@ -36,8 +36,14 @@ export const Footer = () => {
           </div>
         </div>
         <div className={styles.footer__buttons}>
-          <button>Скачать презентацию</button>
-          <button>Связаться с нами</button>
+          <OriginButton
+            text={'Скачать презентацию'}
+            onClick={() => console.log('Скачать презентацию')}
+          />
+          <BlueButton
+            text={'Связаться с нами'}
+            onClick={() => console.log('Добавить возможность связаться!')}
+          />
         </div>
       </div>
       <div className={styles.footer__info}>

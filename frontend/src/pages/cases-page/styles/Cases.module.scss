@@ -24,22 +24,6 @@
     display: flex;
     gap: 10px;
   }
-
-  &__button {
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 123%;
-    letter-spacing: -0.01em;
-    border-radius: 50px;
-    color: $background-secondary;
-    background: $background-tertiary;
-    padding: 7px 14px;
-
-    &:first-child {
-      color: $background-primary;
-      background: $background-secondary;
-    }
-  }
 }
 
 .case {
