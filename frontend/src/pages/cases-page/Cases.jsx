@@ -1,10 +1,19 @@
 import { cases } from '../../mockData/cases'
-import styles from './styles/Cases.module.scss'
+import { useEffect, useState } from 'react'
 import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
 import { Link } from 'react-router-dom'
 import { OriginButton } from '../../components/buttons/origin-button/OriginButton'
+import { getCases } from '../../api/cases/getCases'
+import styles from './styles/Cases.module.scss'
 
 export const CasesPage = () => {
+  const [cases, setCases] = useState({count: 0, next: null, previous: null, results: []});
+  useEffect(()=>{
+    getCases()
+    .then(res=>{
+      setCases(res)
+    })
+  },[])
   return (
     <main className={styles.main}>
       <section className={styles.cases}>
@@ -16,12 +25,11 @@ export const CasesPage = () => {
           <OriginButton text={'Отрасли'} />
         </div>
         <div className={styles.case}>
-          {cases.map((elem) => (
-            <div className={styles.project__container} key={elem.id}>
+          {cases.results?.map((elem) => (
+            <div className={styles.project__container} key={elem.pk}>
               <div className={styles.project}>
-                <Link to={`/cases/${elem.id}`} state={elem}>
-                  <p className={styles.project__heading}>{elem.case_name}</p>
-
+                <Link to={`/cases/${elem.pk}`} state={elem}>
+                  <p className={styles.project__heading}>{elem.name}</p>
                   <div className={styles.project__items}>
                     <svg
                       className={styles.project__icon}
@@ -45,7 +53,7 @@ export const CasesPage = () => {
               </div>
               <img
                 className={styles.project__img}
-                src={elem.img}
+                src={elem.images[0].image}
                 alt={elem.case_name}
               />
             </div>
