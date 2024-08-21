@@ -1,0 +1,46 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+@import '../../../styles/mixins.scss';
+
+.nav__links {
+  & * {
+    -webkit-transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
+  }
+
+  & li {
+    list-style: outside none none;
+    overflow: hidden;
+
+    &:hover a {
+      transform: translateY(-93%);
+    }
+  }
+
+  & a {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 123%;
+    letter-spacing: -0.01em;
+    color: $background-secondary;
+
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      position: absolute;
+      -webkit-transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
+    }
+
+    &:after {
+      padding: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      content: attr(data-hover);
+      color: $textColor-secondary;
+      white-space: nowrap;
+    }
+  }
+}

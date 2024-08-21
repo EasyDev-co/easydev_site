@@ -6,6 +6,7 @@ import { Menu } from '../modals/menu/Menu'
 import { useWindowWidth } from '@react-hook/window-size'
 import { OriginButton } from '../buttons/origin-button/OriginButton'
 import BlueButton from '../buttons/BlueButton/BlueButton'
+import { NavLinks } from '../nav-links/NavLinks'
 import styles from './styles/Header.module.scss'
 
 export const Header = ({ setIsOpen }) => {
@@ -33,10 +34,7 @@ export const Header = ({ setIsOpen }) => {
             </Link>
           </div>
           <div className={styles.header__nav}>
-            <Link to="/about">О нас</Link>
-            <Link to="/cases">Кейсы</Link>
-            <Link to="/services">Экспертность</Link>
-            <Link to="/vacancy">Вакансии</Link>
+            <NavLinks />
           </div>
           {width < 1366 && (
             <ShowMenuButton isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />

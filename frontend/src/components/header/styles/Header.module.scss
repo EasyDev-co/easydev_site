@@ -66,15 +66,9 @@
   }
 
   &__nav {
-    display: flex;
-    gap: 20px;
-
-    & a {
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 123%;
-      letter-spacing: -0.01em;
-      color: $background-secondary;
+    & > ul {
+      display: flex;
+      gap: 20px;
     }
 
     @media (max-width: 1365px) {
