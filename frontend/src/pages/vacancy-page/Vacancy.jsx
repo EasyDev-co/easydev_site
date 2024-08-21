@@ -1,10 +1,18 @@
 import { useWindowWidth } from '@react-hook/window-size'
 import styles from './styles/Vacancy.module.scss'
 import arrow from '../../assets/img/vacancy/Arrow.png'
+import { useEffect } from 'react';
+import { getVacancies } from '../../api/vacancy/getVacancies';
 
 export const VacancyPage = () => {
   const width = useWindowWidth();
 
+  useEffect(()=>{
+    getVacancies()
+    .then(res=>{
+      console.log(res)
+    })
+  },[])
   return (
     <div className={styles.main}>
       <section className={styles.vacancy}>
@@ -25,9 +33,11 @@ export const VacancyPage = () => {
               <div className={styles.column__item__subtitle}>
                 В поисках креативного художника
               </div> : width < 375 &&
-              <div className={styles.column__item__subtitle}>
+              <>
+                <div className={styles.column__item__subtitle}>
                   от 3-ёх лет
-              </div>
+                </div>
+              </>
             }
           </div>
         </div>
