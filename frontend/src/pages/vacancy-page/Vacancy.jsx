@@ -3,8 +3,9 @@ import styles from './styles/Vacancy.module.scss'
 import arrow from '../../assets/img/vacancy/Arrow.png'
 import { useEffect } from 'react';
 import { getVacancies } from '../../api/vacancy/getVacancies';
+import transition from '../../animations/transition';
 
-export const VacancyPage = () => {
+const VacancyPage = () => {
   const width = useWindowWidth();
 
   useEffect(()=>{
@@ -100,3 +101,5 @@ export const VacancyPage = () => {
     </div>
   )
 }
+
+export default transition(VacancyPage);

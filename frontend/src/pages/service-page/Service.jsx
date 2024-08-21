@@ -5,8 +5,9 @@ import BlueButton from '../../components/buttons/BlueButton/BlueButton'
 import Accordion from '../../components/Accordions/Accordion'
 import TecnologiesSelect from '../../components/TechnologiesSelect/TecnologiesSelect'
 import { accordion } from '../../mockData/accordion'
+import transition from '../../animations/transition'
 
-export const ServicePage = () => {
+const ServicePage = () => {
 
   const location = useLocation()
   const { created, description, id, modified, name, photo } = location.state || {}
@@ -55,3 +56,5 @@ export const ServicePage = () => {
     </main>
   )
 }
+
+export default transition(ServicePage);
