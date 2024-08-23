@@ -3,6 +3,7 @@
 
 .main {
   padding: 20px 0;
+  overflow: hidden;
 }
 
 .titleContainer {
@@ -168,11 +169,11 @@
       background-size: 100%;
       background-repeat: inherit;
       background-position: center;
-      transition: transform 3s ease-in-out;
+      transition: transform 1s ease-in-out;
     }
 
     &:hover::before {
-      transform: scale(1.5);
+      transform: scale(1.2);
     }
 
     @media (max-width: 1919px) {

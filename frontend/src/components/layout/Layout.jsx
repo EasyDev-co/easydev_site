@@ -1,16 +1,40 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from '../header/Header'
-import styles from './styles/Layout.module.scss'
 import { Footer } from '../footer/Footer'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Contacts } from '../modals/contacts/Contacts'
+import { Logo } from '../logo/Logo'
+import { motion } from 'framer-motion'
+import styles from './styles/Layout.module.scss'
 
 export const Layout = () => {
+  const [isHeroVisible, setIsHeroVisible] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { pathname } = useLocation()
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsHeroVisible(false)
+    }, 2000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <>
+      {isHeroVisible && pathname === '/' && (
+        <motion.div
+          className={styles.hero}
+          initial={{ opacity: 1, scale: 1 }}
+          animate={{
+            opacity: 0,
+            scale: 0,
+          }}
+          transition={{ duration: 1, ease: 'easeInOut', delay: 1.5 }}
+        >
+          <Logo isPromo={true} />
+        </motion.div>
+      )}
       {isModalOpen && (
         <Contacts isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
       )}

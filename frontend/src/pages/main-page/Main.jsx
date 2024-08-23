@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useWindowWidth } from '@react-hook/window-size'
+import { motion } from 'framer-motion'
 import styles from './styles/Main.module.scss'
 
 export const MainPage = () => {
@@ -24,19 +25,43 @@ export const MainPage = () => {
 
   return (
     <main className={styles.main}>
-      <section className={styles.titleContainer}>
+      <motion.section
+        className={styles.titleContainer}
+        initial={{ opacity: 0, y: '200%' }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{ duration: 1, ease: 'easeInOut', delay: 1.5 }}
+      >
         <h1 className={styles.title}>
           Разработка{width < 767 && <br />} & Автоматизация
           <br />
           <span>Digital-продуктов</span>
         </h1>
-      </section>
-      <section className={styles.textContainer}>
+      </motion.section>
+      <motion.section
+        className={styles.textContainer}
+        initial={{ opacity: 0, y: '200%' }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{ duration: 1, ease: 'easeInOut', delay: 2 }}
+      >
         <span>ТОП-5 НА HABR</span>
         <span>{localTime} KAZ</span>
         <span>200+ проектов</span>
-      </section>
-      <section className={styles.projects}>
+      </motion.section>
+      <motion.section
+        className={styles.projects}
+        initial={{ opacity: 0, y: '200%' }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{ duration: 1, ease: 'easeInOut', delay: 2 }}
+      >
         <div className={styles.project__container}>
           <div className={styles.project}>
             <p className={styles.project__heading}>
@@ -70,7 +95,7 @@ export const MainPage = () => {
         <div className={styles.navigationInfo}>
           Используйте меню для навигации
         </div>
-      </section>
+      </motion.section>
     </main>
   )
 }

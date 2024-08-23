@@ -3,10 +3,8 @@ import styles from './styles/Case.module.scss'
 import { useWindowWidth } from '@react-hook/window-size'
 import BlueButton from '../../components/buttons/BlueButton/BlueButton'
 import AccordionCases from '../../components/Accordions/AccordionCases'
-import { caseData } from '../../mockData/caseData'
 
 export const CasePage = () => {
-  // const { caseId } = useParams()
   const location = useLocation()
   const width = useWindowWidth()
   const { name, images} = location.state || {}
@@ -16,7 +14,7 @@ export const CasePage = () => {
       <section className={styles.case}>
         <div className={styles.breadcrumbs}>
           {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / КЕЙСЫ /{''}
-          <span>{state.case_name}</span>
+          <span>{name}</span>
         </div>
         <div>
           <h1 className={styles.case__tittle}>{name}</h1>
