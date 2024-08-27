@@ -1,11 +1,13 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useLocation } from 'react-router-dom'
 import styles from './styles/Case.module.scss'
 import { useWindowWidth } from '@react-hook/window-size'
 import BlueButton from '../../components/buttons/BlueButton/BlueButton'
 import AccordionCases from '../../components/Accordions/AccordionCases'
 import { caseData } from '../../mockData/caseData'
+import transition from '../../animations/transition'
 
-export const CasePage = () => {
+const CasePage = () => {
   // const { caseId } = useParams()
   const location = useLocation()
   const width = useWindowWidth()
@@ -40,3 +42,5 @@ export const CasePage = () => {
     </main>
   )
 }
+
+export default transition(CasePage);

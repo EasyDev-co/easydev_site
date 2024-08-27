@@ -5,8 +5,9 @@ import styles from './styles/Services.module.scss'
 import { useEffect, useState } from 'react'
 import { getServices } from '../../api/service/getServices'
 import { url } from '../../api/http'
+import transition from '../../animations/transition'
 
-export const ServicesPage = () => {
+const ServicesPage = () => {
   const width = useWindowWidth();
   const [services, setServices] = useState({
     "count": 0,
@@ -46,3 +47,5 @@ export const ServicesPage = () => {
     </main>
   )
 }
+
+export default transition(ServicesPage);
