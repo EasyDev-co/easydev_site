@@ -7,6 +7,7 @@ import { useWindowWidth } from '@react-hook/window-size'
 import { OriginButton } from '../buttons/origin-button/OriginButton'
 import BlueButton from '../buttons/BlueButton/BlueButton'
 import { NavLinks } from '../nav-links/NavLinks'
+import { motion } from 'framer-motion'
 import styles from './styles/Header.module.scss'
 
 export const Header = ({ setIsOpen }) => {
@@ -16,7 +17,15 @@ export const Header = ({ setIsOpen }) => {
 
   return (
     <>
-      <header className={styles.header}>
+      <motion.header
+        className={styles.header}
+        initial={{ opacity: 0, y: '-100%' }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{ duration: 1, ease: 'easeInOut', delay: 1 }}
+      >
         <div className={styles.header__container}>
           <div className={styles.header__left}>
             <div className={styles.header__buttons}>
@@ -40,7 +49,7 @@ export const Header = ({ setIsOpen }) => {
             <ShowMenuButton isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
           )}
         </div>
-      </header>
+      </motion.header>
       {isMenuOpen && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
     </>
   )

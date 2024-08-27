@@ -1,9 +1,21 @@
+import { useEffect } from 'react'
 import styles from './styles/Logo.module.scss'
 
-export const Logo = () => {
+export const Logo = ({ isPromo }) => {
+  // для анимации
+  useEffect(() => {
+    const paths = document.querySelectorAll(`.${styles.logo_promo} path`)
+
+    paths.forEach((path, index) => {
+      setTimeout(() => {
+        path.classList.add(styles.visible)
+      }, index * 100)
+    })
+  }, [])
+
   return (
     <svg
-      className={styles.logo}
+      className={isPromo ? `${styles.logo} ${styles.logo_promo}` : styles.logo}
       viewBox="0 0 104 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
