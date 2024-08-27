@@ -89,10 +89,23 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
   background-color: $background-secondary;
 
   &__container {
     display: flex;
+
+    &:hover > div::before {
+      transform: scale(1.2);
+    }
+
+    &:hover div > svg path:first-of-type {
+      transform: translateY(-100%);
+    }
+
+    &:hover div > svg path:last-of-type {
+      transform: translateY(0);
+    }
 
     @media (max-width: 767px) {
       flex-direction: column;
@@ -169,11 +182,7 @@
       background-size: 100%;
       background-repeat: inherit;
       background-position: center;
-      transition: transform 1s ease-in-out;
-    }
-
-    &:hover::before {
-      transform: scale(1.2);
+      transition: transform 0.5s ease-in-out;
     }
 
     @media (max-width: 1919px) {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useWindowWidth } from '@react-hook/window-size'
 import { motion } from 'framer-motion'
 import styles from './styles/Main.module.scss'
+import Arrow from '../../components/arrow/Arrow'
 
 export const MainPage = () => {
   const [localTime, setLocalTime] = useState('')
@@ -23,16 +24,23 @@ export const MainPage = () => {
     return () => clearInterval(intervalId)
   }, [])
 
+  const containerVariants = {
+    initial: { opacity: 0, y: '200%' },
+    animate: (custom) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: 'easeInOut', delay: custom * 0.5 },
+    }),
+  }
+
   return (
     <main className={styles.main}>
       <motion.section
         className={styles.titleContainer}
-        initial={{ opacity: 0, y: '200%' }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{ duration: 1, ease: 'easeInOut', delay: 1.5 }}
+        variants={containerVariants}
+        custom={3}
+        initial="initial"
+        animate="animate"
       >
         <h1 className={styles.title}>
           Разработка{width < 767 && <br />} & Автоматизация
@@ -42,12 +50,10 @@ export const MainPage = () => {
       </motion.section>
       <motion.section
         className={styles.textContainer}
-        initial={{ opacity: 0, y: '200%' }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{ duration: 1, ease: 'easeInOut', delay: 2 }}
+        variants={containerVariants}
+        custom={4}
+        initial="initial"
+        animate="animate"
       >
         <span>ТОП-5 НА HABR</span>
         <span>{localTime} KAZ</span>
@@ -55,12 +61,10 @@ export const MainPage = () => {
       </motion.section>
       <motion.section
         className={styles.projects}
-        initial={{ opacity: 0, y: '200%' }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{ duration: 1, ease: 'easeInOut', delay: 2 }}
+        variants={containerVariants}
+        custom={4}
+        initial="initial"
+        animate="animate"
       >
         <div className={styles.project__container}>
           <div className={styles.project}>
@@ -69,21 +73,7 @@ export const MainPage = () => {
               <br /> Москвы. Десять из десяти
             </p>
             <div className={styles.project__items}>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="20" height="20" rx="10" fill="white" />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M7.79963 7.10919L11.5691 10.8787L11.5691 7.45442L12.5456 7.45442V12.5456H7.45441L7.45441 11.5692L10.8787 11.5692L7.10919 7.79964L7.79963 7.10919Z"
-                  fill="black"
-                />
-              </svg>
+              <Arrow />
               <div className={styles.project__info}>
                 <span>E-COMMERCE</span>
                 <span>2024</span>
