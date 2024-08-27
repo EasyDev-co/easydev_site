@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { cases } from '../../mockData/cases'
 import { useEffect, useState } from 'react'
 import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
@@ -5,8 +6,9 @@ import { Link } from 'react-router-dom'
 import { OriginButton } from '../../components/buttons/origin-button/OriginButton'
 import { getCases } from '../../api/cases/getCases'
 import styles from './styles/Cases.module.scss'
+import transition from '../../animations/transition'
 
-export const CasesPage = () => {
+const CasesPage = () => {
   const [cases, setCases] = useState({count: 0, next: null, previous: null, results: []});
   useEffect(()=>{
     getCases()
@@ -63,3 +65,5 @@ export const CasesPage = () => {
     </main>
   )
 }
+
+export default transition(CasesPage)

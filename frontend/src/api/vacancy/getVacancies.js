@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { url } from '../http'
+import { url } from '../http.js';
 
-export async function getServices() {
+export async function getVacancies() {
     try {
-        const response = await axios.get(`${url}amenities/`);
+        const response = await axios.get(`${url}vacancy/`);
         return response.data;
     } catch (error) {
         console.log(error);
