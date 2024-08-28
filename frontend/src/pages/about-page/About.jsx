@@ -6,9 +6,8 @@ import { reviews } from '../../mockData/reviews'
 import { insertSpace } from '../../utils/insertSpace'
 import { useWindowWidth } from '@react-hook/window-size'
 import styles from './styles/About.module.scss'
-import transition from '../../animations/transition'
 
-const AboutPage = () => {
+export const AboutPage = () => {
   const width = useWindowWidth()
 
   return (
@@ -95,5 +94,3 @@ const AboutPage = () => {
     </main>
   )
 }
-
-export default transition(AboutPage)

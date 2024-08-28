@@ -1,17 +1,41 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 
-import MainPage from '../pages/main-page/Main'
+import { AnimatedMainPage } from '../pages/main-page'
 import NotFoundPage from '../pages/404-page/NotFound'
 import { Layout } from '../components/layout/Layout'
 import Loader from '../components/loader/Loader'
 
-const AboutPage = lazy(() => import('../pages/about-page/About'))
-const CasesPage = lazy(() => import('../pages/cases-page/Cases'))
-const ServicesPage = lazy(() => import('../pages/services-page/Services'))
-const VacancyPage = lazy(() => import('../pages/vacancy-page/Vacancy'))
-const CasePage = lazy(() => import('../pages/case-page/Case'))
-const ServicePage = lazy(() => import('../pages/service-page/Service'))
+const AboutPage = lazy(() =>
+  import('../pages/about-page').then((module) => ({
+    default: module.AnimatedAboutPage,
+  })),
+)
+const CasesPage = lazy(() =>
+  import('../pages/cases-page').then((module) => ({
+    default: module.AnimatedCasesPage,
+  })),
+)
+const ServicesPage = lazy(() =>
+  import('../pages/services-page').then((module) => ({
+    default: module.AnimatedServicesPage,
+  })),
+)
+const VacancyPage = lazy(() =>
+  import('../pages/vacancy-page').then((module) => ({
+    default: module.AnimatedVacancyPage,
+  })),
+)
+const CasePage = lazy(() =>
+  import('../pages/case-page').then((module) => ({
+    default: module.AnimatedCasePage,
+  })),
+)
+const ServicePage = lazy(() =>
+  import('../pages/service-page').then((module) => ({
+    default: module.AnimatedServicePage,
+  })),
+)
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +44,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <MainPage />,
+        element: <AnimatedMainPage />,
       },
       {
         path: '/about',

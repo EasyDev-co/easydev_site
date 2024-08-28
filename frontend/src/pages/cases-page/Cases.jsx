@@ -1,20 +1,22 @@
-/* eslint-disable react-refresh/only-export-components */
 import { useEffect, useState } from 'react'
 import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
 import { Link } from 'react-router-dom'
 import { OriginButton } from '../../components/buttons/origin-button/OriginButton'
 import { getCases } from '../../api/cases/getCases'
-import transition from '../../animations/transition'
 import styles from './styles/Cases.module.scss'
 
-const CasesPage = () => {
-  const [cases, setCases] = useState({count: 0, next: null, previous: null, results: []});
-  useEffect(()=>{
-    getCases()
-    .then(res=>{
+export const CasesPage = () => {
+  const [cases, setCases] = useState({
+    count: 0,
+    next: null,
+    previous: null,
+    results: [],
+  })
+  useEffect(() => {
+    getCases().then((res) => {
       setCases(res)
     })
-  },[])
+  }, [])
   return (
     <main className={styles.main}>
       <section className={styles.cases}>
@@ -64,5 +66,3 @@ const CasesPage = () => {
     </main>
   )
 }
-
-export default transition(CasesPage)

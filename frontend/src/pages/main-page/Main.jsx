@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react'
 import { useWindowWidth } from '@react-hook/window-size'
 import { motion } from 'framer-motion'
 import Arrow from '../../components/arrow/Arrow'
-import transition from '../../animations/transition'
 import styles from './styles/Main.module.scss'
 
-const MainPage = () => {
+export const MainPage = () => {
   const [localTime, setLocalTime] = useState('')
 
   const width = useWindowWidth()
@@ -90,5 +89,3 @@ const MainPage = () => {
     </main>
   )
 }
-
-export default transition(MainPage);
