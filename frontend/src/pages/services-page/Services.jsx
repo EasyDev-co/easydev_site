@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom'
-import { useWindowWidth } from '@react-hook/window-size'
 import { useEffect, useState } from 'react'
 import { getServices } from '../../api/service/getServices'
 import styles from './styles/Services.module.scss'
 
 export const ServicesPage = () => {
-  const width = useWindowWidth()
   const [services, setServices] = useState({
     count: 0,
     next: null,
@@ -21,9 +19,6 @@ export const ServicesPage = () => {
   return (
     <main className={styles.main}>
       <section className={styles.service}>
-        <div className={styles.breadcrumbs}>
-          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / <span>ЭКСПЕРТНОСТЬ</span>
-        </div>
         <h1 className={styles.service__title}>Экспертность</h1>
         <ul className={styles.service__wrapp}>
           {services.results?.map((elem) => (

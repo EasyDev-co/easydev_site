@@ -5,6 +5,7 @@ import { AnimatedMainPage } from '../pages/main-page'
 import NotFoundPage from '../pages/404-page/NotFound'
 import { Layout } from '../components/layout/Layout'
 import Loader from '../components/loader/Loader'
+import { caseLoader, serviceLoader } from './loaders'
 
 const AboutPage = lazy(() =>
   import('../pages/about-page').then((module) => ({
@@ -45,6 +46,7 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <AnimatedMainPage />,
+        handle: { crumb: () => 'ГЛАВНАЯ' },
       },
       {
         path: '/about',
@@ -53,6 +55,7 @@ export const router = createBrowserRouter([
             <AboutPage />
           </Suspense>
         ),
+        handle: { crumb: () => 'О НАС' },
       },
       {
         path: '/cases',
@@ -61,6 +64,7 @@ export const router = createBrowserRouter([
             <CasesPage />
           </Suspense>
         ),
+        handle: { crumb: () => 'КЕЙСЫ' },
       },
       {
         path: '/cases/:caseId',
@@ -69,6 +73,8 @@ export const router = createBrowserRouter([
             <CasePage />
           </Suspense>
         ),
+        loader: caseLoader,
+        handle: { crumb: (data) => data.name },
       },
       {
         path: '/services',
@@ -77,6 +83,7 @@ export const router = createBrowserRouter([
             <ServicesPage />
           </Suspense>
         ),
+        handle: { crumb: () => 'ЭКСПЕРТНОСТЬ' },
       },
       {
         path: '/services/:serviceId',
@@ -85,6 +92,8 @@ export const router = createBrowserRouter([
             <ServicePage />
           </Suspense>
         ),
+        loader: serviceLoader,
+        handle: { crumb: (data) => data.name },
       },
       {
         path: '/vacancy',
@@ -93,6 +102,7 @@ export const router = createBrowserRouter([
             <VacancyPage />
           </Suspense>
         ),
+        handle: { crumb: () => 'ВАКАНСИИ' },
       },
     ],
   },

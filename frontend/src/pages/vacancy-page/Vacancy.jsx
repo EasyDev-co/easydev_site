@@ -15,9 +15,6 @@ export const VacancyPage = () => {
   return (
     <div className={styles.main}>
       <section className={styles.vacancy}>
-        <div className={styles.breadcrumbs}>
-          {width < 480 ? 'HOME' : 'ВАКАНСИИ'} / <span>ЭКСПЕРТНОСТЬ</span>
-        </div>
         <h1 className={styles.vacancy__title}>Вакансии</h1>
         <h2 className={styles.vacancy__sub_title}>В поисках талантов</h2>
       </section>

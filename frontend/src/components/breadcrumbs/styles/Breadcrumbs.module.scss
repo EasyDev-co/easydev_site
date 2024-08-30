@@ -13,10 +13,5 @@
 
   & span {
     color: $textColor-secondary;
-
-    &::before {
-      content: ' / ';
-      color: $background-secondary;
-    }
   }
 }

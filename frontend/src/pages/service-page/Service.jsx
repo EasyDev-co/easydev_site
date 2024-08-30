@@ -1,4 +1,3 @@
-import { useWindowWidth } from '@react-hook/window-size'
 import { useLocation } from 'react-router-dom'
 import BlueButton from '../../components/buttons/BlueButton/BlueButton'
 import Accordion from '../../components/Accordions/Accordion'
@@ -11,13 +10,9 @@ export const ServicePage = () => {
   const { created, description, id, modified, name, photo } =
     location.state || {}
 
-  const width = useWindowWidth()
   return (
     <main className={styles.main}>
       <section className={styles.service}>
-        <div className={styles.breadcrumbs}>
-          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / ЭКСПЕРТНОСТЬ /<span>{name}</span>
-        </div>
         <h1 className={styles.service__title}>{name}</h1>
         <div className={styles.service__title__wrap}>
           <span className={styles.service__title__desc}>{description}</span>

@@ -6,6 +6,7 @@ import { Contacts } from '../modals/contacts/Contacts'
 import { Logo } from '../logo/Logo'
 import { motion } from 'framer-motion'
 import styles from './styles/Layout.module.scss'
+import { Breadcrumbs } from '../breadcrumbs/Breadcrumbs'
 
 export const Layout = () => {
   const [isHeroVisible, setIsHeroVisible] = useState(true)
@@ -39,7 +40,8 @@ export const Layout = () => {
         <Contacts isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
       )}
       <Header setIsOpen={setIsModalOpen} />
-      <div className={styles.container}>
+      <div className={pathname === '/' ? styles.mainContainer : styles.container}>
+        {pathname !== '/' && <Breadcrumbs />}
         <Outlet />
       </div>
       {pathname !== '/' && <Footer />}

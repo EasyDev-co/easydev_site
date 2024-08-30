@@ -12,10 +12,6 @@ export const CasePage = () => {
   return (
     <main className={styles.main}>
       <section className={styles.case}>
-        <div className={styles.breadcrumbs}>
-          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / КЕЙСЫ /{''}
-          <span>{name}</span>
-        </div>
         <div>
           <h1 className={styles.case__tittle}>{name}</h1>
           {width > 768 && <BlueButton text={'Посетить наш сайт'} />}

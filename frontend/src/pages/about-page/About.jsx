@@ -1,5 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
-import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
 import { clients } from '../../mockData/clients'
 import { employees } from '../../mockData/employees'
 import { reviews } from '../../mockData/reviews'
@@ -12,7 +10,6 @@ export const AboutPage = () => {
 
   return (
     <main className={styles.main}>
-      <Breadcrumbs />
       <div className={styles.about}>
         <h1 className={styles.about__title}>Easy development</h1>
         <p className={styles.about__text}>

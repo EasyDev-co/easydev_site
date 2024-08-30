@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
 import { Link } from 'react-router-dom'
 import { OriginButton } from '../../components/buttons/origin-button/OriginButton'
 import { getCases } from '../../api/cases/getCases'
@@ -20,7 +19,6 @@ export const CasesPage = () => {
   return (
     <main className={styles.main}>
       <section className={styles.cases}>
-        <Breadcrumbs />
         <h2 className={styles.cases__title}>Кейсы (19/24)</h2>
         <div className={styles.cases__buttons}>
           <OriginButton text={'Все кейсы'} />
