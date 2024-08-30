@@ -6,12 +6,14 @@ from apps.vacancy.models import Vacancy, VacancyForm
 
 @admin.register(Vacancy)
 class VacancyAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'title', 'post', 'description_short', 'salary_fork_lt', 'salary_fork_gt', 'image')
+    list_display = (
+        'pk', 'title', 'post', 'description_short', 'salary_fork_lt', 'salary_fork_gt', 'image', 'is_active',
+    )
     search_fields = ('pk', 'title', 'post')
     fieldsets = [
         (None, {
             'fields': (
-                'title', 'post', 'salary_fork_lt', 'salary_fork_gt', 'image', 'preview',
+                'title', 'post', 'salary_fork_lt', 'salary_fork_gt', 'image', 'preview', 'is_active',
             ),
         }),
     ]
