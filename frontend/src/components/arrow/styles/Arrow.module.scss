@@ -24,12 +24,12 @@
 
   &_default {
     fill: $background-secondary;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
+    transition: $transition;
   }
 
   &_hover {
     fill: $textColor-secondary;
     transform: translateY(100%);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
+    transition: $transition;
   }
 }

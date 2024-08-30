@@ -1,5 +1,7 @@
-import styles from './styles/Breadcrumbs.module.scss'
 import { Link, useMatches } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { containerVariants } from '../../animations/variants'
+import styles from './styles/Breadcrumbs.module.scss'
 
 export const Breadcrumbs = () => {
   let matches = useMatches()
@@ -31,8 +33,14 @@ export const Breadcrumbs = () => {
     })
 
   return (
-    <div className={styles.breadcrumbs}>
+    <motion.div
+      className={styles.breadcrumbs}
+      variants={containerVariants}
+      custom={2}
+      initial="initial"
+      animate="animate"
+    >
       <Link to="/">ГЛАВНАЯ</Link> / {crumbs}
-    </div>
+    </motion.div>
   )
 }

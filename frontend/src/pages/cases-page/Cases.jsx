@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { OriginButton } from '../../components/buttons/origin-button/OriginButton'
 import { getCases } from '../../api/cases/getCases'
+import { motion } from 'framer-motion'
+import { containerVariants } from '../../animations/variants'
 import styles from './styles/Cases.module.scss'
 
 export const CasesPage = () => {
@@ -16,18 +18,91 @@ export const CasesPage = () => {
       setCases(res)
     })
   }, [])
+
+  // анимация при скроллинге
+  const [isLoaded, setIsLoaded] = useState(false)
+  const containersRef = useRef([])
+
+  useEffect(() => {
+    const handleLoad = () => setIsLoaded(true)
+    window.addEventListener('load', handleLoad)
+
+    return () => {
+      window.removeEventListener('load', handleLoad)
+    }
+  }, [])
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1, // Элемент считается видимым, когда 10% его площади видны
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(styles.visible)
+          observer.unobserve(entry.target) // Остановить наблюдение за элементом после его появления
+        }
+      })
+    }, options)
+
+    // не срабатывает без задержки
+    const timer = setTimeout(() => {
+      containersRef.current.forEach((container) => {
+        if (container) {
+          observer.observe(container)
+        }
+      })
+    }, 100)
+
+    return () => {
+      clearTimeout(timer)
+      containersRef.current.forEach((container) => {
+        if (container) {
+          observer.unobserve(container)
+        }
+      })
+    }
+  }, [isLoaded])
+
   return (
     <main className={styles.main}>
       <section className={styles.cases}>
-        <h2 className={styles.cases__title}>Кейсы (19/24)</h2>
-        <div className={styles.cases__buttons}>
+        <motion.h2
+          className={styles.cases__title}
+          variants={containerVariants}
+          custom={2}
+          initial="initial"
+          animate="animate"
+        >
+          Кейсы (19/24)
+        </motion.h2>
+        <motion.div
+          className={styles.cases__buttons}
+          variants={containerVariants}
+          custom={3}
+          initial="initial"
+          animate="animate"
+        >
           <OriginButton text={'Все кейсы'} />
           <OriginButton text={'Экспертность'} />
           <OriginButton text={'Отрасли'} />
-        </div>
-        <div className={styles.case}>
-          {cases.results?.map((elem) => (
-            <div className={styles.project__container} key={elem.pk}>
+        </motion.div>
+        <motion.div
+          className={styles.case}
+          variants={containerVariants}
+          custom={3}
+          initial="initial"
+          animate="animate"
+        >
+          {cases.results?.map((elem, index) => (
+            <motion.div
+              className={styles.project__container}
+              key={elem.pk}
+              ref={(el) => (containersRef.current[index] = el)}
+            >
               <div className={styles.project}>
                 <Link to={`/cases/${elem.pk}`} state={elem}>
                   <p className={styles.project__heading}>{elem.name}</p>
@@ -57,9 +132,9 @@ export const CasesPage = () => {
                 src={elem.images[0].image}
                 alt={elem.case_name}
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
     </main>
   )
