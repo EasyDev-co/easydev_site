@@ -14,17 +14,37 @@ class AmenitiesAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {
             'fields': (
-                'name', 'description', 'photo', 'preview',
+                'name', 'description', 'photo', 'photo_preview',
+                'video', 'video_preview', 'gif', 'gif_preview',
             ),
         }),
     ]
 
-    readonly_fields = ('preview',)
+    readonly_fields = ('photo_preview', 'video_preview', 'gif_preview')
 
-    def preview(self, obj):
+    def photo_preview(self, obj):
         if obj.photo:
             return format_html('<img src="{}" style="max-width:200px; max-height:200"/>'.format(obj.photo.url))
         return 'No photo'
+
+    def video_preview(self, obj):
+        if obj.video:
+            return format_html(
+                '<video width="200" height="200" controls>'
+                '<source src="{}" type="video/mp4">'
+                'Your browser does not support the video tag.'
+                '</video>',
+                obj.video.url
+            )
+        return "No video"
+
+    def gif_preview(self, obj):
+        if obj.gif:
+            return format_html(
+                '<img src="{}" width="200" height="200" />',
+                obj.gif.url
+            )
+        return "No GIF"
 
     def description_short(self, obj):
         if len(obj.description) < 50:

@@ -9,7 +9,9 @@ class Amenities(TimeStampedMixin, UUIDMixin):
     """Модель для услуг"""
     name = models.CharField(verbose_name='Наименование услуги', max_length=256)
     description = models.TextField(verbose_name='Описание услуги', max_length=2048)
-    photo = models.ImageField(verbose_name='Фото услуги', upload_to='services/photo/')
+    photo = models.ImageField(verbose_name='Фото услуги', upload_to='amenities/photo/')
+    video = models.FileField(verbose_name='Видео услуги', upload_to='amenities/video/', blank=True, null=True)
+    gif = models.ImageField(verbose_name='GIF услуги', upload_to='amenities/GIF/', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Услуга'
