@@ -1,9 +1,7 @@
 from django.contrib import admin
-from django.contrib.contenttypes.admin import GenericTabularInline
 from django.utils.html import format_html
 
-from apps.amenities.models import Amenities, AmenitiesBlock
-from apps.news.admin import ImageInline
+from apps.amenities.models import Amenities, Skill, Technology
 
 
 @admin.register(Amenities)
@@ -54,20 +52,51 @@ class AmenitiesAdmin(admin.ModelAdmin):
     description_short.short_description = 'description'
 
 
-@admin.register(AmenitiesBlock)
-class AmenitiesBlockAdmin(admin.ModelAdmin):
-    inlines = (ImageInline, )
-    list_display = ('pk', 'text_short', 'amenities')
-    search_fields = ('pk', 'text')
+@admin.register(Skill)
+class SkillAdmin(admin.ModelAdmin):
+    """AdminView для модели скиллов"""
+    list_display = ('pk', 'title', 'description_short', 'amenities')
+    search_fields = ('pk', 'title', 'description', 'amenities')
     fieldsets = [
         (None, {
-            'fields': ('text', 'amenities'),
+            'fields': (
+                'title', 'description', 'amenities',
+            ),
         }),
     ]
 
-    def text_short(self, obj):
-        if len(obj.text) < 50:
-            return obj.text
-        return obj.text[:50] + '...'
+    def description_short(self, obj):
+        if len(obj.description) < 50:
+            return obj.description
+        return obj.description[:50] + '...'
 
-    text_short.short_description = 'text'
+    description_short.short_description = 'description'
+
+
+@admin.register(Technology)
+class TechnologyAdmin(admin.ModelAdmin):
+    """AdminView для технологий"""
+    list_display = ('pk', 'name', 'amenities', 'description_short', 'photo')
+    search_fields = ('pk', 'name', 'amenities', 'description')
+    fieldsets = [
+        (None, {
+            'fields': (
+                'name', 'amenities', 'description', 'photo', 'preview'
+            )
+        })
+    ]
+
+    readonly_fields = ('preview',)
+
+    def preview(self, obj):
+        if obj.photo:
+            return format_html('<img src="{}" style="max-width:200px; max-height:200"/>'.format(obj.photo.url))
+        return 'No photo'
+
+    def description_short(self, obj):
+        if len(obj.description) < 50:
+            return obj.description
+        return obj.description[:50] + '...'
+
+    description_short.short_description = 'description'
+

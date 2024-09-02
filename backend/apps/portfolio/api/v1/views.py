@@ -5,11 +5,11 @@ from apps.portfolio.models import Portfolio
 
 class PortfolioDetailAPIView(RetrieveAPIView):
     """Представление для детального просмотра кейсов"""
-    queryset = Portfolio.objects.prefetch_related('images').all()
+    queryset = Portfolio.objects.all()
     serializer_class = PortfolioSerializer
 
 
 class PortfolioListView(ListAPIView):
     """Представление для просмотра списка кейсов"""
-    queryset = Portfolio.objects.prefetch_related('images').all()
+    queryset = Portfolio.objects.all()
     serializer_class = PortfolioSerializer
