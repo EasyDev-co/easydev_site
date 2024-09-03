@@ -1,13 +1,42 @@
 import { createBrowserRouter } from 'react-router-dom'
-import MainPage from '../pages/main-page/Main'
-import  AboutPage  from '../pages/about-page/About'
-import  CasesPage  from '../pages/cases-page/Cases'
-import ServicesPage from '../pages/services-page/Services'
-import VacancyPage from '../pages/vacancy-page/Vacancy'
+import { lazy, Suspense } from 'react'
+
+import { AnimatedMainPage } from '../pages/main-page'
 import NotFoundPage from '../pages/404-page/NotFound'
-import CasePage from '../pages/case-page/Case'
-import ServicePage from '../pages/service-page/Service'
 import { Layout } from '../components/layout/Layout'
+import Loader from '../components/loader/Loader'
+import { caseLoader, serviceLoader } from './loaders'
+
+const AboutPage = lazy(() =>
+  import('../pages/about-page').then((module) => ({
+    default: module.AnimatedAboutPage,
+  })),
+)
+const CasesPage = lazy(() =>
+  import('../pages/cases-page').then((module) => ({
+    default: module.AnimatedCasesPage,
+  })),
+)
+const ServicesPage = lazy(() =>
+  import('../pages/services-page').then((module) => ({
+    default: module.AnimatedServicesPage,
+  })),
+)
+const VacancyPage = lazy(() =>
+  import('../pages/vacancy-page').then((module) => ({
+    default: module.AnimatedVacancyPage,
+  })),
+)
+const CasePage = lazy(() =>
+  import('../pages/case-page').then((module) => ({
+    default: module.AnimatedCasePage,
+  })),
+)
+const ServicePage = lazy(() =>
+  import('../pages/service-page').then((module) => ({
+    default: module.AnimatedServicePage,
+  })),
+)
 
 export const router = createBrowserRouter([
   {
@@ -16,31 +45,64 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <MainPage />,
+        element: <AnimatedMainPage />,
+        handle: { crumb: () => 'ГЛАВНАЯ' },
       },
       {
         path: '/about',
-        element: <AboutPage />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <AboutPage />
+          </Suspense>
+        ),
+        handle: { crumb: () => 'О НАС' },
       },
       {
         path: '/cases',
-        element: <CasesPage />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <CasesPage />
+          </Suspense>
+        ),
+        handle: { crumb: () => 'КЕЙСЫ' },
       },
       {
         path: '/cases/:caseId',
-        element: <CasePage />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <CasePage />
+          </Suspense>
+        ),
+        loader: caseLoader,
+        handle: { crumb: (data) => data.name },
       },
       {
         path: '/services',
-        element: <ServicesPage />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <ServicesPage />
+          </Suspense>
+        ),
+        handle: { crumb: () => 'ЭКСПЕРТНОСТЬ' },
       },
       {
         path: '/services/:serviceId',
-        element: <ServicePage />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <ServicePage />
+          </Suspense>
+        ),
+        loader: serviceLoader,
+        handle: { crumb: (data) => data.name },
       },
       {
         path: '/vacancy',
-        element: <VacancyPage />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            <VacancyPage />
+          </Suspense>
+        ),
+        handle: { crumb: () => 'ВАКАНСИИ' },
       },
     ],
   },

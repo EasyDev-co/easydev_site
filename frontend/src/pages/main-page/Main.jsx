@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { useWindowWidth } from '@react-hook/window-size'
 import { motion } from 'framer-motion'
 import Arrow from '../../components/arrow/Arrow'
-import transition from '../../animations/transition'
+import { containerVariants } from '../../animations/variants'
 import styles from './styles/Main.module.scss'
 
-const MainPage = () => {
+export const MainPage = () => {
   const [localTime, setLocalTime] = useState('')
 
   const width = useWindowWidth()
@@ -25,14 +25,7 @@ const MainPage = () => {
     return () => clearInterval(intervalId)
   }, [])
 
-  const containerVariants = {
-    initial: { opacity: 0, y: '200%' },
-    animate: (custom) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, ease: 'easeInOut', delay: custom * 0.5 },
-    }),
-  }
+  
 
   return (
     <main className={styles.main}>
@@ -90,5 +83,3 @@ const MainPage = () => {
     </main>
   )
 }
-
-export default transition(MainPage);

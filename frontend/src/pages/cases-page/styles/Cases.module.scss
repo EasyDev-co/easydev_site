@@ -1,10 +1,6 @@
 @import '../../../styles/variables.scss';
 @import '../../../styles/fonts.scss';
 
-.main {
-  padding: 60px 0 120px;
-}
-
 .cases {
   &__title {
     font-weight: 400;
@@ -72,6 +68,16 @@
     width: inherit;
     display: flex;
     flex-direction: column;
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     &:nth-child(2) > div {
       background: #dbdbdb;

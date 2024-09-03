@@ -1,37 +1,32 @@
 import { Link } from 'react-router-dom'
-import { services } from '../../mockData/services'
-import { useWindowWidth } from '@react-hook/window-size'
-import styles from './styles/Services.module.scss'
 import { useEffect, useState } from 'react'
 import { getServices } from '../../api/service/getServices'
-import { url } from '../../api/http'
-import transition from '../../animations/transition'
+import styles from './styles/Services.module.scss'
 
-const ServicesPage = () => {
-  const width = useWindowWidth();
+export const ServicesPage = () => {
   const [services, setServices] = useState({
-    "count": 0,
-    "next": null,
-    "previous": null,
-    "results": []
+    count: 0,
+    next: null,
+    previous: null,
+    results: [],
   })
   useEffect(() => {
-    getServices()
-      .then(res => {
-        setServices(res)
-      })
+    getServices().then((res) => {
+      setServices(res)
+    })
   }, [])
 
   return (
     <main className={styles.main}>
       <section className={styles.service}>
-        <div className={styles.breadcrumbs}>
-          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / <span>ЭКСПЕРТНОСТЬ</span>
-        </div>
         <h1 className={styles.service__title}>Экспертность</h1>
         <ul className={styles.service__wrapp}>
           {services.results?.map((elem) => (
-            <div key={elem.id} style={{backgroundImage: `url("${elem.photo}"`}} className={styles.service__container}>
+            <div
+              key={elem.id}
+              style={{ backgroundImage: `url("${elem.photo}"` }}
+              className={styles.service__container}
+            >
               <div className={styles.service__shield}></div>
               <li>
                 <Link to={`/services/${elem.id}`} state={elem}>
@@ -47,5 +42,3 @@ const ServicesPage = () => {
     </main>
   )
 }
-
-export default transition(ServicesPage);
