@@ -7,6 +7,7 @@ import { Logo } from '../logo/Logo'
 import { motion } from 'framer-motion'
 import styles from './styles/Layout.module.scss'
 import { Breadcrumbs } from '../breadcrumbs/Breadcrumbs'
+import { ScrollToTop } from '../scroll-to-top/ScrollToTop'
 
 export const Layout = () => {
   const [isHeroVisible, setIsHeroVisible] = useState(true)
@@ -23,6 +24,7 @@ export const Layout = () => {
 
   return (
     <>
+      <ScrollToTop />
       {isHeroVisible && pathname === '/' && (
         <motion.div
           className={styles.hero}
@@ -40,7 +42,9 @@ export const Layout = () => {
         <Contacts isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
       )}
       <Header setIsOpen={setIsModalOpen} />
-      <div className={pathname === '/' ? styles.mainContainer : styles.container}>
+      <div
+        className={pathname === '/' ? styles.mainContainer : styles.container}
+      >
         {pathname !== '/' && <Breadcrumbs />}
         <Outlet />
       </div>
