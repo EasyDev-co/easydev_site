@@ -4,8 +4,8 @@
 
 .nav__links {
   & * {
-    -webkit-transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
+    -webkit-transition: $transition;
+    transition: $transition;
   }
 
   & li {
@@ -29,8 +29,8 @@
 
     &::after {
       position: absolute;
-      -webkit-transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1.4);
+      -webkit-transition: $transition;
+      transition: $transition;
     }
 
     &:after {

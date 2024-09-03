@@ -1,92 +1,75 @@
 @import '../../../styles/variables.scss';
 @import '../../../styles/fonts.scss';
 
-.main {
-    padding: 60px 0 120px;
-}
-
-.breadcrumbs {
-    font-family: 'Roboto Mono';
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 109%;
-    color: $background-secondary;
-
-    & span {
-        color: $textColor-secondary;
-    }
-}
-
 .vacancy {
-    &__title {
-        font-weight: 400;
-        font-size: 62px;
-        line-height: 100%;
-        letter-spacing: -0.06em;
-        color: $background-secondary;
-        margin: 20px 0 60px;
+  &__title {
+    font-weight: 400;
+    font-size: 62px;
+    line-height: 100%;
+    letter-spacing: -0.06em;
+    color: $background-secondary;
+    margin: 20px 0 60px;
 
-        @media (max-width: 1919px) {
-            font-size: 50px;
-        }
-
-        @media (max-width: 959px) {
-            font-size: 40px;
-        }
-
-        @media (max-width: 767px) {
-            font-size: 36px;
-        }
+    @media (max-width: 1919px) {
+      font-size: 50px;
     }
 
-    &__sub_title {
-        font-weight: 400;
-        font-size: 22px;
-        line-height: 118%;
-        letter-spacing: -0.04em;
+    @media (max-width: 959px) {
+      font-size: 40px;
     }
 
-    &__list {
+    @media (max-width: 767px) {
+      font-size: 36px;
+    }
+  }
+
+  &__sub_title {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 118%;
+    letter-spacing: -0.04em;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    &__column {
+      &:not(:last-child) {
+        flex-grow: 1;
+        & > .column__item {
+          @media (max-width: 767px) {
+            color: #000;
+          }
+        }
+      }
+
+      & > .column__header {
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 123%;
+        letter-spacing: -0.01em;
+        padding: 0px 0px 8px 0px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+      }
+
+      & > .column__item {
+        padding: 8px 0px 8px 0px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+        height: 50px;
         display: flex;
-        justify-content: space-between;
-        padding: 20px 0;
-        &__column {
-            &:not(:last-child) {
-                flex-grow: 1;
-                &>.column__item{
-                    @media (max-width: 767px) {
-                        color: #000;
-                    }
-                }
-            }
+        flex-direction: column;
+        justify-content: center;
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.48);
 
-            &>.column__header {
-                font-weight: 400;
-                font-size: 13px;
-                line-height: 123%;
-                letter-spacing: -0.01em;
-                padding: 0px 0px 8px 0px;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-            }
-
-            &>.column__item {
-                padding: 8px 0px 8px 0px;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-                height: 50px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                font-size: 13px;
-                color: rgba(0, 0, 0, 0.48);
-               
-                &>div{
-                    color: rgba(0, 0, 0, 0.48);
-
-                }
-                &>img {
-                    cursor: pointer;
-                }
-            }
+        & > div {
+          color: rgba(0, 0, 0, 0.48);
         }
+        & > img {
+          cursor: pointer;
+        }
+      }
     }
+  }
 }

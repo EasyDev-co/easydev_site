@@ -6,7 +6,10 @@
   font-weight: 400;
   font-size: 11px;
   line-height: 109%;
-  color: $background-secondary;
+
+  & a {
+    color: $background-secondary;
+  }
 
   & span {
     color: $textColor-secondary;

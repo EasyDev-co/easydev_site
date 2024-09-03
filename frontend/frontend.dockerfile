@@ -6,6 +6,7 @@ COPY package*.json ./
 
 RUN npm install --only=production
 RUN npm install framer-motion
+RUN npm install react-intersection-observer
 
 COPY . .
 EXPOSE 3000

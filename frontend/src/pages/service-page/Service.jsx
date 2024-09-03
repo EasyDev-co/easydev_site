@@ -1,30 +1,21 @@
-import { useWindowWidth } from '@react-hook/window-size'
 import { useLocation } from 'react-router-dom'
-import styles from './styles/Service.module.scss'
 import BlueButton from '../../components/buttons/BlueButton/BlueButton'
 import Accordion from '../../components/Accordions/Accordion'
 import TecnologiesSelect from '../../components/TechnologiesSelect/TecnologiesSelect'
 import { accordion } from '../../mockData/accordion'
-import transition from '../../animations/transition'
+import styles from './styles/Service.module.scss'
 
-const ServicePage = () => {
-
+export const ServicePage = () => {
   const location = useLocation()
-  const { created, description, id, modified, name, photo } = location.state || {}
-  
-  const width = useWindowWidth()
+  const { created, description, id, modified, name, photo } =
+    location.state || {}
+
   return (
     <main className={styles.main}>
       <section className={styles.service}>
-        <div className={styles.breadcrumbs}>
-          {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / ЭКСПЕРТНОСТЬ /
-          <span>{name}</span>
-        </div>
         <h1 className={styles.service__title}>{name}</h1>
         <div className={styles.service__title__wrap}>
-          <span className={styles.service__title__desc}>
-           {description}
-          </span>
+          <span className={styles.service__title__desc}>{description}</span>
           <BlueButton text={'Заказать услугу'} />
         </div>
         <div className={styles.service__about_wrap}>
@@ -56,5 +47,3 @@ const ServicePage = () => {
     </main>
   )
 }
-
-export default transition(ServicePage);
