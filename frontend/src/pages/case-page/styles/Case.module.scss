@@ -65,6 +65,19 @@
         width: 100%;
       }
 
+      & > div {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.6s ease-out,
+          transform 0.6s ease-out;
+
+        &.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       & > div > img {
         width: 100%;
       }

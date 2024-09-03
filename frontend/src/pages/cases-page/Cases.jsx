@@ -4,6 +4,7 @@ import { OriginButton } from '../../components/buttons/origin-button/OriginButto
 import { getCases } from '../../api/cases/getCases'
 import { motion } from 'framer-motion'
 import { containerVariants } from '../../animations/variants'
+import useScrollAnimation from '../../hooks/useScrollAnimation'
 import styles from './styles/Cases.module.scss'
 
 export const CasesPage = () => {
@@ -19,53 +20,9 @@ export const CasesPage = () => {
     })
   }, [])
 
-  // анимация при скроллинге
-  const [isLoaded, setIsLoaded] = useState(false)
   const containersRef = useRef([])
 
-  useEffect(() => {
-    const handleLoad = () => setIsLoaded(true)
-    window.addEventListener('load', handleLoad)
-
-    return () => {
-      window.removeEventListener('load', handleLoad)
-    }
-  }, [])
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1, // Элемент считается видимым, когда 10% его площади видны
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add(styles.visible)
-          observer.unobserve(entry.target) // Остановить наблюдение за элементом после его появления
-        }
-      })
-    }, options)
-
-    // не срабатывает без задержки
-    const timer = setTimeout(() => {
-      containersRef.current.forEach((container) => {
-        if (container) {
-          observer.observe(container)
-        }
-      })
-    }, 100)
-
-    return () => {
-      clearTimeout(timer)
-      containersRef.current.forEach((container) => {
-        if (container) {
-          observer.unobserve(container)
-        }
-      })
-    }
-  }, [isLoaded])
+  useScrollAnimation(containersRef, 0.1, styles.visible)
 
   return (
     <main className={styles.main}>
@@ -93,7 +50,7 @@ export const CasesPage = () => {
         <motion.div
           className={styles.case}
           variants={containerVariants}
-          custom={3}
+          custom={3.5}
           initial="initial"
           animate="animate"
         >
