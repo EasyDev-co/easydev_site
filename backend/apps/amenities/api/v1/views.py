@@ -5,7 +5,7 @@ from apps.amenities.models import Amenities
 
 class AmenitiesDetailAPIView(RetrieveAPIView):
     """Представление для детального просмотра услуг"""
-    queryset = Amenities.objects.prefetch_related('blocks_of_services').all()
+    queryset = Amenities.objects.prefetch_related('skill_of_amenities', 'technology_of_amenities').all()
     serializer_class = AmenitiesDetailSerializer
 
 

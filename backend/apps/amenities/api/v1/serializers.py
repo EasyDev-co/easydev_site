@@ -1,25 +1,31 @@
 from rest_framework import serializers
-from apps.amenities.models import Amenities, AmenitiesBlock
-from apps.utils.universal_models.universal_models import Image
-from apps.news.api.v1.serializers import ImageSerializer
+from apps.amenities.models import Amenities, Skill, Technology
 
 
-class AmenitiesBlockSerializer(serializers.ModelSerializer):
-    """Сериалайзер для дополнительной модели блока услуг"""
-    image = ImageSerializer(many=True, read_only=True)
+class TechnologySerializer(serializers.ModelSerializer):
+    """Сериалайзер для технологий"""
 
     class Meta:
-        model = AmenitiesBlock
-        fields = ('text', 'news', 'image')
+        model = Technology
+        fields = '__all__'
+
+
+class SkillSerializer(serializers.ModelSerializer):
+    """Сериалайзер для скиллов"""
+
+    class Meta:
+        model = Skill
+        fields = '__all__'
 
 
 class AmenitiesDetailSerializer(serializers.ModelSerializer):
     """Сериалайзер для детального просмотра основной модели услуг"""
-    block_of_amenities = AmenitiesBlockSerializer(many=True, read_only=True)
+    technology_of_amenities = TechnologySerializer(many=True, read_only=True)
+    skill_of_amenities = SkillSerializer(many=True, read_only=True)
 
     class Meta:
         model = Amenities
-        fields = ('name', 'description', 'photo', 'block_of_amenities')
+        fields = ('name', 'description', 'photo', 'technology_of_amenities', 'skill_of_amenities')
 
 
 class AmenitiesSerializer(serializers.ModelSerializer):
