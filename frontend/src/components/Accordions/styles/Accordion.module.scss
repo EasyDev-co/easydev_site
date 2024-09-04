@@ -4,6 +4,8 @@
 
 .accordion {
   width: 100%;
+  position: sticky;
+  top: 100px;
 
   &__tab {
     position: relative;
