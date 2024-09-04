@@ -4,22 +4,32 @@
 .service {
   &__title {
     font-size: 62px;
-    margin: 20px 0 60px 0;
+    margin: 20px 0 0;
 
     @media (max-width: 1919px) {
       font-size: 50px;
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 480px) {
       font-size: 36px;
     }
   }
 
-  &__wrapp {
+  &__container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(614px, 1fr));
     gap: 60px 10px;
-    margin: 40px 0 0;
+    margin: 60px 0 0;
+
+    & > a:nth-child(2n) > li > div {
+      & rect {
+        fill: $textColor-tertiary;
+      }
+
+      & path {
+        fill: #fff;
+      }
+    }
 
     @media (max-width: 1919px) {
       grid-template-columns: repeat(3, minmax(429px, 1fr));
@@ -43,42 +53,75 @@
       grid-template-columns: repeat(1, minmax(335px, 1fr));
     }
   }
-  &__container {
+
+  &__item {
     min-height: 614px;
     padding: 30px;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     background-repeat: no-repeat;
     inset: 0;
     background-size: cover;
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1919px) {
+      min-height: 429px;
+    }
+
     @media (max-width: 1365px) {
-      min-height: 614px;
+      min-height: 455px;
     }
 
     @media (max-width: 959px) {
-      min-height: 614px;
+      min-height: 359px;
+    }
+
+    @media (max-width: 767px) {
+      min-height: 440px;
     }
 
     @media (max-width: 479px) {
-      min-height: 614px;
-    }
-
-    @media (max-width: 375px) {
-      min-height: 614px;
-    }
-
-    & > li > a {
-      font-size: 22px;
-      color: #000;
-
-      @media (max-width: 1365px) {
-        font-size: 18px;
-      }
+      min-height: 335px;
     }
   }
-  &__shield {
-    background-image: url(../../../assets/img/service-page/easy_shield.svg);
+
+  &__svg {
     width: 30px;
     height: 30px;
-    margin-bottom: 30px;
+    border-radius: 50%;
+
+    & rect {
+      width: inherit;
+      height: inherit;
+      fill: $borderColor-primary;
+    }
+
+    & path {
+      fill: #000;
+    }
+  }
+
+  &__heading {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 118%;
+    letter-spacing: -0.04em;
+    color: $background-secondary;
+
+    @media (max-width: 1919px) {
+      font-size: 18px;
+      line-height: 122%;
+      letter-spacing: -0.02em;
+    }
   }
 }
