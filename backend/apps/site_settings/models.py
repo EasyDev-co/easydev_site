@@ -1,24 +1,62 @@
 from django.db import models
-from apps.utils.models_mixins.models_mixins import SingletonModelMixin, UUIDMixin
+from django.db.models import URLField
+
+from apps.utils.models_mixins.models_mixins import SingletonModelMixin, UUIDMixin, TimeStampedMixin
 
 
-class MainPageSettings(SingletonModelMixin, UUIDMixin):
-    """Модель главных настроек страницы"""
-    number = models.CharField(verbose_name='Номер телефона', default='8-800-555-3535')
-    email = models.EmailField(verbose_name='Электронная почта', default='admin@admin.com')
-    telegram = models.CharField(verbose_name='Телеграм', default='@admin')
-    user_agreement_link = models.URLField(
-        verbose_name='Ссылка на пользовательское соглашение', default=''
-    )
-    privacy_policy_link = models.URLField(
-        verbose_name='Ссылка на политику конфиденциальности', default=''
-    )
-    about_us = models.TextField(verbose_name='О нас', default='about us')
-    why_us = models.TextField(verbose_name='Почему именно мы', default='Why us specifically')
+class Contact(SingletonModelMixin, UUIDMixin):
+    """Модель контактов для главной страницы"""
+    address = models.CharField(verbose_name='Адрес', max_length=256)
+    phone_number = models.CharField(verbose_name='Номер телефона', max_length=24)
+    telegram = models.URLField(verbose_name='Телеграм', max_length=256)
+    email = models.EmailField(verbose_name='Почта', max_length=256)
 
     class Meta:
-        verbose_name = 'Настройка главной страницы'
-        verbose_name_plural = 'Настрийки главной страницы'
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
 
     def __str__(self):
-        return 'Главная страница'
+        return 'Контакты для главной страницы'
+
+
+class AboutUs(TimeStampedMixin, UUIDMixin):
+    """Модель для информации 'О Нас' для главной страницы"""
+    post = models.CharField(verbose_name='Должность', max_length=256)
+    telegram = models.URLField(verbose_name='Ссылка на телеграм', max_length=256)
+    photo = models.ImageField(verbose_name='Фото сотрудника', upload_to='site_settings/about_us/photo')
+
+    class Meta:
+        verbose_name = 'О нас'
+        verbose_name_plural = 'О нас'
+        ordering = ('created',)
+
+    def __str__(self):
+        return 'О нас'
+
+
+class Messangers(SingletonModelMixin, UUIDMixin):
+    """Модель контактами в мессенджерах"""
+    instagram = URLField(verbose_name='Инстаграм', max_length=256)
+    vk = URLField(verbose_name='Вконтакте', max_length=256)
+    telegram = URLField(verbose_name='Телеграм', max_length=256)
+    whatsapp = URLField(verbose_name='Ватсап', max_length=256)
+
+    class Meta:
+        verbose_name = 'Мессенджер'
+        verbose_name_plural = 'Мессенджеры'
+
+    def __str__(self):
+        return 'Мессенджер'
+
+
+class Stat(TimeStampedMixin, UUIDMixin):
+    """Модель для статистики на главной странице"""
+    how_much_done = models.PositiveIntegerField(verbose_name='Сколько сделано')
+    what_done = models.CharField(verbose_name='Что сделано', max_length=256)
+
+    class Meta:
+        verbose_name = 'Статистика'
+        verbose_name_plural = 'Статистика'
+
+    def __str__(self):
+        return 'Статистика'
