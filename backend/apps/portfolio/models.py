@@ -13,6 +13,9 @@ class Portfolio(TimeStampedMixin, UUIDMixin):
     decision = models.TextField(verbose_name='Решение кейса', max_length=4096)
     technology_stack = models.CharField(verbose_name='Стэк технологий', max_length=1024)
     task = models.TextField(verbose_name='Задача кейса', max_length=4096)
+    images = GenericRelation(Image, verbose_name='Фотографии кейса', related_query_name='images')
+    video = models.FileField(verbose_name='Видео услуги', upload_to='amenities/video/', blank=True, null=True)
+    gif = models.ImageField(verbose_name='GIF услуги', upload_to='amenities/GIF/', blank=True, null=True)
 
     class Meta:
         verbose_name = 'Портфолио'
