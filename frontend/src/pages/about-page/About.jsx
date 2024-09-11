@@ -1,8 +1,10 @@
-import { clients } from '../../mockData/clients'
 import { employees } from '../../mockData/employees'
 import { reviews } from '../../mockData/reviews'
 import { insertSpace } from '../../utils/insertSpace'
 import { useWindowWidth } from '@react-hook/window-size'
+import Clients from '../../components/clients/Clients'
+import { motion } from 'framer-motion'
+import { containerVariants } from '../../animations/variants'
 import styles from './styles/About.module.scss'
 
 export const AboutPage = () => {
@@ -11,12 +13,32 @@ export const AboutPage = () => {
   return (
     <main className={styles.main}>
       <div className={styles.about}>
-        <h1 className={styles.about__title}>Easy development</h1>
-        <p className={styles.about__text}>
+        <motion.h1
+          className={styles.about__title}
+          variants={containerVariants}
+          custom={2}
+          initial="initial"
+          animate="animate"
+        >
+          Easy development
+        </motion.h1>
+        <motion.p
+          className={styles.about__text}
+          variants={containerVariants}
+          custom={3}
+          initial="initial"
+          animate="animate"
+        >
           В нашем портфолио — проекты для финансовых компаний из России, Европы,
           США, Китая, Ближнего Востока и Африки
-        </p>
-        <section className={styles.team}>
+        </motion.p>
+        <motion.section
+          className={styles.team}
+          variants={containerVariants}
+          custom={3.5}
+          initial="initial"
+          animate="animate"
+        >
           <div className={styles.team__heading}>Всем привет, это мы</div>
           <div className={styles.team__employees}>
             {employees.map((employee) => (
@@ -32,11 +54,23 @@ export const AboutPage = () => {
               </div>
             ))}
           </div>
-        </section>
-        <div className={styles.review__heading}>
+        </motion.section>
+        <motion.div
+          className={styles.review__heading}
+          variants={containerVariants}
+          custom={4}
+          initial="initial"
+          animate="animate"
+        >
           {reviews.total}+ положительных отзывов
-        </div>
-        <section className={styles.review}>
+        </motion.div>
+        <motion.section
+          className={styles.review}
+          variants={containerVariants}
+          custom={4.5}
+          initial="initial"
+          animate="animate"
+        >
           {reviews.reviews.length
             ? reviews.reviews.map((review) => (
                 <div className={styles.review__container} key={review.id}>
@@ -70,23 +104,20 @@ export const AboutPage = () => {
                 </div>
               ))
             : 'Отзывов пока нет'}
-        </section>
-        <section className={styles.clients}>
+        </motion.section>
+        <motion.section
+          className={styles.clients}
+          variants={containerVariants}
+          custom={5}
+          initial="initial"
+          animate="animate"
+        >
           <h3 className={styles.clients__heading}>Наши любимые клиенты</h3>
           <p className={styles.clients__text}>
             Запоминается настоящее. Верят лучшему. Доверяют за результаты.
           </p>
-          <div className={styles.clients__container}>
-            {clients.length
-              ? clients.map((client) => (
-                  <div className={styles.clients__box} key={client.id}>
-                    <img src={client.logo} alt={client.company} />
-                    <div>{client.company}</div>
-                  </div>
-                ))
-              : 'Скоро появится'}
-          </div>
-        </section>
+          <Clients />
+        </motion.section>
       </div>
     </main>
   )
