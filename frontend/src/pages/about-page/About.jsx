@@ -1,8 +1,8 @@
-import { clients } from '../../mockData/clients'
 import { employees } from '../../mockData/employees'
 import { reviews } from '../../mockData/reviews'
 import { insertSpace } from '../../utils/insertSpace'
 import { useWindowWidth } from '@react-hook/window-size'
+import Clients from '../../components/clients/Clients'
 import styles from './styles/About.module.scss'
 
 export const AboutPage = () => {
@@ -76,16 +76,7 @@ export const AboutPage = () => {
           <p className={styles.clients__text}>
             Запоминается настоящее. Верят лучшему. Доверяют за результаты.
           </p>
-          <div className={styles.clients__container}>
-            {clients.length
-              ? clients.map((client) => (
-                  <div className={styles.clients__box} key={client.id}>
-                    <img src={client.logo} alt={client.company} />
-                    <div>{client.company}</div>
-                  </div>
-                ))
-              : 'Скоро появится'}
-          </div>
+          <Clients />
         </section>
       </div>
     </main>
