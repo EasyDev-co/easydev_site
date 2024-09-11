@@ -31,9 +31,8 @@
 
 .box {
   aspect-ratio: 1 / 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  overflow: hidden;
   padding: 15px;
   cursor: pointer;
   border: 1px solid $borderColor-primary;
@@ -42,6 +41,11 @@
     width: 34px;
     height: 12px;
     object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
 
     @media (max-width: 1919px) {
       width: 37px;
@@ -69,24 +73,24 @@
   }
 
   & div {
-    display: none;
     font-family: 'Roboto Mono', sans-serif;
     font-weight: 400;
     font-size: 11px;
     line-height: 109%;
     text-transform: uppercase;
+    position: absolute;
+    top: -100%;
+    transition: all 0.3s ease-in-out;
     color: $background-secondary;
   }
 
   &:hover {
     img {
-      display: none;
+      top: 200%;
     }
 
     div {
-      display: block;
+      top: 15px;
     }
-
-    display: block;
   }
 }
