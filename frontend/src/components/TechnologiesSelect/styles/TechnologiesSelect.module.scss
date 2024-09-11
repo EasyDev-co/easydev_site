@@ -1,0 +1,104 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+
+.technologies {
+  max-width: 937px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__infoContainer {
+    min-height: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  &__heading {
+    font-size: 13px;
+    line-height: 123%;
+    letter-spacing: -0.01em;
+    color: $textColor-secondary;
+  }
+
+  &__info {
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 109%;
+    text-transform: uppercase;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: $background-secondary;
+
+    & > div:last-of-type {
+      color: $textColor-secondary;
+    }
+  }
+
+  &__container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__item {
+    width: 146px;
+    height: 146px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid $borderColor-primary;
+
+    &_active {
+      width: 146px;
+      height: 146px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid $background-secondary;
+
+      &:hover {
+        & > img {
+          top: -100%;
+        }
+      }
+    }
+
+    @media (max-width: 1919px) {
+      width: 100px;
+      height: 100px;
+    }
+
+    @media (max-width: 1365px) {
+      width: 93px;
+      height: 93px;
+    }
+
+    @media (max-width: 959px) {
+      width: 100px;
+      height: 100px;
+    }
+
+    @media (max-width: 767px) {
+      width: 140px;
+      height: 140px;
+    }
+
+    @media (max-width: 479px) {
+      width: 105px;
+      height: 105px;
+    }
+  }
+
+  &__img {
+    width: 34px;
+    height: 29px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+  }
+}
