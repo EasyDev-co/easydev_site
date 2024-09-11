@@ -53,10 +53,6 @@
     border: 1px solid $borderColor-primary;
 
     &_active {
-      width: 146px;
-      height: 146px;
-      position: relative;
-      overflow: hidden;
       border: 1px solid $background-secondary;
 
       &:hover {
@@ -93,8 +89,8 @@
   }
 
   &__img {
-    width: 34px;
-    height: 29px;
+    width: 23%;
+    height: 19%;
     position: absolute;
     top: 50%;
     left: 50%;

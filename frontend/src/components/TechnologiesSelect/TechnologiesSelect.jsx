@@ -29,7 +29,7 @@ const TechnologiesSelect = () => {
             <div
               className={
                 elem.id === isActiveId
-                  ? styles.technologies__item_active
+                  ? `${styles.technologies__item} ${styles.technologies__item_active}`
                   : styles.technologies__item
               }
               role="button"
