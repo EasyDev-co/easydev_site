@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { menu } from '../../../mockData/menuItems'
+import { motion } from 'framer-motion'
+import { modalVariants } from '../../../animations/variants'
 import styles from './styles/Menu.module.scss'
-import { useEffect } from 'react'
 
 export const Menu = ({ isOpen, setIsOpen }) => {
   useEffect(() => {
@@ -20,7 +22,12 @@ export const Menu = ({ isOpen, setIsOpen }) => {
   if (!isOpen) return null
 
   return (
-    <div className={styles.modal}>
+    <motion.div
+      className={styles.modal}
+      variants={modalVariants}
+      initial="initial"
+      animate="animate"
+    >
       <div className={styles.inner}>
         <div className={styles.menu}>
           {menu.map((item) => (
@@ -48,6 +55,6 @@ export const Menu = ({ isOpen, setIsOpen }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
