@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect } from 'react'
 import { ShowMenuButton } from '../../buttons/show-menu-button/ShowMenuButton'
+import { motion } from 'framer-motion'
+import { modalVariants } from '../../../animations/variants'
 import styles from './styles/Contacts.module.scss'
 
 export const Contacts = ({ isOpen, setIsOpen }) => {
@@ -19,7 +21,12 @@ export const Contacts = ({ isOpen, setIsOpen }) => {
   if (!isOpen) return null
 
   return (
-    <div className={styles.modal}>
+    <motion.div
+      className={styles.modal}
+      variants={modalVariants}
+      initial="initial"
+      animate="animate"
+    >
       <div className={styles.inner}>
         <div className={styles.contacts__header}>
           <ShowMenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -60,6 +67,6 @@ export const Contacts = ({ isOpen, setIsOpen }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
