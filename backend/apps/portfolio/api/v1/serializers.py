@@ -9,4 +9,7 @@ class PortfolioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Portfolio
-        fields = '__all__'
+        fields = (
+            'pk', 'client', 'name', 'description', 'decision',
+            'technology_stack', 'task', 'images', 'video', 'gif',
+        )

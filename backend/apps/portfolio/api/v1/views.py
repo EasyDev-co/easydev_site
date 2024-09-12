@@ -11,5 +11,10 @@ class PortfolioDetailAPIView(RetrieveAPIView):
 
 class PortfolioListView(ListAPIView):
     """Представление для просмотра списка кейсов"""
+<<<<<<< develop
     queryset = Portfolio.objects.all()
     serializer_class = PortfolioSerializer
+=======
+    queryset = Portfolio.objects.prefetch_related('images').all()
+    serializer_class = PortfolioSerializer
+>>>>>>> main

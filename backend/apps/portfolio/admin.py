@@ -7,6 +7,10 @@ from apps.portfolio.models import Portfolio
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
     """AdminView для портфолио"""
+<<<<<<< develop
+=======
+    inlines = (ImageInline,)
+>>>>>>> main
     list_display = (
         'pk', 'client', 'name', 'description_short', 'decision_short', 'task'
     )
@@ -15,6 +19,34 @@ class PortfolioAdmin(admin.ModelAdmin):
         (None, {
             'fields': (
                 'client', 'name', 'description', 'decision', 'technology_stack', 'task'
+<<<<<<< develop
+=======
+            ),
+        }),
+        ('Изображения', {
+            'fields': ('video', 'video_preview', 'gif', 'gif_preview'),
+        }),
+    ]
+
+    readonly_fields = ('video_preview', 'gif_preview')
+
+    def video_preview(self, obj):
+        if obj.video:
+            return format_html(
+                '<video width="200" height="200" controls>'
+                '<source src="{}" type="video/mp4">'
+                'Your browser does not support the video tag.'
+                '</video>',
+                obj.video.url
+            )
+        return "No video"
+
+    def gif_preview(self, obj):
+        if obj.gif:
+            return format_html(
+                '<img src="{}" width="200" height="200" />',
+                obj.gif.url
+>>>>>>> main
             )
         })
     ]
