@@ -2,15 +2,13 @@ from django.contrib import admin
 from django.utils.html import format_html
 
 from apps.portfolio.models import Portfolio
+from apps.news.admin import ImageInline
 
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
     """AdminView для портфолио"""
-<<<<<<< develop
-=======
     inlines = (ImageInline,)
->>>>>>> main
     list_display = (
         'pk', 'client', 'name', 'description_short', 'decision_short', 'task'
     )
@@ -19,8 +17,6 @@ class PortfolioAdmin(admin.ModelAdmin):
         (None, {
             'fields': (
                 'client', 'name', 'description', 'decision', 'technology_stack', 'task'
-<<<<<<< develop
-=======
             ),
         }),
         ('Изображения', {
@@ -46,10 +42,8 @@ class PortfolioAdmin(admin.ModelAdmin):
             return format_html(
                 '<img src="{}" width="200" height="200" />',
                 obj.gif.url
->>>>>>> main
             )
-        })
-    ]
+        return "No GIF"
 
     def description_short(self, obj):
         if len(obj.description) < 50:
