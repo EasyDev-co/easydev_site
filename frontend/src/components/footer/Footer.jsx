@@ -3,12 +3,23 @@ import { Logo } from '../logo/Logo'
 import { OriginButton } from '../buttons/origin-button/OriginButton'
 import BlueButton from '../buttons/BlueButton/BlueButton'
 import { NavLinks } from '../nav-links/NavLinks'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { containerVariants } from '../../animations/variants'
 import styles from './styles/Footer.module.scss'
 
 export const Footer = () => {
+  const { pathname } = useLocation()
+
   return (
-    <footer className={styles.footer}>
+    <motion.footer
+      className={styles.footer}
+      variants={containerVariants}
+      custom={5}
+      initial="initial"
+      animate="animate"
+      key={pathname}
+    >
       <div className={styles.footer__container}>
         <div className={styles.footer__logo}>
           <Link to="/">
@@ -51,6 +62,6 @@ export const Footer = () => {
         <span>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</span>
         <span>DESIGN BY IVAN TASKAYEV</span>
       </div>
-    </footer>
+    </motion.footer>
   )
 }
