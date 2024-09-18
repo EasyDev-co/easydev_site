@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import styles from './styles/NavLinks.module.scss'
 import { menu } from '../../mockData/menuItems'
+import styles from './styles/NavLinks.module.scss'
 
 export const NavLinks = () => {
   return (

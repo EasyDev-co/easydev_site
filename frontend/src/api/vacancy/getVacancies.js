@@ -1,12 +1,12 @@
-import axios from 'axios';
-import { url } from '../http.js';
+import axios from 'axios'
+import { url } from '../http.js'
 
-export async function getVacancies() {
-    try {
-        const response = await axios.get(`${url}vacancy/`);
-        return response.data;
-    } catch (error) {
-        console.log(error);
-    }
+export const getVacancies = async () => {
+  const response = await axios.get(`${url}vacancy/`)
 
+  if (response.status !== 200) {
+    throw new Error('Ошибка сервера')
+  }
+
+  return response.data
 }
