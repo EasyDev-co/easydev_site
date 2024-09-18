@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { employees } from '../../mockData/employees'
 import { reviews } from '../../mockData/reviews'
 import { insertSpace } from '../../utils/insertSpace'
@@ -5,10 +6,28 @@ import { useWindowWidth } from '@react-hook/window-size'
 import Clients from '../../components/clients/Clients'
 import { motion } from 'framer-motion'
 import { containerVariants } from '../../animations/variants'
+// import { getAbout } from '../../api/about/getAbout'
+import ErrorMessage from '../../components/error-message/ErrorMessage'
 import styles from './styles/About.module.scss'
 
 export const AboutPage = () => {
+  // const [aboutData, setAboutData] = useState(null)
+  const [error, setError] = useState(null)
+
   const width = useWindowWidth()
+
+  // useEffect(() => {
+  //   const getAboutData = async () => {
+  //     try {
+  //       const res = await getAbout()
+  //       setAboutData(res)
+  //     } catch (error) {
+  //       setError(error.message)
+  //     }
+  //   }
+
+  //   getAboutData()
+  // }, [])
 
   return (
     <main className={styles.main}>
@@ -40,20 +59,31 @@ export const AboutPage = () => {
           animate="animate"
         >
           <div className={styles.team__heading}>Всем привет, это мы</div>
-          <div className={styles.team__employees}>
-            {employees.map((employee) => (
-              <div key={employee.id} className={styles.team__employee}>
-                <img src={employee.img} alt={employee.name} />
-                <div>{employee.name}</div>
-                <div>
-                  {(width < 1366 && width > 767) || width < 480
-                    ? insertSpace(employee.position)
-                    : employee.position}
-                </div>
-                <div>{employee.nickname}</div>
-              </div>
-            ))}
-          </div>
+          {error ? (
+            <ErrorMessage error={error} />
+          ) : (
+            <div className={styles.team__employees}>
+              {employees?.length ? (
+                employees.map((employee) => (
+                  <div key={employee.id} className={styles.team__employee}>
+                    <img src={employee.img} alt={employee.name} />
+                    <div>{employee.name}</div>
+                    <div>
+                      {
+                        //TODO: Убрать функцию insertSpace, если не понадобится
+                        (width < 1366 && width > 767) || width < 480
+                          ? insertSpace(employee.position)
+                          : employee.position
+                      }
+                    </div>
+                    <div>{employee.nickname}</div>
+                  </div>
+                ))
+              ) : (
+                <div>Данные скоро появятся</div>
+              )}
+            </div>
+          )}
         </motion.section>
         <motion.div
           className={styles.review__heading}

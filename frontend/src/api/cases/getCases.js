@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { url } from '../http'
 
-export async function getCases() {
-  try {
-    const response = await axios.get(`${url}portfolio/`)
-    return response.data
-  } catch (error) {
-    console.log(error)
+export const getCases = async () => {
+  const response = await axios.get(`${url}portfolio/`)
+
+  if (response.status !== 200) {
+    throw new Error('Ошибка сервера')
   }
+
+  return response.data
 }
