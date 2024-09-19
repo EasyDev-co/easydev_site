@@ -15,7 +15,11 @@ export const Logo = ({ isPromo }) => {
 
   return (
     <svg
-      className={isPromo ? `${styles.logo} ${styles.logo_promo}` : styles.logo}
+      className={
+        isPromo
+          ? `${styles.logo} ${styles.logo_promo}`
+          : `${styles.logo} ${styles.logo_hover}`
+      }
       viewBox="0 0 104 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

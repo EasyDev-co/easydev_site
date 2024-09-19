@@ -27,6 +27,7 @@ export const Menu = ({ isOpen, setIsOpen }) => {
       variants={modalVariants}
       initial="initial"
       animate="animate"
+      exit="exit"
     >
       <div className={styles.inner}>
         <div className={styles.menu}>

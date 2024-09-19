@@ -3,14 +3,18 @@
 
 .service {
   &__title {
+    font-weight: 400;
     font-size: 62px;
+    line-height: 100%;
+    letter-spacing: -0.06em;
+    color: $background-secondary;
     margin: 20px 0 0;
 
     @media (max-width: 1919px) {
       font-size: 50px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 767px) {
       font-size: 36px;
     }
   }

@@ -30,3 +30,11 @@
     }
   }
 }
+
+.logo_hover {
+  &:hover {
+    & path {
+      fill: $textColor-secondary;
+    }
+  }
+}

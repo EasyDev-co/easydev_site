@@ -9,6 +9,10 @@
 
   & a {
     color: $background-secondary;
+
+    &:hover {
+      color: $textColor-secondary;
+    }
   }
 
   & span {

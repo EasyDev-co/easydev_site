@@ -4,10 +4,10 @@ import { Footer } from '../footer/Footer'
 import { useEffect, useState } from 'react'
 import { Contacts } from '../modals/contacts/Contacts'
 import { Logo } from '../logo/Logo'
-import { motion } from 'framer-motion'
-import styles from './styles/Layout.module.scss'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Breadcrumbs } from '../breadcrumbs/Breadcrumbs'
 import { ScrollToTop } from '../scroll-to-top/ScrollToTop'
+import styles from './styles/Layout.module.scss'
 
 export const Layout = () => {
   const [isHeroVisible, setIsHeroVisible] = useState(true)
@@ -38,9 +38,11 @@ export const Layout = () => {
           <Logo isPromo={true} />
         </motion.div>
       )}
-      {isModalOpen && (
-        <Contacts isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-      )}
+      <AnimatePresence>
+        {isModalOpen && (
+          <Contacts isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+        )}
+      </AnimatePresence>
       <Header setIsOpen={setIsModalOpen} />
       <div
         className={pathname === '/' ? styles.mainContainer : styles.container}

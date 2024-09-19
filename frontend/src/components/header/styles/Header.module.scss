@@ -46,11 +46,34 @@
   }
 
   &__phone {
+    overflow: hidden;
+
+    &:hover a {
+      transform: translateY(-93%);
+    }
+  }
+
+  &__phone a {
     font-weight: 400;
     font-size: 13px;
     line-height: 123%;
     letter-spacing: -0.01em;
     color: $background-secondary;
+    -webkit-transition: $transition;
+    transition: $transition;
+
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      padding: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      content: attr(data-hover);
+      color: $textColor-secondary;
+      white-space: nowrap;
+    }
   }
 
   &__logo {

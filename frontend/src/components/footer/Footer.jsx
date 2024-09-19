@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Logo } from '../logo/Logo'
 import { OriginButton } from '../buttons/origin-button/OriginButton'
 import BlueButton from '../buttons/BlueButton/BlueButton'
@@ -6,6 +5,8 @@ import { NavLinks } from '../nav-links/NavLinks'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { containerVariants } from '../../animations/variants'
+import { socials } from '../../mockData/socials'
+import { menu } from '../../mockData/menuItems'
 import styles from './styles/Footer.module.scss'
 
 export const Footer = () => {
@@ -28,22 +29,10 @@ export const Footer = () => {
         </div>
         <div className={styles.footer__links}>
           <div>
-            <NavLinks />
+            <NavLinks links={menu} />
           </div>
           <div>
-            {/* Добавить ссылки на соцсети */}
-            <a href="#" aria-label="Vkontakte">
-              Vkontakte
-            </a>
-            <a href="#" aria-label="Telegram">
-              Telegram
-            </a>
-            <a href="#" aria-label="WhatsApp">
-              WhatsApp
-            </a>
-            <a href="#" aria-label="Instagram">
-              Instagram
-            </a>
+            <NavLinks links={socials} />
           </div>
         </div>
         <div className={styles.footer__buttons}>
@@ -60,7 +49,10 @@ export const Footer = () => {
       <div className={styles.footer__info}>
         <span>©2024 EASYDEV.SITE</span>
         <span>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</span>
-        <span>DESIGN BY IVAN TASKAYEV</span>
+        <span>
+          DESIGN BY
+          <a href="https://t.me/ivantaskayev"> IVAN TASKAYEV</a>
+        </span>
       </div>
     </motion.footer>
   )
