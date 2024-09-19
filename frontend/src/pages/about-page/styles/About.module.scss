@@ -99,16 +99,7 @@
       height: 302px;
       border-radius: 50%;
       object-fit: cover;
-      cursor: pointer;
-      opacity: 0.8; /* Выбрыть эффекты, если нужно */
-      // filter: grayscale(100%);
-
       transition: all 0.1s ease-in-out;
-
-      &:hover {
-        opacity: 1;
-        // filter: none;
-      }
 
       @media (max-width: 1919px) {
         width: 210px;
@@ -145,6 +136,14 @@
       text-align: center;
       color: $textColor-secondary;
 
+      & > a {
+        color: $buttonColor-secondary;
+
+        &:hover {
+          color: $background-secondary;
+        }
+      }
+
       &:first-of-type {
         font-family: 'Graphik LCG', sans-serif;
         font-size: 14px;
@@ -154,13 +153,9 @@
         color: $background-secondary;
       }
 
-      &:last-of-type {
-        margin-top: 6px;
-        color: $buttonColor-secondary;
-      }
-
       &:not(:first-of-type) {
         text-transform: uppercase;
+        margin-bottom: 6px;
       }
     }
 

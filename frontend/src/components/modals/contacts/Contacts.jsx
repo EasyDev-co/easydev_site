@@ -26,6 +26,7 @@ export const Contacts = ({ isOpen, setIsOpen }) => {
       variants={modalVariants}
       initial="initial"
       animate="animate"
+      exit="exit"
     >
       <div className={styles.inner}>
         <div className={styles.contacts__header}>

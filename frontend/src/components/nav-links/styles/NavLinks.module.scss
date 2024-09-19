@@ -29,12 +29,6 @@
     display: inline-block;
 
     &::after {
-      position: absolute;
-      -webkit-transition: $transition;
-      transition: $transition;
-    }
-
-    &:after {
       padding: 0;
       position: absolute;
       top: 100%;

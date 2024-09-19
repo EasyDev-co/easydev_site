@@ -76,7 +76,11 @@ export const AboutPage = () => {
                           : employee.position
                       }
                     </div>
-                    <div>{employee.nickname}</div>
+                    <div>
+                      <a href={`https://t.me/${employee.nickname}`}>
+                        @{employee.nickname}
+                      </a>
+                    </div>
                   </div>
                 ))
               ) : (

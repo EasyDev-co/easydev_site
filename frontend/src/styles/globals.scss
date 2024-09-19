@@ -47,6 +47,7 @@ button::after {
   border: none;
   outline: none;
 }
+
 .slide-in{
   position: fixed;
   top: 0;
@@ -57,6 +58,7 @@ button::after {
   transform-origin: bottom;
   z-index: 1000;
 }
+
 .slide-out{
   position: fixed;
   top: 0;

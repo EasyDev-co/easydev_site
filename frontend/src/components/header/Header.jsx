@@ -7,7 +7,8 @@ import { useWindowWidth } from '@react-hook/window-size'
 import { OriginButton } from '../buttons/origin-button/OriginButton'
 import BlueButton from '../buttons/BlueButton/BlueButton'
 import { NavLinks } from '../nav-links/NavLinks'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import { menu } from '../../mockData/menuItems'
 import styles from './styles/Header.module.scss'
 
 export const Header = ({ setIsOpen }) => {
@@ -35,7 +36,11 @@ export const Header = ({ setIsOpen }) => {
               />
               <OriginButton text={'Контакты'} onClick={() => setIsOpen(true)} />
             </div>
-            <div className={styles.header__phone}>+7 (913) 715 — 6372</div>
+            <div className={styles.header__phone}>
+              <a href="tel:+79137156372" data-hover="+7 (913) 715 — 6372">
+                +7 (913) 715 — 6372
+              </a>
+            </div>
           </div>
           <div className={styles.header__logo}>
             <Link to="/" onClick={() => setIsMenuOpen(false)}>
@@ -43,14 +48,16 @@ export const Header = ({ setIsOpen }) => {
             </Link>
           </div>
           <div className={styles.header__nav}>
-            <NavLinks />
+            <NavLinks links={menu} />
           </div>
           {width < 1366 && (
             <ShowMenuButton isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
           )}
         </div>
       </motion.header>
-      {isMenuOpen && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
+      <AnimatePresence>
+        {isMenuOpen && <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />}
+      </AnimatePresence>
     </>
   )
 }
