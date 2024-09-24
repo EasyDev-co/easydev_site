@@ -1,6 +1,7 @@
 from django.urls import path
 from apps.site_settings.api.v1.views import (
-    ContactAPIView, AboutUsDetailView, AboutUsListView, MessangersAPIView, StatListView, StatDetailView
+    ContactAPIView, AboutUsDetailView, AboutUsListView, MessangersAPIView, StatListView, StatDetailView, ReviewListView,
+    ReviewDetailView, FavoriteCustomersListView, FavoriteCustomersDetailView
 )
 
 
@@ -11,4 +12,9 @@ urlpatterns = [
     path('site_settings/messangers/', MessangersAPIView.as_view(), name='messangers'),
     path('site_settings/stat/', StatListView.as_view(), name='stat_list'),
     path('site_settings/stat/<uuid:pk>/', StatDetailView.as_view(), name='stat_detail'),
+    path('site_settings/review/', ReviewListView.as_view(), name='review_list'),
+    path('site_settings/review/<uuid:pk>/', ReviewDetailView.as_view(), name='review_detail'),
+    path('site_settings/favorite_customers/', FavoriteCustomersListView.as_view(), name='favorite_customers_list'),
+    path('site_settings/favorite_customers/<uuid:pk>/', FavoriteCustomersDetailView.as_view(),
+         name='favorite_customers_detail'),
 ]

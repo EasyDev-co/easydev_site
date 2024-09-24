@@ -21,8 +21,10 @@ class Contact(SingletonModelMixin, UUIDMixin):
 
 class AboutUs(TimeStampedMixin, UUIDMixin):
     """Модель для информации 'О Нас' для главной страницы"""
+    name = models.CharField(verbose_name='Имя сотрудника', max_length=256)
+    lastname = models.CharField(verbose_name='Фамилия сотрудника', max_length=256)
     post = models.CharField(verbose_name='Должность', max_length=256)
-    telegram = models.URLField(verbose_name='Ссылка на телеграм', max_length=256)
+    telegram = models.CharField(verbose_name='Ссылка на телеграм', max_length=256)
     photo = models.ImageField(verbose_name='Фото сотрудника', upload_to='site_settings/about_us/photo')
 
     class Meta:
@@ -57,6 +59,40 @@ class Stat(TimeStampedMixin, UUIDMixin):
     class Meta:
         verbose_name = 'Статистика'
         verbose_name_plural = 'Статистика'
+        ordering = ('created',)
 
     def __str__(self):
         return 'Статистика'
+
+
+class Review(TimeStampedMixin, UUIDMixin):
+    """Модель отзывов"""
+    company = models.CharField(verbose_name='Компания', max_length=256)
+    post = models.CharField(verbose_name='Должность', max_length=256)
+    name = models.CharField(verbose_name='Имя', max_length=256)
+    lastname = models.CharField(verbose_name='Фамилия', max_length=256)
+    review = models.TextField(verbose_name='Отзыв', max_length=4096)
+    logo = models.ImageField(verbose_name='Логотип', upload_to='site_settings/reviews/logo')
+    photo = models.ImageField(verbose_name='Фото', upload_to='site_settings/reviews/photo')
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+        ordering = ('created',)
+
+    def __str__(self):
+        return self.company
+
+
+class FavoriteCustomers(TimeStampedMixin, UUIDMixin):
+    """Модель любимых клиентов"""
+    company = models.CharField(verbose_name='Компания', max_length=256)
+    logo = models.ImageField(verbose_name='Логотип', upload_to='site_settings/favourite_customers/logo')
+
+    class Meta:
+        verbose_name = 'Любимый пользователь'
+        verbose_name_plural = 'Любимые пользователи'
+        ordering = ('created',)
+
+    def __str__(self):
+        return self.company

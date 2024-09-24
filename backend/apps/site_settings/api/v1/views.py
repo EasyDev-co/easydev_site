@@ -2,9 +2,10 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.views import APIView
 
-from apps.site_settings.models import Contact, AboutUs, Messangers, Stat
+from apps.site_settings.models import Contact, AboutUs, Messangers, Stat, Review, FavoriteCustomers
 from apps.site_settings.api.v1.serializers import (
-    ContactSerializer, AboutUsSerializer, MessangersSerializer, StatSerializer
+    ContactSerializer, AboutUsSerializer, MessangersSerializer, StatSerializer,
+    ReviewSerializer, FavoriteCustomersSerializer
 )
 
 
@@ -44,3 +45,27 @@ class StatDetailView(RetrieveAPIView):
     """Детальное представление для раздела статистики на главной странице"""
     queryset = Stat.objects.all()
     serializer_class = StatSerializer
+
+
+class ReviewListView(ListAPIView):
+    """Представление списка отзывов"""
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+
+class ReviewDetailView(RetrieveAPIView):
+    """Детальное представление отзывов"""
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+
+class FavoriteCustomersListView(ListAPIView):
+    """Представление списка любимых заказчиков"""
+    queryset = FavoriteCustomers.objects.all()
+    serializer_class = FavoriteCustomersSerializer
+
+
+class FavoriteCustomersDetailView(RetrieveAPIView):
+    """Детальное представление любимых заказчиков"""
+    queryset = FavoriteCustomers.objects.all()
+    serializer_class = FavoriteCustomersSerializer
