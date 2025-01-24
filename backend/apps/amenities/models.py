@@ -1,3 +1,4 @@
+from colorfield.fields import ColorField
 from django.db import models
 from django.contrib.contenttypes.fields import GenericRelation
 
@@ -9,7 +10,10 @@ class Amenities(TimeStampedMixin, UUIDMixin):
     """Модель для услуг"""
     name = models.CharField(verbose_name='Наименование услуги', max_length=256)
     description = models.TextField(verbose_name='Описание услуги', max_length=2048)
-    photo = models.ImageField(verbose_name='Фото услуги', upload_to='services/photo/')
+    photo = models.ImageField(verbose_name='Фото услуги', upload_to='amenities/photo/')
+    video = models.FileField(verbose_name='Видео услуги', upload_to='amenities/video/', blank=True, null=True)
+    gif = models.ImageField(verbose_name='GIF услуги', upload_to='amenities/GIF/', blank=True, null=True)
+    text_and_label_color = ColorField(verbose_name='Цвет текста')
 
     class Meta:
         verbose_name = 'Услуга'
@@ -20,18 +24,36 @@ class Amenities(TimeStampedMixin, UUIDMixin):
         return self.name
 
 
-class AmenitiesBlock(TimeStampedMixin, UUIDMixin):
-    """Модель блока услуги"""
-    text = models.TextField(verbose_name='Текст блока услуги')
+class Skill(TimeStampedMixin, UUIDMixin):
+    """Модель для скиллов"""
+    title = models.CharField(verbose_name='Заголовок скилла', max_length=256)
+    description = models.CharField(verbose_name='Описание скилла', max_length=2048)
     amenities = models.ForeignKey(
-        Amenities, verbose_name='Услуга', on_delete=models.CASCADE, related_name='blocks_of_amenities'
+        Amenities, verbose_name='Услуга', on_delete=models.CASCADE, related_name='skill_of_amenities'
     )
-    image = GenericRelation(Image, verbose_name='Фото блока услуги', related_query_name='amenities_blocks')
 
     class Meta:
-        verbose_name = 'Блок услуги'
-        verbose_name_plural = 'Блоки услуг'
+        verbose_name = 'Скилл'
+        verbose_name_plural = 'Скиллы'
         ordering = ('created',)
 
     def __str__(self):
-        return 'Блок услуг'
+        return self.title
+
+
+class Technology(TimeStampedMixin, UUIDMixin):
+    """Модель для технологий"""
+    name = models.CharField(verbose_name='Название технологии', max_length=256)
+    photo = models.ImageField(verbose_name='Фото технологии', upload_to='amenities/technology/photo')
+    amenities = models.ForeignKey(
+        Amenities, verbose_name='Услуга', on_delete=models.CASCADE, related_name='technology_of_amenities'
+    )
+    description = models.CharField(verbose_name='Описание технологии', max_length=2048)
+
+    class Meta:
+        verbose_name = 'Технология'
+        verbose_name_plural = 'Технологии'
+        ordering = ('created',)
+
+    def __str__(self):
+        return self.name

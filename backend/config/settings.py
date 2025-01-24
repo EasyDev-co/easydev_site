@@ -34,20 +34,7 @@ INSTALLED_APPS = [
     'apps.site_settings.apps.SiteSettingsConfig',
     'apps.amenities.apps.ServiceConfig',
     'apps.feedback.apps.FeedbackConfig',
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",
-    "https://easy-dev.tech",
-    "http://localhost:3000",
-    "http://185.244.180.41:3000"
-]
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1:3000",
-    "http://185.244.180.41:3000",
-    "https://easy-dev.tech",
-    "http://localhost:3000",
+    'apps.portfolio.apps.PortfolioConfig'
 ]
 
 MIDDLEWARE = [
@@ -92,6 +79,12 @@ DATABASES = {
     }
 }
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:80",
+    "http://127.0.0.1:80",
+    "http://localhost:3000",
+    "http://localhost:8001",
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {

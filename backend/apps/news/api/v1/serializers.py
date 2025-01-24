@@ -4,7 +4,7 @@ from apps.utils.universal_models.universal_models import Image
 
 
 class ImageSerializer(serializers.ModelSerializer):
-    """Сериалайщер для модели с картинками"""
+    """Сериалайзер для модели с картинками"""
 
     class Meta:
         model = Image
