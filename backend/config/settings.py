@@ -80,10 +80,19 @@ DATABASES = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:80",
-    "http://127.0.0.1:80",
+    "http://127.0.0.1:3000",
     "http://localhost:3000",
-    "http://localhost:8001",
+    "https://easy-dev.tech",
+    "http://0.0.0.0:3000",
+    "http://185.244.180.41:3000"
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
+    "http://0.0.0.0:3000",
+    "https://easy-dev.tech",
+    "http://185.244.180.41:3000"
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
