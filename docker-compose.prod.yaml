@@ -21,7 +21,8 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro
       - ./certbot/www:/var/www/certbot
     ports:
-      - "80:80"
+      - "8080:8080"
+      - "443:443"
     depends_on:
       - web
     networks:
@@ -33,6 +34,8 @@ services:
       context: ./backend
       dockerfile: backend.dockerfile
     container_name: ${PROJECT_SLUG}_app
+    ports:
+      - "8000:8000"
     volumes:
       - static_dir:/opt/backend/static/
       - media_dir:/opt/backend/media/
