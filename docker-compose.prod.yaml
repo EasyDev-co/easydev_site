@@ -13,11 +13,13 @@ x-function: &base_web
 services:
 
   nginx:
-    build: ./nginx/local
+    build: ./nginx/prod
     container_name: ${PROJECT_SLUG}_nginx
     volumes:
       - static_dir:/opt/backend/static/
       - media_dir:/opt/backend/media/
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./certbot/www:/var/www/certbot
     ports:
       - "80:80"
     depends_on:
@@ -48,15 +50,12 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: frontend.dockerfile
+      dockerfile: prod.frontend.dockerfile
     container_name: ${PROJECT_SLUG}_frontend
     ports:
       - "3000:3000"
     env_file:
       - .env
-    volumes:
-      - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules
     networks:
       nginx_network:
 
