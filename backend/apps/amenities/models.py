@@ -66,8 +66,8 @@ class MostPopularQuestion(TimeStampedMixin, UUIDMixin):
     )
 
     class Meta:
-        verbose_name = 'Скилл'
-        verbose_name_plural = 'Скиллы'
+        verbose_name = 'Часто задаваемый вопрос'
+        verbose_name_plural = 'Часто задаваемые вопросы'
         ordering = ('created',)
 
     def __str__(self):
