@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Arrow from '../../components/arrow/Arrow'
 import transition from '../../animations/transition'
 import styles from './styles/Main.module.scss'
+import { Link } from 'react-router-dom'
 
 const MainPage = () => {
   const [localTime, setLocalTime] = useState('')
@@ -58,10 +59,11 @@ const MainPage = () => {
           animate="animate"
         >
           <span>ТОП-5 НА HABR</span>
-          <span>{localTime} KAZ</span>
+          <span>{localTime} MSK</span>
           <span>200+ проектов</span>
         </motion.section>
         </div>
+        
         <motion.section
           className={styles.projects}
           variants={containerVariants}
@@ -69,11 +71,13 @@ const MainPage = () => {
           initial="initial"
           animate="animate"
         >
+        <Link to={'/cases'}>
         <div className={styles.project__container}>
           <div className={styles.project}>
             <p className={styles.project__heading}>
-              Ubibat. Сайт для люксового проекта
-              <br /> Москвы. Десять из десяти
+              MTS x SKOLKOVO <br /> Телеграм бот, который переварачивает взгляд на привычные веб-продукты.
+              {/* Ubibat. Сайт для люксового проекта
+              <br /> Москвы. Десять из десяти */}
             </p>
             <div className={styles.project__items}>
               <Arrow />
@@ -85,9 +89,10 @@ const MainPage = () => {
           </div>
           <div className={styles.project__img} />
         </div>
-        <div className={styles.navigationInfo}>
+        </Link>
+        {/* <div className={styles.navigationInfo}>
           Используйте меню для навигации
-        </div>
+        </div> */}
       </motion.section>
     </main>
   )
