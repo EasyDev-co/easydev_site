@@ -52,8 +52,10 @@ export const Contacts = ({isOpen, setIsOpen}) => {
                         <div className={styles.contacts__info}>
                             <div className={styles.contacts__address}>
                                 г. Казань, ул. Спартаковская, 2
-                                <br/> +7 (917) 230-0481
-                                <br/> info@easy-dev.tech
+                                <br/>
+                                <a href="tel:+79172300481">+7 (917) 230-0481</a>
+                                <br/>
+                                <a href="mailto:info@easy-dev.tech">info@easy-dev.tech</a>
                             </div>
                             <div className={styles.contacts__items}>
                                 <svg
