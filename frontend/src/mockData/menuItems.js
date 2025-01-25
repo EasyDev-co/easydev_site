@@ -1,26 +1,26 @@
 export const menu = [
   {
-    id: '01',
+    id: '00',
     title: 'О нас',
     path: '/about',
   },
   {
-    id: '02',
+    id: '01',
     title: 'Кейсы',
     path: '/cases',
   },
   {
-    id: '03',
-    title: 'Экспертность',
+    id: '02',
+    title: 'Услуги',
     path: '/services',
   },
   {
-    id: '04',
+    id: '03',
     title: 'Вакансии',
     path: '/vacancy',
   },
   {
-    id: '05',
+    id: '04',
     title: 'Позвонить',
     path: '/',
   },
