@@ -12,6 +12,8 @@ import mstrst_logo from '../../assets/img/mstrst.png'
 import mts_logo from '../../assets/img/mts.png'
 import skolkovo_logo from '../../assets/img/skolkovo.svg'
 import matchmove_logo from '../../assets/img/matchmove.png'
+import photodetstvo_logo from '../../assets/img/photodetstvo.svg'
+import mdk_logo from '../../assets/img/mdk.jpg'
 
 const AboutPage = () => {
   const width = useWindowWidth()
@@ -136,12 +138,12 @@ const AboutPage = () => {
               <div>Matchmove machine</div>
             </div>
             <div className={styles.clients__box}>
-              <img src={mstrst_logo} alt="mstrst_logo" />
-              <div>Мостотрест</div>
+              <img src={photodetstvo_logo} alt="mstrst_logo" />
+              <div>ФотоДетство</div>
             </div>
             <div className={styles.clients__box}>
-              <img src={mstrst_logo} alt="mstrst_logo" />
-              <div>Мостотрест</div>
+              <img src={mdk_logo} alt="mstrst_logo" />
+              <div>МДК</div>
             </div>
             <div className={styles.clients__box}>
               <img src={mstrst_logo} alt="mstrst_logo" />
