@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import transition from "../../animations/transition"
-import styles from "styles/NotFound.module.scss"
+import styles from "./styles/NotFound.module.scss"
 
 const NotFoundPage = () => {
     return (
