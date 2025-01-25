@@ -5,14 +5,15 @@ import styles from './styles/Accordion.module.scss'
 const Accordion = ({ data, isCase }) => {
   return (
     <div className={styles.accordion}>
-      {data?.map((elem) => {
+      {data?.map((elem, index) => {
+        const displayNumber = index;
         return (
-          <div key={elem.id} className={styles.accordion__tab}>
-            <input id={elem.id} type="checkbox" name="tabs" />
-            <label htmlFor={elem.id}>
+          <div key={ elem.id } className={styles.accordion__tab}>
+            <input id={ elem.id } type="checkbox" name="tabs" />
+            <label htmlFor={ elem.id }>
               {!isCase && (
                 <div className={styles.number}>
-                  {elem.id <= 9 ? `0${elem.id}` : elem.id}
+                  {displayNumber < 10 ? `0${displayNumber}` : displayNumber}
                 </div>
               )}
               {elem.title}
@@ -20,18 +21,18 @@ const Accordion = ({ data, isCase }) => {
             {isCase ? (
               <div className={styles.accordion__tab_case}>
                 <span>{elem.header}</span>
-                <p>{elem.text}</p>
+                <p>{elem.title}</p>
               </div>
             ) : (
               <div className={styles.accordion__tab_content}>
-                <p>{elem.text}</p>
+                <p>{elem.description}</p>
               </div>
             )}
           </div>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
 export default Accordion

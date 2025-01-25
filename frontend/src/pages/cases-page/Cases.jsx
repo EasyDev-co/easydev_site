@@ -23,7 +23,7 @@ const CasesPage = () => {
         <h2 className={styles.cases__title}>Кейсы (19/24)</h2>
         <div className={styles.cases__buttons}>
           <OriginButton text={'Все кейсы'} />
-          <OriginButton text={'Экспертность'} />
+          <OriginButton text={'Услуги'} />
           <OriginButton text={'Отрасли'} />
         </div>
         <div className={styles.case}>
