@@ -25,7 +25,7 @@ const ServicePage = () => {
         "link": "https://t.me/easydev_egor",
         "skill_of_amenities": [],
         "technology_of_amenities": [],
-        "most_popular_questions": [],
+        "question_of_amenities": [],
     })
 
     useEffect(() => {
@@ -73,7 +73,7 @@ const ServicePage = () => {
                 <TechnologiesSelect data={service.technology_of_amenities}/>
                 <div className={styles.service__skills}>
                     <h2>Часто задаваемые вопросы</h2>
-                    <Accordion data={service.most_popular_questions}/>
+                    <Accordion data={service.question_of_amenities}/>
                 </div>
             </section>
         </main>
