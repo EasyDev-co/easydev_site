@@ -15,6 +15,7 @@ import matchmove_logo from '../../assets/img/matchmove.png'
 import photodetstvo_logo from '../../assets/img/photodetstvo.svg'
 import mdk_logo from '../../assets/img/mdk.jpg'
 
+
 const AboutPage = () => {
   const width = useWindowWidth()
 

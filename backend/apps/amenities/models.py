@@ -1,9 +1,7 @@
 from colorfield.fields import ColorField
 from django.db import models
-from django.contrib.contenttypes.fields import GenericRelation
 
 from apps.utils.models_mixins.models_mixins import UUIDMixin, TimeStampedMixin
-from apps.utils.universal_models.universal_models import Image
 
 
 class Amenities(TimeStampedMixin, UUIDMixin):
@@ -14,6 +12,7 @@ class Amenities(TimeStampedMixin, UUIDMixin):
     video = models.FileField(verbose_name='Видео услуги', upload_to='amenities/video/', blank=True, null=True)
     gif = models.ImageField(verbose_name='GIF услуги', upload_to='amenities/GIF/', blank=True, null=True)
     text_and_label_color = ColorField(verbose_name='Цвет текста')
+    link = models.URLField(verbose_name="Уникальная ссылка на телеграм", blank=True, null=True)
 
     class Meta:
         verbose_name = 'Услуга'
@@ -57,3 +56,19 @@ class Technology(TimeStampedMixin, UUIDMixin):
 
     def __str__(self):
         return self.name
+
+
+class MostPopularQuestion(TimeStampedMixin, UUIDMixin):
+    title = models.CharField(verbose_name='Вопрос', max_length=256)
+    description = models.CharField(verbose_name='Ответ на вопрос', max_length=2048)
+    amenities = models.ForeignKey(
+        Amenities, verbose_name='Услуга', on_delete=models.CASCADE, related_name='question_of_amenities'
+    )
+
+    class Meta:
+        verbose_name = 'Часто задаваемый вопрос'
+        verbose_name_plural = 'Часто задаваемые вопросы'
+        ordering = ('created',)
+
+    def __str__(self):
+        return self.title

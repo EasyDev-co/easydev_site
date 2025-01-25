@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from apps.amenities.models import Amenities, Skill, Technology
+from apps.amenities.models import Amenities, Skill, Technology, MostPopularQuestion
+
+
+@admin.register(MostPopularQuestion)
+class MostPopularQuestionAdmin(admin.ModelAdmin):
+    ...
 
 
 @admin.register(Amenities)
