@@ -36,37 +36,39 @@ const MainPage = () => {
 
   return (
     <main className={styles.main}>
-      <motion.section
-        className={styles.titleContainer}
-        variants={containerVariants}
-        custom={3}
-        initial="initial"
-        animate="animate"
-      >
-        <h1 className={styles.title}>
-          Разработка{width < 767 && <br />} & Автоматизация
-          <br />
-          <span>Digital-продуктов</span>
-        </h1>
-      </motion.section>
-      <motion.section
-        className={styles.textContainer}
-        variants={containerVariants}
-        custom={4}
-        initial="initial"
-        animate="animate"
-      >
-        <span>ТОП-5 НА HABR</span>
-        <span>{localTime} KAZ</span>
-        <span>200+ проектов</span>
-      </motion.section>
-      <motion.section
-        className={styles.projects}
-        variants={containerVariants}
-        custom={4}
-        initial="initial"
-        animate="animate"
-      >
+      <div>
+        <motion.section
+          className={styles.titleContainer}
+          variants={containerVariants}
+          custom={3}
+          initial="initial"
+          animate="animate"
+        >
+          <h1 className={styles.title}>
+            Разработка{width < 767 && <br />} & Автоматизация
+            <br />
+            <span>Digital-продуктов</span>
+          </h1>
+        </motion.section>
+        <motion.section
+          className={styles.textContainer}
+          variants={containerVariants}
+          custom={4}
+          initial="initial"
+          animate="animate"
+        >
+          <span>ТОП-5 НА HABR</span>
+          <span>{localTime} KAZ</span>
+          <span>200+ проектов</span>
+        </motion.section>
+        </div>
+        <motion.section
+          className={styles.projects}
+          variants={containerVariants}
+          custom={4}
+          initial="initial"
+          animate="animate"
+        >
         <div className={styles.project__container}>
           <div className={styles.project}>
             <p className={styles.project__heading}>

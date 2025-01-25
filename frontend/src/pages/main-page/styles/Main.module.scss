@@ -4,6 +4,10 @@
 .main {
   padding: 20px 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 91vh;
+  justify-content: space-between;
 }
 
 .titleContainer {
