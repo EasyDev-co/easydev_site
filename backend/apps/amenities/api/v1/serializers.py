@@ -27,7 +27,7 @@ class AmenitiesDetailSerializer(serializers.ModelSerializer):
     """Сериалайзер для детального просмотра основной модели услуг"""
     technology_of_amenities = TechnologySerializer(many=True, read_only=True)
     skill_of_amenities = SkillSerializer(many=True, read_only=True)
-    most_popular_questions = MostPopularQuestions(many=True, read_only=True)
+    question_of_amenities = MostPopularQuestions(many=True, read_only=True)
 
     class Meta:
         model = Amenities
@@ -37,7 +37,7 @@ class AmenitiesDetailSerializer(serializers.ModelSerializer):
             'photo',
             'technology_of_amenities',
             'skill_of_amenities',
-            'most_popular_questions'
+            'question_of_amenities'
         )
 
 
