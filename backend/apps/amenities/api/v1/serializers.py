@@ -31,7 +31,14 @@ class AmenitiesDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Amenities
-        fields = ('name', 'description', 'photo', 'technology_of_amenities', 'skill_of_amenities')
+        fields = (
+            'name',
+            'description',
+            'photo',
+            'technology_of_amenities',
+            'skill_of_amenities',
+            'most_popular_questions'
+        )
 
 
 class AmenitiesSerializer(serializers.ModelSerializer):
