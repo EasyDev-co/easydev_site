@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
+import { motion } from "framer-motion";
 import { clients } from '../../mockData/clients'
 import { employees } from '../../mockData/employees'
 import { reviews } from '../../mockData/reviews'
@@ -9,20 +10,53 @@ import styles from './styles/About.module.scss'
 import transition from '../../animations/transition'
 
 const AboutPage = () => {
-  const width = useWindowWidth()
+  const width = useWindowWidth();
+
+  const fadeUpAnimation = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
     <main className={styles.main}>
       <Breadcrumbs />
       <div className={styles.about}>
-        <h1 className={styles.about__title}>Easy development</h1>
-        <p className={styles.about__text}>
+        <motion.h1
+          className={styles.about__title}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.8 }}
+          variants={fadeUpAnimation}
+        >
+          easydev
+        </motion.h1>
+        <motion.p
+          className={styles.about__text}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.8, delay: 0.2 }}
+          variants={fadeUpAnimation}
+        >
           В нашем портфолио — проекты для финансовых компаний из России, Европы,
           США, Китая, Ближнего Востока и Африки
-        </p>
+        </motion.p>
         <section className={styles.team}>
-          <div className={styles.team__heading}>Всем привет, это мы</div>
-          <div className={styles.team__employees}>
+          <motion.div
+            className={styles.team__heading}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            variants={fadeUpAnimation}
+          >
+            Всем привет, это мы
+          </motion.div>
+          <motion.div
+            className={styles.team__employees}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            variants={fadeUpAnimation}
+          >
             {employees.map((employee) => (
               <div key={employee.id} className={styles.team__employee}>
                 <img src={employee.img} alt={employee.name} />
@@ -35,7 +69,7 @@ const AboutPage = () => {
                 <div>{employee.nickname}</div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </section>
         <div className={styles.review__heading}>
           {reviews.total}+ положительных отзывов
@@ -73,7 +107,7 @@ const AboutPage = () => {
                   </div>
                 </div>
               ))
-            : 'Отзывов пока нет'}
+            : "Отзывов пока нет"}
         </section>
         <section className={styles.clients}>
           <h3 className={styles.clients__heading}>Наши любимые клиенты</h3>
@@ -88,12 +122,12 @@ const AboutPage = () => {
                     <div>{client.company}</div>
                   </div>
                 ))
-              : 'Скоро появится'}
+              : "Скоро появится"}
           </div>
         </section>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default transition(AboutPage)
+export default transition(AboutPage);
