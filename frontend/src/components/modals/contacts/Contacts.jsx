@@ -6,6 +6,7 @@ import styles from './styles/Contacts.module.scss';
 
 export const Contacts = ({isOpen, setIsOpen}) => {
     const telegramUrl = 'https://t.me/easydev_egor';
+    const yandexMapsUrl = 'https://yandex.ru/maps/?text=г.%20Казань,%20ул.%20Спартаковская,%202';
 
     useEffect(() => {
         if (isOpen) {
@@ -47,7 +48,7 @@ export const Contacts = ({isOpen, setIsOpen}) => {
                         <br/>
                         <a href={telegramUrl}>@easydev_egor</a>
                     </h1>
-
+                    <a href={yandexMapsUrl} target="_blank" rel="noopener noreferrer">
                     <div className={styles.contacts__container}>
                         <div className={styles.contacts__info}>
                             <div className={styles.contacts__address}>
@@ -79,6 +80,7 @@ export const Contacts = ({isOpen, setIsOpen}) => {
                             alt="Kazan"
                         />
                     </div>
+                    </a>
                 </motion.div>
             </div>
         </motion.div>
