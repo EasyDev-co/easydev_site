@@ -1,65 +1,84 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect } from 'react'
-import { ShowMenuButton } from '../../buttons/show-menu-button/ShowMenuButton'
-import styles from './styles/Contacts.module.scss'
+import {useEffect} from 'react';
+import {motion} from 'framer-motion';
+import {ShowMenuButton} from '../../buttons/show-menu-button/ShowMenuButton';
+import styles from './styles/Contacts.module.scss';
 
-export const Contacts = ({ isOpen, setIsOpen }) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
 
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [isOpen])
+export const Contacts = ({isOpen, setIsOpen}) => {
+    const telegramUrl = 'https://t.me/easydev_egor';
 
-  if (!isOpen) return null
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
 
-  return (
-    <div className={styles.modal}>
-      <div className={styles.inner}>
-        <div className={styles.contacts__header}>
-          <ShowMenuButton isOpen={isOpen} setIsOpen={setIsOpen} />
-        </div>
-        <div className={styles.contacts}>
-          <h1 className={styles.contacts__title}>
-            Связаться с нами
-            <br /> {/* Добавить ссылки на соцсети */}
-            <a href="#">@easydev</a>
-          </h1>
-          <div className={styles.contacts__container}>
-            <div className={styles.contacts__info}>
-              <div className={styles.contacts__address}>
-                г. Казань, ул. Островского, 87
-                <br /> +7 (913) 715 -6372
-              </div>
-              <div className={styles.contacts__items}>
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+    return (
+        <motion.div
+            className={styles.modal}
+            initial={{y: '100%'}}
+            animate={{y: 0}}
+            exit={{y: '100%'}}
+            transition={{duration: 0.8, ease: 'easeInOut'}}
+        >
+            <div className={styles.inner}>
+                <motion.div
+                    className={styles.contacts__header}
+                    initial={{opacity: 0, y: -20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{duration: 0.5, delay: 0.3}}
                 >
-                  <rect width="20" height="20" rx="10" />
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M7.80096 7.10919L11.5705 10.8787L11.5705 7.45442L12.5469 7.45442L12.5469 12.5456L7.45574 12.5456L7.45574 11.5692L10.88 11.5692L7.11052 7.79964L7.80096 7.10919Z"
-                  />
-                </svg>
-                <div>КОНТАКТНЫЕ ДАННЫЕ</div>
-              </div>
+                    <ShowMenuButton isOpen={isOpen} setIsOpen={setIsOpen}/>
+                </motion.div>
+
+                <motion.div
+                    className={styles.contacts}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{duration: 0.5, delay: 0.5}}
+                >
+                    <h1 className={styles.contacts__title}>
+                        Связаться с нами
+                        <br/>
+                        <a href={telegramUrl}>@easydev_egor</a>
+                    </h1>
+
+                    <div className={styles.contacts__container}>
+                        <div className={styles.contacts__info}>
+                            <div className={styles.contacts__address}>
+                                г. Казань, ул. Спартаковская, 2
+                                <br/> +7 (917) 230-0481
+                                <br/> info@easy-dev.tech
+                            </div>
+                            <div className={styles.contacts__items}>
+                                <svg
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect width="20" height="20" rx="10"/>
+                                    <path
+                                        fillRule="evenodd"
+                                        clipRule="evenodd"
+                                        d="M7.80096 7.10919L11.5705 10.8787L11.5705 7.45442L12.5469 7.45442L12.5469 12.5456L7.45574 12.5456L7.45574 11.5692L10.88 11.5692L7.11052 7.79964L7.80096 7.10919Z"
+                                    />
+                                </svg>
+                                <div>КОНТАКТНЫЕ ДАННЫЕ</div>
+                            </div>
+                        </div>
+                        <img
+                            className={styles.contacts__img}
+                            src="/img/contact_photo.jpg"
+                            alt="Kazan"
+                        />
+                    </div>
+                </motion.div>
             </div>
-            <img
-              className={styles.contacts__img}
-              src="/img/contact_photo.jpg"
-              alt="Kazan"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+        </motion.div>
+    );
+};
