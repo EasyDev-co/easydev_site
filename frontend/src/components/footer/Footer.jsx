@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom'
 import styles from './styles/Footer.module.scss'
 
 export const Footer = () => {
+  const TelegramUrl = "https://t.me/easydev_egor"
+  const WhatsAppUrl = "https://wa.me/79108223226"
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
@@ -23,10 +26,10 @@ export const Footer = () => {
             <a href="mailto:info@easy-dev.tech" aria-label="Vkontakte">
               Email
             </a>
-            <a href="https://t.me/easydev_egor" aria-label="Telegram">
+            <a href={ TelegramUrl } aria-label="Telegram">
               Telegram
             </a>
-            <a href="https://wa.me/79108223226" aria-label="WhatsApp">
+            <a href={ WhatsAppUrl } aria-label="WhatsApp">
               WhatsApp
             </a>
           </div>
@@ -38,7 +41,7 @@ export const Footer = () => {
           />
           <BlueButton
             text={'Связаться с нами'}
-            onClick={() => console.log('Добавить возможность связаться!')}
+            onClick={() => window.location.href = TelegramUrl}
           />
         </div>
       </div>
