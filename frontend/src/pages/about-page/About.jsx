@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 import { clients } from '../../mockData/clients'
 import { employees } from '../../mockData/employees'
 import { reviews } from '../../mockData/reviews'
@@ -8,14 +8,18 @@ import { insertSpace } from '../../utils/insertSpace'
 import { useWindowWidth } from '@react-hook/window-size'
 import styles from './styles/About.module.scss'
 import transition from '../../animations/transition'
+import mstrst_logo from '../../assets/img/mstrst.png'
+import mts_logo from '../../assets/img/mts.png'
+import skolkovo_logo from '../../assets/img/skolkovo.svg'
+import matchmove_logo from '../../assets/img/matchmove.png'
 
 const AboutPage = () => {
-  const width = useWindowWidth();
+  const width = useWindowWidth()
 
   const fadeUpAnimation = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
-  };
+  }
 
   return (
     <main className={styles.main}>
@@ -107,7 +111,7 @@ const AboutPage = () => {
                   </div>
                 </div>
               ))
-            : "Отзывов пока нет"}
+            : 'Отзывов пока нет'}
         </section>
         <section className={styles.clients}>
           <h3 className={styles.clients__heading}>Наши любимые клиенты</h3>
@@ -115,19 +119,43 @@ const AboutPage = () => {
             Запоминается настоящее. Верят лучшему. Доверяют за результаты.
           </p>
           <div className={styles.clients__container}>
-            {clients.length
-              ? clients.map((client) => (
-                  <div className={styles.clients__box} key={client.id}>
-                    <img src={client.logo} alt={client.company} />
-                    <div>{client.company}</div>
-                  </div>
-                ))
-              : "Скоро появится"}
+            <div className={styles.clients__box}>
+              <img className={styles.logo} src={mts_logo} alt="mstrst_logo" />
+              <div>МТС</div>
+            </div>
+            <div className={styles.clients__box}>
+              <img src={skolkovo_logo} style={{width: '110px'}} alt="mstrst_logo" />
+              <div>Сколково</div>
+            </div>
+            <div className={styles.clients__box}>
+              <img src={mstrst_logo} alt="mstrst_logo" />
+              <div>Мостотрест</div>
+            </div>
+            <div className={styles.clients__box}>
+              <img src={matchmove_logo} alt="mstrst_logo" />
+              <div>Matchmove machine</div>
+            </div>
+            <div className={styles.clients__box}>
+              <img src={mstrst_logo} alt="mstrst_logo" />
+              <div>Мостотрест</div>
+            </div>
+            <div className={styles.clients__box}>
+              <img src={mstrst_logo} alt="mstrst_logo" />
+              <div>Мостотрест</div>
+            </div>
+            <div className={styles.clients__box}>
+              <img src={mstrst_logo} alt="mstrst_logo" />
+              <div>Мостотрест</div>
+            </div>
+            <div className={styles.clients__box}>
+              <img src={mstrst_logo} alt="mstrst_logo" />
+              <div>Мостотрест</div>
+            </div>
           </div>
         </section>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default transition(AboutPage);
+export default transition(AboutPage)
