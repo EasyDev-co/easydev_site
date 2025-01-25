@@ -75,7 +75,7 @@ const MainPage = () => {
         <div className={styles.project__container}>
           <div className={styles.project}>
             <p className={styles.project__heading}>
-              MTS x SKOLKOVO <br /> Телеграм бот, который переварачивает взгляд на привычные веб-продукты.
+              MTS x SKOLKOVO <br /> Телеграм WebApp, который переворачивает взгляд на привычные веб-продукты.
               {/* Ubibat. Сайт для люксового проекта
               <br /> Москвы. Десять из десяти */}
             </p>

@@ -1,7 +1,7 @@
 export const clients = [
   {
     id: 1,
-    logo: '/img/icons/Logo_NIKE.svg',
+    logo: '/img/icons/mstrst.png',
     company: 'Nike',
   },
   {
