@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom'
 import styles from './styles/Footer.module.scss'
 
 export const Footer = () => {
+  const TelegramUrl = "https://t.me/easydev_egor"
+  const WhatsAppUrl = "https://wa.me/79108223226"
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
@@ -20,18 +23,14 @@ export const Footer = () => {
             <NavLinks />
           </div>
           <div>
-            {/* Добавить ссылки на соцсети */}
-            <a href="#" aria-label="Vkontakte">
-              Vkontakte
+            <a href="mailto:info@easy-dev.tech" aria-label="Vkontakte">
+              Email
             </a>
-            <a href="#" aria-label="Telegram">
+            <a href={ TelegramUrl } aria-label="Telegram">
               Telegram
             </a>
-            <a href="#" aria-label="WhatsApp">
+            <a href={ WhatsAppUrl } aria-label="WhatsApp">
               WhatsApp
-            </a>
-            <a href="#" aria-label="Instagram">
-              Instagram
             </a>
           </div>
         </div>
@@ -42,12 +41,12 @@ export const Footer = () => {
           />
           <BlueButton
             text={'Связаться с нами'}
-            onClick={() => console.log('Добавить возможность связаться!')}
+            onClick={() => window.location.href = TelegramUrl}
           />
         </div>
       </div>
       <div className={styles.footer__info}>
-        <span>©2020-2025 EASYDEV.SITE</span>
+        <span>©2021-2025 EASY-DEV.TECH</span>
         <span>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</span>
       </div>
     </footer>
