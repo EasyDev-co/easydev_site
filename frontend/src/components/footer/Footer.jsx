@@ -47,9 +47,8 @@ export const Footer = () => {
         </div>
       </div>
       <div className={styles.footer__info}>
-        <span>©2024 EASYDEV.SITE</span>
+        <span>©2020-2025 EASYDEV.SITE</span>
         <span>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</span>
-        <span>DESIGN BY IVAN TASKAYEV</span>
       </div>
     </footer>
   )

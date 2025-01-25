@@ -1,0 +1,22 @@
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
+
+  &__code {
+    font-size: 6rem; // Размер для кода ошибки
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &__message {
+    font-size: 1.5rem; // Размер для текста под кодом
+    font-weight: 400;
+    margin: 0;
+    color: #666666; // Серый цвет для текста
+  }
+}
