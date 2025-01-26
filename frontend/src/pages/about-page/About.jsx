@@ -16,6 +16,8 @@ import photodetstvo_logo from '../../assets/img/photodetstvo.svg'
 import mdk_logo from '../../assets/img/mdk.jpg'
 import meriya_kazani_logo from '../../assets/img/meriya_kazani.png'
 import zarahome_logo from '../../assets/img/zarahome.jpg'
+import { useEffect, useRef, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 
 const AboutPage = () => {
   const width = useWindowWidth()
@@ -24,6 +26,20 @@ const AboutPage = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   }
+
+  const carouselRef = useRef(null);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+
+    const scrollInterval = setInterval(() => {
+      if (carousel) {
+        carousel.scrollBy({ left: 1, behavior: "smooth" });
+      }
+    }, 90);
+
+    return () => clearInterval(scrollInterval);
+  }, []); 
 
   return (
     <main className={styles.main}>
@@ -75,7 +91,7 @@ const AboutPage = () => {
                     : employee.position}
                 </div>
                 {employee.telegramUrl ? 
-                (<div><a href={employee.telegramUrl} style={{ color: 'inherit', textDecoration: 'none' }}>{employee.nickname}</a></div>)
+                (<div><a href={employee.telegramUrl} target='blank' style={{ color: 'inherit', textDecoration: 'none' }}>{employee.nickname}</a></div>)
                  : (<div>{employee.nickname}</div>)}
               </div>
             ))}
@@ -84,7 +100,51 @@ const AboutPage = () => {
         <div className={styles.review__heading}>
           {reviews.total}+ положительных отзывов
         </div>
-        <section className={styles.review}>
+        <div
+           className={styles.carouselWrapper}
+           role="button"
+           tabIndex={0}
+           aria-label="Анимированная карусель отзывов"
+          >
+      <div className={styles.carousel} ref={carouselRef}>
+        {reviews.reviews.length ? (
+          reviews.reviews.map((review, index) => (
+            <div className={styles.review__container} key={uuidv4()}>
+              <div className={styles.review__box}>
+                <div className={styles.review__innerBox}>
+                  <p className={styles.review__text}>{review.text}</p>
+                </div>
+                <div>
+                  Клиенты
+                  <br /> о нас
+                </div>
+              </div>
+              <div className={styles.review__authorBox}>
+                <div>
+                  <img
+                    className={styles.review__authorImg}
+                    src={review.img}
+                    alt={`Фото автора: ${review.author}`}
+                  />
+                  <div className={styles.review__authorInfo}>
+                    <div>{review.author}</div>
+                    <div>{review.position}</div>
+                  </div>
+                </div>
+                <img
+                  className={styles.review__authorLabel}
+                  src={review.label}
+                  alt="Логотип компании"
+                />
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className={styles.noReviews}>Отзывов пока нет</div>
+        )}
+      </div>
+    </div>
+        {/* <section className={styles.review}>
           {reviews.reviews.length
             ? reviews.reviews.map((review) => (
                 <div className={styles.review__container} key={review.id}>
@@ -118,7 +178,7 @@ const AboutPage = () => {
                 </div>
               ))
             : 'Отзывов пока нет'}
-        </section>
+        </section> */}
         <section className={styles.clients}>
           <h3 className={styles.clients__heading}>Наши любимые клиенты</h3>
           <p className={styles.clients__text}>

@@ -32,7 +32,8 @@ export const Header = () => {
                         <div className={styles.header__buttons}>
                             <BlueButton
                                 text="Начать проект с easydev"
-                                onClick={() => (window.location.href = telegramUrl)}
+                                // onClick={() => (window.location.href = telegramUrl)}
+                                onClick={() => window.open(telegramUrl, '_blank')}
                             />
                             <OriginButton
                                 text="Контакты"

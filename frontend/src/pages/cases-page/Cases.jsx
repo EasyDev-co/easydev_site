@@ -20,12 +20,12 @@ const CasesPage = () => {
     <main className={styles.main}>
       <section className={styles.cases}>
         <Breadcrumbs />
-        <h2 className={styles.cases__title}>Кейсы (19/24)</h2>
-        <div className={styles.cases__buttons}>
+        <h2 className={styles.cases__title}>Кейсы</h2>
+        {/* <div className={styles.cases__buttons}>
           <OriginButton text={'Все кейсы'} />
           <OriginButton text={'Услуги'} />
           <OriginButton text={'Отрасли'} />
-        </div>
+        </div> */}
         <div className={styles.case}>
           {cases.results?.map((elem) => (
             <div className={styles.project__container} key={elem.pk}>

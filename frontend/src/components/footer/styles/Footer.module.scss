@@ -10,7 +10,7 @@
   border-top: 1px solid $borderColor-primary;
   display: flex;
   flex-direction: column;
-  gap: 191px;
+  gap: 121px;
   background: $background-primary;
 
   &__container {
@@ -123,11 +123,11 @@
   }
 
   @media (max-width: 1919px) {
-    gap: 177px;
+    gap: 127px;
   }
 
   @media (max-width: 1365px) {
-    gap: 191px;
+    gap: 121px;
   }
 
   @media (max-width: 768px) {

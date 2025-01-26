@@ -3,7 +3,7 @@
 import styles from './styles/Accordion.module.scss'
 
 const AccordionCases = ({ data, isCase }) => {
-    const { pk, name, description, team, images, video, gif, job_description, solved_problems, technology_stack } = data;
+    const { pk, name, description, client, decision, task, images, video, gif, technology_stack } = data;
     return (
         <div className={styles.accordion}>
             <div className={styles.accordion__tab}>
@@ -12,40 +12,46 @@ const AccordionCases = ({ data, isCase }) => {
                     ПРОЕКТ
                 </label>
                 <div className={styles.accordion__tab_case}>
-                    <span>{name}</span>
-                    <p>{description}</p>
-                </div>
-            </div>
-            <div className={styles.accordion__tab}>
-                <input id={2} type="checkbox" name="tabs" />
-                <label htmlFor={2}>
-                    КЛИЕНТ
-                </label>
-                <div className={styles.accordion__tab_case}>
                     {/* <span>{name}</span> */}
                     <p>{description}</p>
                 </div>
             </div>
-            <div className={styles.accordion__tab}>
-                <input id={3} type="checkbox" name="tabs" />
-                <label htmlFor={3}>
-                    ЗАДАЧА
-                </label>
-                <div className={styles.accordion__tab_case}>
-                    {/* <span>{name}</span> */}
-                    <p>{job_description}</p>
+            { client &&
+                <div className={styles.accordion__tab}>
+                    <input id={2} type="checkbox" name="tabs" />
+                    <label htmlFor={2}>
+                        КЛИЕНТ
+                    </label>
+                    <div className={styles.accordion__tab_case}>
+                        {/* <span>{name}</span> */}
+                        <p>{client}</p>
+                    </div>
                 </div>
-            </div>
-            <div className={styles.accordion__tab}>
-            <input id={4} type="checkbox" name="tabs" />
-                <label htmlFor={4}>
-                    РЕШЕНИЕ
-                </label>
-                <div className={styles.accordion__tab_case}>
-                    {/* <span>{name}</span> */}
-                    <p>{solved_problems}</p>
+            }     
+            {task &&      
+                <div className={styles.accordion__tab}>
+                    <input id={3} type="checkbox" name="tabs" />
+                    <label htmlFor={3}>
+                        ЗАДАЧА
+                    </label>
+                    <div className={styles.accordion__tab_case}>
+                        {/* <span>{name}</span> */}
+                        <p>{task}</p>
+                    </div>
                 </div>
-            </div>
+            }           
+            {decision &&    
+                <div className={styles.accordion__tab}>
+                <input id={4} type="checkbox" name="tabs" />
+                    <label htmlFor={4}>
+                        РЕШЕНИЕ
+                    </label>
+                    <div className={styles.accordion__tab_case}>
+                        {/* <span>{name}</span> */}
+                        <p>{decision}</p>
+                    </div>
+                </div>
+            }   
             <div className={styles.accordion__tab}>
                 <input id={5} type="checkbox" name="tabs" />
                 <label htmlFor={5}>
