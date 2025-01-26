@@ -13,6 +13,7 @@ const CasePage = () => {
   const width = useWindowWidth()
   const { name, images} = location.state || {}
   console.log(location.state)
+
   return (
     <main className={styles.main}>
       <section className={styles.case}>
