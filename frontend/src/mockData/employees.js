@@ -1,10 +1,11 @@
 export const employees = [
+
   {
-    id: 1,
-    name: 'Дмитрий Колотов',
-    position: 'Маркетолог',
-    // nickname: '@kazakov_tm',
-    img: '/img/Dmitriy_Kolotov.jpg',
+    id: 2,
+    name: 'Аделина',
+    position: 'Brand Manager',
+    // nickname: '@inq',
+    img: '/img/Adelina.jpeg',
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ export const employees = [
     name: 'Егор Киняпин',
     position: 'co-founder & CMO',
     nickname: '@easydev_egor',
+    telegramUrl: 'https://t.me/easydev_egor',
     img: '/img/Egor_Kinyapin.jpg',
   },
   {
@@ -25,20 +27,20 @@ export const employees = [
     name: 'Тимофей Казаков',
     position: 'co-founder & CTO',
     nickname: '@easydev_timofey',
+    telegramUrl: 'https://t.me/easydev_timofey',
     img: '/img/Timofey_Kazakov.jpeg',
-  },
-  {
+  }, {
     id: 5,
-    name: 'Егор Киняпин',
-    position: 'Основатель EASY DEV',
-    // nickname: '@egorkinyapin',
-    img: '/img/Egor_Kinyapin.jpg',
+    name: 'Дмитрий',
+    position: 'Tech  Lead',
+    // nickname: '@kazakov_tm',
+    img: '/img/Dmitriy_Kolotov.jpg',
   },
   {
     id: 6,
-    name: 'Аделина',
-    position: 'Дизайнер',
+    name: 'Дарья',
+    position: 'Head of QA',
     // nickname: '@eqllwsh',
-    img: '/img/Adelina.jpeg',
+    img: '/img/Daria_Larionova.jpg',
   },
 ]

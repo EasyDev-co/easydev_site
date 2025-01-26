@@ -12,6 +12,10 @@ import mstrst_logo from '../../assets/img/mstrst.png'
 import mts_logo from '../../assets/img/mts.png'
 import skolkovo_logo from '../../assets/img/skolkovo.svg'
 import matchmove_logo from '../../assets/img/matchmove.png'
+import photodetstvo_logo from '../../assets/img/photodetstvo.svg'
+import mdk_logo from '../../assets/img/mdk.jpg'
+import meriya_kazani_logo from '../../assets/img/meriya_kazani.png'
+import zarahome_logo from '../../assets/img/zarahome.jpg'
 
 const AboutPage = () => {
   const width = useWindowWidth()
@@ -70,7 +74,9 @@ const AboutPage = () => {
                     ? insertSpace(employee.position)
                     : employee.position}
                 </div>
-                <div>{employee.nickname}</div>
+                {employee.telegramUrl ? 
+                (<div><a href={employee.telegramUrl} style={{ color: 'inherit', textDecoration: 'none' }}>{employee.nickname}</a></div>)
+                 : (<div>{employee.nickname}</div>)}
               </div>
             ))}
           </motion.div>
@@ -120,11 +126,11 @@ const AboutPage = () => {
           </p>
           <div className={styles.clients__container}>
             <div className={styles.clients__box}>
-              <img className={styles.logo} src={mts_logo} alt="mstrst_logo" />
+              <img style={{width: '50px'}} className={styles.logo} src={mts_logo} alt="mstrst_logo" />
               <div>МТС</div>
             </div>
             <div className={styles.clients__box}>
-              <img src={skolkovo_logo} style={{width: '110px'}} alt="mstrst_logo" />
+              <img src={skolkovo_logo} style={{width: '100px'}} alt="mstrst_logo" />
               <div>Сколково</div>
             </div>
             <div className={styles.clients__box}>
@@ -132,25 +138,27 @@ const AboutPage = () => {
               <div>Мостотрест</div>
             </div>
             <div className={styles.clients__box}>
-              <img src={matchmove_logo} alt="mstrst_logo" />
+              <img style={{width: '55px'}} src={matchmove_logo} alt="mstrst_logo" />
               <div>Matchmove machine</div>
             </div>
             <div className={styles.clients__box}>
-              <img src={mstrst_logo} alt="mstrst_logo" />
-              <div>Мостотрест</div>
+              <img src={zarahome_logo} alt="mstrst_logo" />
+              <div>ZARA HOME</div>
             </div>
             <div className={styles.clients__box}>
-              <img src={mstrst_logo} alt="mstrst_logo" />
-              <div>Мостотрест</div>
+              <img style={{width: '110px'}} src={meriya_kazani_logo} alt="mstrst_logo" />
+              <div>Мэрия Казани</div>
             </div>
             <div className={styles.clients__box}>
-              <img src={mstrst_logo} alt="mstrst_logo" />
-              <div>Мостотрест</div>
+              <img style={{width: '75px'}} src={photodetstvo_logo} alt="mstrst_logo" />
+              <div>ФотоДетство</div>
             </div>
+            
             <div className={styles.clients__box}>
-              <img src={mstrst_logo} alt="mstrst_logo" />
-              <div>Мостотрест</div>
+              <img src={mdk_logo} alt="mstrst_logo" />
+              <div>MDK</div>
             </div>
+            
           </div>
         </section>
       </div>
