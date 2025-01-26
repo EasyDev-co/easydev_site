@@ -21,7 +21,7 @@ export const menu = [
   },
   {
     id: '04',
-    title: 'Позвонить',
+    title: 'Контакты',
     path: '/',
   },
 ]
