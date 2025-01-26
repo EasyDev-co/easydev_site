@@ -332,6 +332,42 @@
   }
 }
 
+.carouselWrapper {
+  cursor: pointer;
+  overflow: hidden; /* Скрывает элементы, выходящие за пределы контейнера */
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: row;
+  gap: 40px; /* Расстояние между отзывами */
+  animation: scroll 50s linear infinite; /* Анимация автоматической прокрутки */
+}
+
+.review__container {
+  flex: 0 0 auto; /* Не позволяет отзывам сжиматься или расширяться */
+  scroll-snap-align: start; /* Привязка для плавной прокрутки */
+}
+
+.noReviews {
+  text-align: center;
+  font-size: 16px;
+  color: $textColor-secondary;
+}
+
+/* Анимация прокрутки */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
 .clients {
   display: flex;
   flex-direction: column;

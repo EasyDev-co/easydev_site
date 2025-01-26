@@ -46,7 +46,7 @@ export const Contacts = ({isOpen, setIsOpen}) => {
                     <h1 className={styles.contacts__title}>
                         Связаться с нами
                         <br/>
-                        <a href={telegramUrl}>@easydev_egor</a>
+                        <a href={telegramUrl} target='blank'>@easydev_egor</a>
                     </h1>
                     <a href={yandexMapsUrl} target="_blank" rel="noopener noreferrer">
                     <div className={styles.contacts__container}>

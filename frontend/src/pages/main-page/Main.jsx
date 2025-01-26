@@ -60,7 +60,7 @@ const MainPage = () => {
         >
           <span>ТОП-5 НА HABR</span>
           <span>{localTime} MSK</span>
-          <span>200+ проектов</span>
+          <span>100+ проектов</span>
         </motion.section>
         </div>
         

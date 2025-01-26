@@ -5,6 +5,7 @@ import BlueButton from '../buttons/BlueButton/BlueButton'
 import { NavLinks } from '../nav-links/NavLinks'
 import { Link } from 'react-router-dom'
 import styles from './styles/Footer.module.scss'
+import easydevPdf from '../../assets/files/easydev.pdf'
 
 export const Footer = () => {
   const TelegramUrl = "https://t.me/easydev_egor"
@@ -37,11 +38,18 @@ export const Footer = () => {
         <div className={styles.footer__buttons}>
           <OriginButton
             text={'Скачать презентацию'}
-            onClick={() => console.log('Скачать презентацию')}
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = easydevPdf; // Указываем путь к PDF файлу
+              link.download = 'easydev.pdf'; // Указываем имя файла при скачивании
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
           />
           <BlueButton
             text={'Связаться с нами'}
-            onClick={() => window.location.href = TelegramUrl}
+            onClick={() => window.open(TelegramUrl, '_blank')}
           />
         </div>
       </div>
