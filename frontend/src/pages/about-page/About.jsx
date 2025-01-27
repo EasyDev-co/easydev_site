@@ -17,7 +17,7 @@ import mdk_logo from '../../assets/img/mdk.jpg'
 import meriya_kazani_logo from '../../assets/img/meriya_kazani.png'
 import zarahome_logo from '../../assets/img/zarahome.jpg'
 import { useEffect, useRef, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 
 const AboutPage = () => {
   const width = useWindowWidth()
@@ -27,23 +27,26 @@ const AboutPage = () => {
     visible: { opacity: 1, y: 0 },
   }
 
-  const carouselRef = useRef(null);
+  const carouselRef = useRef(null)
 
   useEffect(() => {
-    const carousel = carouselRef.current;
+    const carousel = carouselRef.current
 
     const scrollInterval = setInterval(() => {
       if (carousel) {
-        carousel.scrollBy({ left: 1, behavior: "smooth" });
+        carousel.scrollBy({ left: 1, behavior: 'smooth' })
       }
-    }, 90);
+    }, 90)
 
-    return () => clearInterval(scrollInterval);
-  }, []); 
+    return () => clearInterval(scrollInterval)
+  }, [])
 
   return (
     <main className={styles.main}>
-      <Breadcrumbs />
+      {/* <Breadcrumbs /> */}
+      <div className={styles.breadcrumbs}>
+        {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / <span>О НАС</span>
+      </div>
       <div className={styles.about}>
         <motion.h1
           className={styles.about__title}
@@ -90,9 +93,19 @@ const AboutPage = () => {
                     ? insertSpace(employee.position)
                     : employee.position}
                 </div>
-                {employee.telegramUrl ? 
-                (<div><a href={employee.telegramUrl} target='blank' style={{ color: 'inherit', textDecoration: 'none' }}>{employee.nickname}</a></div>)
-                 : (<div>{employee.nickname}</div>)}
+                {employee.telegramUrl ? (
+                  <div>
+                    <a
+                      href={employee.telegramUrl}
+                      target="blank"
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      {employee.nickname}
+                    </a>
+                  </div>
+                ) : (
+                  <div>{employee.nickname}</div>
+                )}
               </div>
             ))}
           </motion.div>
@@ -101,49 +114,49 @@ const AboutPage = () => {
           {reviews.total}+ положительных отзывов
         </div>
         <div
-           className={styles.carouselWrapper}
-           role="button"
-           tabIndex={0}
-           aria-label="Анимированная карусель отзывов"
-          >
-      <div className={styles.carousel} ref={carouselRef}>
-        {reviews.reviews.length ? (
-          reviews.reviews.map((review, index) => (
-            <div className={styles.review__container} key={uuidv4()}>
-              <div className={styles.review__box}>
-                <div className={styles.review__innerBox}>
-                  <p className={styles.review__text}>{review.text}</p>
-                </div>
-                <div>
-                  Клиенты
-                  <br /> о нас
-                </div>
-              </div>
-              <div className={styles.review__authorBox}>
-                <div>
-                  <img
-                    className={styles.review__authorImg}
-                    src={review.img}
-                    alt={`Фото автора: ${review.author}`}
-                  />
-                  <div className={styles.review__authorInfo}>
-                    <div>{review.author}</div>
-                    <div>{review.position}</div>
+          className={styles.carouselWrapper}
+          role="button"
+          tabIndex={0}
+          aria-label="Анимированная карусель отзывов"
+        >
+          <div className={styles.carousel} ref={carouselRef}>
+            {reviews.reviews.length ? (
+              reviews.reviews.map((review, index) => (
+                <div className={styles.review__container} key={uuidv4()}>
+                  <div className={styles.review__box}>
+                    <div className={styles.review__innerBox}>
+                      <p className={styles.review__text}>{review.text}</p>
+                    </div>
+                    <div>
+                      Клиенты
+                      <br /> о нас
+                    </div>
+                  </div>
+                  <div className={styles.review__authorBox}>
+                    <div>
+                      <img
+                        className={styles.review__authorImg}
+                        src={review.img}
+                        alt={`Фото автора: ${review.author}`}
+                      />
+                      <div className={styles.review__authorInfo}>
+                        <div>{review.author}</div>
+                        <div>{review.position}</div>
+                      </div>
+                    </div>
+                    <img
+                      className={styles.review__authorLabel}
+                      src={review.label}
+                      alt="Логотип компании"
+                    />
                   </div>
                 </div>
-                <img
-                  className={styles.review__authorLabel}
-                  src={review.label}
-                  alt="Логотип компании"
-                />
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className={styles.noReviews}>Отзывов пока нет</div>
-        )}
-      </div>
-    </div>
+              ))
+            ) : (
+              <div className={styles.noReviews}>Отзывов пока нет</div>
+            )}
+          </div>
+        </div>
         {/* <section className={styles.review}>
           {reviews.reviews.length
             ? reviews.reviews.map((review) => (
@@ -186,11 +199,20 @@ const AboutPage = () => {
           </p>
           <div className={styles.clients__container}>
             <div className={styles.clients__box}>
-              <img style={{width: '50px'}} className={styles.logo} src={mts_logo} alt="mstrst_logo" />
+              <img
+                style={{ width: '50px' }}
+                className={styles.logo}
+                src={mts_logo}
+                alt="mstrst_logo"
+              />
               <div>МТС</div>
             </div>
             <div className={styles.clients__box}>
-              <img src={skolkovo_logo} style={{width: '100px'}} alt="mstrst_logo" />
+              <img
+                src={skolkovo_logo}
+                style={{ width: '100px' }}
+                alt="mstrst_logo"
+              />
               <div>Сколково</div>
             </div>
             <div className={styles.clients__box}>
@@ -198,7 +220,11 @@ const AboutPage = () => {
               <div>Мостотрест</div>
             </div>
             <div className={styles.clients__box}>
-              <img style={{width: '55px'}} src={matchmove_logo} alt="mstrst_logo" />
+              <img
+                style={{ width: '55px' }}
+                src={matchmove_logo}
+                alt="mstrst_logo"
+              />
               <div>Matchmove machine</div>
             </div>
             <div className={styles.clients__box}>
@@ -206,19 +232,26 @@ const AboutPage = () => {
               <div>ZARA HOME</div>
             </div>
             <div className={styles.clients__box}>
-              <img style={{width: '110px'}} src={meriya_kazani_logo} alt="mstrst_logo" />
+              <img
+                style={{ width: '110px' }}
+                src={meriya_kazani_logo}
+                alt="mstrst_logo"
+              />
               <div>Мэрия Казани</div>
             </div>
             <div className={styles.clients__box}>
-              <img style={{width: '75px'}} src={photodetstvo_logo} alt="mstrst_logo" />
+              <img
+                style={{ width: '75px' }}
+                src={photodetstvo_logo}
+                alt="mstrst_logo"
+              />
               <div>ФотоДетство</div>
             </div>
-            
+
             <div className={styles.clients__box}>
               <img src={mdk_logo} alt="mstrst_logo" />
               <div>MDK</div>
             </div>
-            
           </div>
         </section>
       </div>

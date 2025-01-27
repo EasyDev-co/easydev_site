@@ -24,14 +24,14 @@ export const Footer = () => {
             <NavLinks />
           </div>
           <div>
-            <a href="mailto:info@easy-dev.tech" aria-label="Vkontakte">
-              Email
-            </a>
             <a href={ TelegramUrl } aria-label="Telegram">
               Telegram
             </a>
             <a href={ WhatsAppUrl } aria-label="WhatsApp">
               WhatsApp
+            </a>
+            <a href="mailto:info@easy-dev.tech" aria-label="Email">
+              Email
             </a>
           </div>
         </div>

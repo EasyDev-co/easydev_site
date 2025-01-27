@@ -64,7 +64,8 @@ const VacancyPage = () => {
             UX/UI Designer
             {width < 767 ? (
               <div className={styles.column__item__subtitle}>
-                В поисках креативного художника
+                {/* В поисках креативного художника */}
+                от 3-ёх лет
               </div>
             ) : (
               width < 375 && (

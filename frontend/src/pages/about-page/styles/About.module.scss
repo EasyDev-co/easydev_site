@@ -331,7 +331,17 @@
     gap: 20px;
   }
 }
+.breadcrumbs {
+  font-family: 'Roboto Mono';
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 109%;
+  color: $background-secondary;
 
+  & span {
+      color: $textColor-secondary;
+  }
+}
 .carouselWrapper {
   cursor: pointer;
   overflow: hidden; /* Скрывает элементы, выходящие за пределы контейнера */
