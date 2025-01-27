@@ -14,7 +14,7 @@ const ServicePage = () => {
 
     const location = useLocation()
     const width = useWindowWidth()
-
+    const telegramUrl = 'https://t.me/easydev_egor';
     const {created, description, id, modified, name, photo} = location.state || {}
 
     const [service, setService] = useState({
@@ -48,7 +48,7 @@ const ServicePage = () => {
           <span className={styles.service__title__desc}>
            {description}
           </span>
-                    <a href={service.link}><BlueButton text={'Заказать услугу'}/></a>
+                    <a href={service.link}><BlueButton text={'Заказать услугу'} onClick={() => window.open(telegramUrl, '_blank')}/></a>
                 </div>
                 <div className={styles.service__about_wrap}>
                     <div className={styles.service__about}>
