@@ -1,14 +1,53 @@
 @import '../../../styles/variables.scss';
 @import '../../../styles/fonts.scss';
 
+// .breadcrumbs {
+//   font-family: 'Roboto Mono';
+//   font-weight: 400;
+//   font-size: 11px;
+//   line-height: 109%;
+//   color: $background-secondary;
+
+//   & span {
+//     color: $textColor-secondary;
+//   }
+// }
+// components/breadcrumbs/Breadcrumbs.module.scss
 .breadcrumbs {
+  margin: 1rem 0;
   font-family: 'Roboto Mono';
   font-weight: 400;
   font-size: 11px;
   line-height: 109%;
   color: $background-secondary;
 
-  & span {
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    
+    &:not(:last-child)::after {
+      content: "/";
+      margin: 0 0.5rem;
+      color: #666;
+    }
+  }
+
+  a {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .active {
     color: $textColor-secondary;
+    font-weight: 500;
   }
 }

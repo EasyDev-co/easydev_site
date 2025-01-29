@@ -4,6 +4,7 @@ import {useEffect} from 'react';
 import {motion} from "framer-motion";
 import {getVacancies} from '../../api/vacancy/getVacancies';
 import transition from '../../animations/transition';
+import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs';
 
 const VacancyPage = () => {
   const width = useWindowWidth();
@@ -29,9 +30,15 @@ const VacancyPage = () => {
         transition={{ duration: 0.8 }}
         variants={fadeUpAnimation}
       >
-        <div className={styles.breadcrumbs}>
+        <Breadcrumbs 
+          items={[
+            { label: width < 480 ? 'HOME' : 'ГЛАВНАЯ', path: '/' },
+            { label: 'ВАКАНСИИ', path: '/vacancy' }
+          ]} 
+        />
+        {/* <div className={styles.breadcrumbs}>
           {width < 480 ? "HOME" : "ГЛАВНАЯ"} / <span>ВАКАНСИИ</span>
-        </div>
+        </div> */}
         <motion.h1
           className={styles.vacancy__title}
           initial="hidden"

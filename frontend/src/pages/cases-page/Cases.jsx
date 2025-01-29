@@ -7,8 +7,10 @@ import { OriginButton } from '../../components/buttons/origin-button/OriginButto
 import { getCases } from '../../api/cases/getCases'
 import styles from './styles/Cases.module.scss'
 import transition from '../../animations/transition'
+import { useWindowWidth } from '@react-hook/window-size'
 
 const CasesPage = () => {
+  const width = useWindowWidth();
   const [cases, setCases] = useState({count: 0, next: null, previous: null, results: []});
   useEffect(()=>{
     getCases()
@@ -19,7 +21,13 @@ const CasesPage = () => {
   return (
     <main className={styles.main}>
       <section className={styles.cases}>
-        <Breadcrumbs />
+        {/* <Breadcrumbs /> */}
+        <Breadcrumbs 
+          items={[
+            { label: width < 480 ? 'HOME' : 'ГЛАВНАЯ', path: '/' },
+            { label: 'КЕЙСЫ', path: '/cases' }
+          ]} 
+        />
         <h2 className={styles.cases__title}>Кейсы</h2>
         {/* <div className={styles.cases__buttons}>
           <OriginButton text={'Все кейсы'} />

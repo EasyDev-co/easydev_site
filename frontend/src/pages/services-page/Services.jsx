@@ -4,6 +4,7 @@ import styles from './styles/Services.module.scss'
 import { useEffect, useState } from 'react'
 import { getServices } from '../../api/service/getServices'
 import transition from '../../animations/transition'
+import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
 
 const ServicesPage = () => {
   const width = useWindowWidth();
@@ -23,9 +24,16 @@ const ServicesPage = () => {
   return (
     <main className={styles.main}>
       <section className={styles.service}>
-        <div className={styles.breadcrumbs}>
+      <Breadcrumbs 
+        items={[
+          { label: width < 480 ? 'HOME' : 'ГЛАВНАЯ', path: '/' },
+          { label: 'УСЛУГИ', path: '/services' }
+        ]} 
+      />
+
+        {/* <div className={styles.breadcrumbs}>
           {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / <span>УСЛУГИ</span>
-        </div>
+        </div> */}
         <h1 className={styles.service__title}>Услуги</h1>
         <ul className={styles.service__wrapp}>
           {services.results?.map((elem) => (
