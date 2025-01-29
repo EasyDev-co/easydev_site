@@ -44,9 +44,15 @@ const AboutPage = () => {
   return (
     <main className={styles.main}>
       {/* <Breadcrumbs /> */}
-      <div className={styles.breadcrumbs}>
+      {/* <div className={styles.breadcrumbs}>
         {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / <span>О НАС</span>
-      </div>
+      </div> */}
+      <Breadcrumbs 
+  items={[
+    { label: width < 480 ? 'HOME' : 'ГЛАВНАЯ', path: '/' },
+    { label: 'О НАС', path: '/about' }
+  ]} 
+/>
       <div className={styles.about}>
         <motion.h1
           className={styles.about__title}
@@ -110,7 +116,7 @@ const AboutPage = () => {
             ))}
           </motion.div>
         </section>
-        <div className={styles.review__heading}>
+        {/* <div className={styles.review__heading}>
           {reviews.total}+ положительных отзывов
         </div>
         <div
@@ -156,42 +162,7 @@ const AboutPage = () => {
               <div className={styles.noReviews}>Отзывов пока нет</div>
             )}
           </div>
-        </div>
-        {/* <section className={styles.review}>
-          {reviews.reviews.length
-            ? reviews.reviews.map((review) => (
-                <div className={styles.review__container} key={review.id}>
-                  <div className={styles.review__box}>
-                    <div className={styles.review__innerBox}>
-                      <p className={styles.review__text}>{review.text}</p>
-                    </div>
-                    <div>
-                      Клиенты
-                      <br /> о нас
-                    </div>
-                  </div>
-                  <div className={styles.review__authorBox}>
-                    <div>
-                      <img
-                        className={styles.review__authorImg}
-                        src={review.img}
-                        alt="author"
-                      />
-                      <div className={styles.review__authorInfo}>
-                        <div>{review.author}</div>
-                        <div>{review.position}</div>
-                      </div>
-                    </div>
-                    <img
-                      className={styles.review__authorLabel}
-                      src={review.label}
-                      alt="company label"
-                    />
-                  </div>
-                </div>
-              ))
-            : 'Отзывов пока нет'}
-        </section> */}
+        </div> */}
         <section className={styles.clients}>
           <h3 className={styles.clients__heading}>Наши любимые клиенты</h3>
           <p className={styles.clients__text}>
@@ -254,6 +225,53 @@ const AboutPage = () => {
             </div>
           </div>
         </section>
+        <div className={styles.review__heading}>
+          {reviews.total}+ положительных отзывов
+        </div>
+        <div
+          className={styles.carouselWrapper}
+          role="button"
+          tabIndex={0}
+          aria-label="Анимированная карусель отзывов"
+        >
+          <div className={styles.carousel} ref={carouselRef}>
+            {reviews.reviews.length ? (
+              reviews.reviews.map((review, index) => (
+                <div className={styles.review__container} key={uuidv4()}>
+                  <div className={styles.review__box}>
+                    <div className={styles.review__innerBox}>
+                      <p className={styles.review__text}>{review.text}</p>
+                    </div>
+                    <div>
+                      Клиенты
+                      <br /> о нас
+                    </div>
+                  </div>
+                  <div className={styles.review__authorBox}>
+                    <div>
+                      <img
+                        className={styles.review__authorImg}
+                        src={review.img}
+                        alt={`Фото автора: ${review.author}`}
+                      />
+                      <div className={styles.review__authorInfo}>
+                        <div>{review.author}</div>
+                        <div>{review.position}</div>
+                      </div>
+                    </div>
+                    <img
+                      className={styles.review__authorLabel}
+                      src={review.label}
+                      alt="Логотип компании"
+                    />
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className={styles.noReviews}>Отзывов пока нет</div>
+            )}
+          </div>
+        </div>
       </div>
     </main>
   )

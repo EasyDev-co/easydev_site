@@ -191,6 +191,7 @@
     text-transform: uppercase;
     margin-bottom: 20px;
     color: $textColor-secondary;
+    margin-top: 100px;
   }
 
   &__container {
@@ -346,7 +347,7 @@
   cursor: pointer;
   overflow: hidden; /* Скрывает элементы, выходящие за пределы контейнера */
   position: relative;
-  margin-bottom: 50px;
+  // margin-bottom: 50px;
 }
 
 .carousel {
@@ -392,7 +393,6 @@
     text-align: center;
     margin-bottom: 10px;
     color: $background-secondary;
-
     @media (max-width: 767px) {
       max-width: 250px;
     }
