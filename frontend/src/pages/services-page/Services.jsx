@@ -5,8 +5,13 @@ import { useEffect, useState } from 'react'
 import { getServices } from '../../api/service/getServices'
 import transition from '../../animations/transition'
 import { Breadcrumbs } from '../../components/breadcrumbs/Breadcrumbs'
+import { motion } from 'framer-motion'
 
 const ServicesPage = () => {
+  const fadeUpAnimation = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  }
   const width = useWindowWidth();
   const [services, setServices] = useState({
     "count": 0,
@@ -34,8 +39,16 @@ const ServicesPage = () => {
         {/* <div className={styles.breadcrumbs}>
           {width < 480 ? 'HOME' : 'ГЛАВНАЯ'} / <span>УСЛУГИ</span>
         </div> */}
-        <h1 className={styles.service__title}>Услуги</h1>
-        <ul className={styles.service__wrapp}>
+        <motion.h1 
+          className={styles.service__title}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.8 }}
+          variants={fadeUpAnimation}
+          >
+          Услуги
+          </motion.h1>
+        <motion.ul className={styles.service__wrapp}>
           {services.results?.map((elem) => (
             <div key={elem.id} style={{backgroundImage: `url("${elem.photo}"`}} className={styles.service__container}>
               <div className={styles.service__shield}></div>
@@ -48,7 +61,7 @@ const ServicesPage = () => {
               </div>
             </div>
           ))}
-        </ul>
+        </motion.ul>
       </section>
     </main>
   )

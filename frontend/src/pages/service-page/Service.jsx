@@ -7,6 +7,7 @@ import Accordion from '../../components/Accordions/Accordion'
 import TechnologiesSelect from '../../components/TechnologiesSelect/TecnologiesSelect'
 import {accordion} from '../../mockData/accordion'
 import {getService} from '../../api/service/getService'
+import { motion } from 'framer-motion'
 
 import transition from '../../animations/transition'
 
